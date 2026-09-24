@@ -1,0 +1,43 @@
+==========================================
+Starting ROCm Validation Suite on amd-2200g
+OS: tumbleweed (x86_64) | Sequence: #18
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.2.6-1-default
+[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700] (gfx1010))
+--> Testing hipcc Compiler...
+HIP_TEST_SUCCESS
+[PASS] hipcc compilation and GPU execution succeeded.
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.2
+00:00.501  translation      | WARNING 'locale' data path for translations not found
+00:03.294  blend            | Read blend: "/root/rocm/scene.blend"
+00:03.316  cycles           | WARNING CUEW initialization failed: Error opening the library
+Enabled HIP Device: AMD Radeon Pro W5700
+00:03.356  render           | Rendering single frame
+00:03.357  render           | Rendering frame 1
+00:03.359  render           | Start rendering: Scene, ViewLayer
+00:03.359  render           | Engine: Cycles
+00:03.411  render           | Fra: 1 | Mem: 0M | Synchronizing object | Cube
+Blender 5.2.2 LTS
+00:03.411  render           | Fra: 1 | Mem: 0M | Synchronizing object | Light
+00:03.413  render           | Fra: 1 | Mem: 0M | Initializing
+00:03.413  render           | Fra: 1 | Mem: 0M | Waiting for render to start
+00:03.414  render           | Fra: 1 | Mem: 0M | Updating Scene
+00:03.414  render           | Fra: 1 | Mem: 0M | Updating Shaders
+00:03.415  render           | Fra: 1 | Mem: 0M | Loading render kernels (may take a few minutes the first time)
+00:03.476  cycles           | ERROR Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+00:03.476  cycles           | ERROR Refer to the Cycles GPU rendering documentation for possible solutions:
+                            | https://docs.blender.org/manual/en/latest/render/cycles/gpu_rendering.html
+                            | 
+00:03.477  render           | Fra: 1 | Mem: 0M | Updating Device | Writing constant memory
+00:03.480  render           | Fra: 1 | Mem: 0M | Loading denoising kernels (may take a few minutes the first time)
+00:03.496  render           | Fra: 1 | Mem: 256M | Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+00:03.496  reports          | ERROR Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+
+Blender quit
+[FAIL] Blender execution failed.
+==========================================
+Run #18 [tumbleweed] complete on amd-2200g. Status: FAIL
+Results written to: /mnt/storage/rocm/tumbleweed/18/amd-2200g/result.json
+==========================================
