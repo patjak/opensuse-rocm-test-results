@@ -1,0 +1,15 @@
+{
+  "sequence_number": 17,
+  "timestamp": "2026-09-24 14:17 UTC",
+  "os": "rocm-devel",
+  "arch": "x86_64",
+  "hostname": "amd-2200g",
+  "gpu_model": "Navi 10 [Radeon Pro W5700]",
+  "rocm_version": "7.2.53211-9999",
+  "kernel_version": "7.2.6-1-default",
+  "driver_check": "PASS",
+  "hipcc_check": "PASS",
+  "blender_check": "FAIL",
+  "blender_time_sec": "N/A",
+  "overall_status": "FAIL"
+}
