@@ -8,8 +8,8 @@ Automated validation suite for AMD ROCm across openSUSE distributions and homela
 
 | OS | Machine | GPU | Status | Last Tested |
 | :--- | :--- | :--- | :---: | :--- |
-| `rocm-devel` | **7800xt** | Radeon RX 7700 XT / 7800 XT | ✅ PASS | 2026-09-24 12:11 UTC |
-| `tumbleweed` | **7800xt** | Radeon RX 7700 XT / 7800 XT | ✅ PASS | 2026-09-24 12:03 UTC |
+| `rocm-devel` | **7800xt** | Radeon RX 7700 XT / 7800 XT | ✅ PASS | 2026-09-24 12:44 UTC |
+| `tumbleweed` | **7800xt** | Radeon RX 7700 XT / 7800 XT | ✅ PASS | 2026-09-24 12:37 UTC |
 
 ---
 *Updated automatically by `mama` test runner.*
