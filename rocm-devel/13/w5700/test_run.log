@@ -1,0 +1,7 @@
+==========================================
+Starting ROCm Validation Suite on w5700
+OS: rocm-devel (x86_64) | Sequence: #13
+==========================================
+--> Checking Hardware and ROCm Drivers...
+[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700])
+--> Testing hipcc Compiler...

@@ -1,0 +1,14 @@
+{
+  "sequence_number": 12,
+  "timestamp": "2026-09-24 13:05 UTC",
+  "os": "tumbleweed",
+  "arch": "x86_64",
+  "hostname": "rx580",
+  "gpu_model": "Ellesmere [Radeon RX 470/480/570/570X/580/580X/590]",
+  "rocm_version": "7.2.53211-9999",
+  "driver_check": "FAIL",
+  "hipcc_check": "FAIL",
+  "blender_check": "PASS",
+  "blender_time_sec": "43.11",
+  "overall_status": "FAIL"
+}
