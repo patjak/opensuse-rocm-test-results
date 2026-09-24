@@ -1,11 +1,14 @@
-# openSUSE ROCm Test Results
+# openSUSE ROCm Test Matrix
 
-Automated daily test matrix for AMD ROCm on openSUSE distributions across homelab GPUs.
+Automated validation suite for AMD ROCm across openSUSE distributions and homelab GPUs.
 
-### Latest Test Matrix Status
+📊 **[View Detailed Web Dashboard](https://patjak.github.io/opensuse-rocm-test-results/)**
 
-| OS | Machine | GPU Model | ROCm | Seq | Driver | `hipcc` | Blender HIP | Status | Last Run | Log |
-| :--- | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- | :---: |
-| tumbleweed | **7800xt** | Radeon RX 7700 XT / 7800 XT | 7.2.53211 | #6 | ✅ PASS | ✅ PASS | ✅ PASS (51.22s) | **✅ PASS** | 2026-09-24 11:17 UTC | [View Log](tumbleweed/6/7800xt/test_run.log) |
+### Current Status Overview
 
+| OS | Machine | GPU | Status | Last Tested |
+| :--- | :--- | :--- | :---: | :--- |
+| `tumbleweed` | **7800xt** | Radeon RX 7700 XT / 7800 XT | ✅ PASS | 2026-09-24 12:03 UTC |
+
+---
 *Updated automatically by `mama` test runner.*
