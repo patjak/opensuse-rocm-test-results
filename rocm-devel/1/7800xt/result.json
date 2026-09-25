@@ -1,6 +1,6 @@
 {
   "sequence_number": 1,
-  "timestamp": "2026-09-25 14:18 UTC",
+  "timestamp": "2026-09-25 15:17 UTC",
   "os": "rocm-devel",
   "arch": "x86_64",
   "hostname": "7800xt",
@@ -11,6 +11,6 @@
   "driver_check": "PASS",
   "hipcc_check": "PASS",
   "blender_check": "PASS",
-  "blender_time_sec": "30.54",
+  "blender_time_sec": "30.95",
   "overall_status": "PASS"
 }
