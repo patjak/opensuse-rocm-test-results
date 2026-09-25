@@ -1,7 +1,0 @@
-==========================================
-Starting ROCm Validation Suite on w5700
-OS: tumbleweed (x86_64) | Sequence: #12
-==========================================
---> Checking Hardware and ROCm Drivers...
-[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700])
---> Testing hipcc Compiler...
