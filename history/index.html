@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCm Test Run History</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --accent: #38bdf8;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+        h1 { margin: 0 0 0.5rem 0; font-size: 1.8rem; font-weight: 700; }
+        p { color: var(--text-muted); margin: 0 0 1rem 0; }
+        .nav-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .nav-link:hover { text-decoration: underline; }
+        .table-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow-x: auto;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 0.85rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        th {
+            background-color: #0f172a;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: rgba(255, 255, 255, 0.02); }
+        code {
+            background: #0f172a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #38bdf8;
+            font-size: 0.85rem;
+        }
+        .time { color: var(--text-muted); font-size: 0.85rem; }
+        .log-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .log-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ROCm Validation Suite - Run History</h1>
+            <p>Archive of previous test batch executions and status reports.</p>
+            <a href="../index.html" class="nav-link">← Back to Latest Dashboard</a>
+        </header>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sequence</th>
+                        <th>Timestamp</th>
+                        <th>Web Dashboard</th>
+                        <th>Markdown Report</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td><code>#22</code></td>
+            <td class="time">2026-09-25 06:57:58 UTC</td>
+            <td><a href="index_seq22_20260925_065758.html" target="_blank" class="log-link">Web Dashboard</a></td>
+            <td><a href="README_seq22_20260925_065758.md" target="_blank" class="log-link">Markdown</a></td>
+        </tr>
+        
+        <tr>
+            <td><code>#21</code></td>
+            <td class="time">2026-09-25 06:41:26 UTC</td>
+            <td><a href="index_seq21_20260925_064126.html" target="_blank" class="log-link">Web Dashboard</a></td>
+            <td><a href="README_seq21_20260925_064126.md" target="_blank" class="log-link">Markdown</a></td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
