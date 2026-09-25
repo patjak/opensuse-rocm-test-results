@@ -84,3 +84,89 @@ Blender quit
 Run #1 [tumbleweed] complete on amd-2200g. Status: FAIL
 Results written to: /mnt/storage/rocm/tumbleweed/1/amd-2200g/result.json
 ==========================================
+==========================================
+Starting ROCm Validation Suite on amd-2200g
+OS: tumbleweed (x86_64) | Sequence: #1
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.2.6-1-default
+[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700] (gfx1010))
+--> Testing hipcc Compiler...
+HIP_TEST_SUCCESS
+[PASS] hipcc compilation and GPU execution succeeded.
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.2
+00:00.967  translation      | WARNING 'locale' data path for translations not found
+00:12.025  blend            | Read blend: "/root/rocm/scene.blend"
+00:12.041  cycles           | WARNING CUEW initialization failed: Error opening the library
+Enabled HIP Device: AMD Radeon Pro W5700
+00:12.084  render           | Rendering single frame
+00:12.084  render           | Rendering frame 1
+00:12.086  render           | Start rendering: Scene, ViewLayer
+00:12.086  render           | Engine: Cycles
+00:12.146  render           | Fra: 1 | Mem: 0M | Synchronizing object | Cube
+Blender 5.2.2 LTS
+00:12.146  render           | Fra: 1 | Mem: 0M | Synchronizing object | Light
+00:12.148  render           | Fra: 1 | Mem: 0M | Initializing
+00:12.148  render           | Fra: 1 | Mem: 0M | Waiting for render to start
+00:12.149  render           | Fra: 1 | Mem: 0M | Updating Scene
+00:12.149  render           | Fra: 1 | Mem: 0M | Updating Shaders
+00:12.150  render           | Fra: 1 | Mem: 0M | Loading render kernels (may take a few minutes the first time)
+00:12.203  cycles           | ERROR Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+00:12.203  cycles           | ERROR Refer to the Cycles GPU rendering documentation for possible solutions:
+                            | https://docs.blender.org/manual/en/latest/render/cycles/gpu_rendering.html
+                            | 
+00:12.204  render           | Fra: 1 | Mem: 0M | Updating Device | Writing constant memory
+00:12.207  render           | Fra: 1 | Mem: 0M | Loading denoising kernels (may take a few minutes the first time)
+00:12.220  render           | Fra: 1 | Mem: 256M | Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+00:12.220  reports          | ERROR Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+
+Blender quit
+[FAIL] Blender execution failed (no HIP GPU detected or rendering error).
+==========================================
+Run #1 [tumbleweed] complete on amd-2200g. Status: FAIL
+Results written to: /mnt/storage/rocm/tumbleweed/1/amd-2200g/result.json
+==========================================
+==========================================
+Starting ROCm Validation Suite on amd-2200g
+OS: tumbleweed (x86_64) | Sequence: #1
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.2.6-1-default
+[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700] (gfx1010))
+--> Testing hipcc Compiler...
+HIP_TEST_SUCCESS
+[PASS] hipcc compilation and GPU execution succeeded.
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.2
+00:04.504  translation      | WARNING 'locale' data path for translations not found
+00:08.138  blend            | Read blend: "/root/rocm/scene.blend"
+00:08.157  cycles           | WARNING CUEW initialization failed: Error opening the library
+Enabled HIP Device: AMD Radeon Pro W5700
+00:08.202  render           | Rendering single frame
+00:08.202  render           | Rendering frame 1
+00:08.204  render           | Start rendering: Scene, ViewLayer
+00:08.204  render           | Engine: Cycles
+00:08.263  render           | Fra: 1 | Mem: 0M | Synchronizing object | Cube
+Blender 5.2.2 LTS
+00:08.263  render           | Fra: 1 | Mem: 0M | Synchronizing object | Light
+00:08.265  render           | Fra: 1 | Mem: 0M | Initializing
+00:08.265  render           | Fra: 1 | Mem: 0M | Waiting for render to start
+00:08.266  render           | Fra: 1 | Mem: 0M | Updating Scene
+00:08.266  render           | Fra: 1 | Mem: 0M | Updating Shaders
+00:08.267  render           | Fra: 1 | Mem: 0M | Loading render kernels (may take a few minutes the first time)
+00:08.332  cycles           | ERROR Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+00:08.332  cycles           | ERROR Refer to the Cycles GPU rendering documentation for possible solutions:
+                            | https://docs.blender.org/manual/en/latest/render/cycles/gpu_rendering.html
+                            | 
+00:08.332  render           | Fra: 1 | Mem: 0M | Updating Device | Writing constant memory
+00:08.335  render           | Fra: 1 | Mem: 0M | Loading denoising kernels (may take a few minutes the first time)
+00:08.350  render           | Fra: 1 | Mem: 256M | Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+00:08.350  reports          | ERROR Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+
+Blender quit
+[FAIL] Blender execution failed (no HIP GPU detected or rendering error).
+==========================================
+Run #1 [tumbleweed] complete on amd-2200g. Status: FAIL
+Results written to: /mnt/storage/rocm/tumbleweed/1/amd-2200g/result.json
+==========================================
