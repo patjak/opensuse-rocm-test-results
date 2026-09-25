@@ -1,0 +1,16 @@
+{
+  "sequence_number": 1,
+  "timestamp": "2026-09-25 14:18 UTC",
+  "os": "rocm-devel",
+  "arch": "x86_64",
+  "hostname": "7800xt",
+  "gpu_model": "Navi 32 [Radeon RX 7700 XT / 7800 XT]",
+  "gfx_version": "gfx1101",
+  "rocm_version": "7.2.53211-9999",
+  "kernel_version": "7.2.6-1-default",
+  "driver_check": "PASS",
+  "hipcc_check": "PASS",
+  "blender_check": "PASS",
+  "blender_time_sec": "30.54",
+  "overall_status": "PASS"
+}
