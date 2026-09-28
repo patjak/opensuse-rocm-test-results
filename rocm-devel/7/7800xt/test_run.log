@@ -1,0 +1,193 @@
+==========================================
+Starting openSUSE ROCm Test Suite on 7800xt
+OS: rocm-devel (x86_64) | Sequence: #7
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.2.7-1-default
+[PASS] Driver & GPU detection succeeded (Navi 32 [Radeon RX 7700 XT / 7800 XT] (gfx1101))
+--> Testing hipcc Compiler...
+HIP_TEST_SUCCESS
+[PASS] hipcc compilation and GPU execution succeeded.
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.2
+00:00.595  translation      | WARNING 'locale' data path for translations not found
+00:03.729  blend            | Read blend: "/root/rocm/scene.blend"
+00:03.744  cycles           | WARNING CUEW initialization failed: Error opening the library
+Enabled HIP Device: AMD Radeon RX 7800 XT
+00:03.799  render           | Rendering single frame
+00:03.799  render           | Rendering frame 1
+00:03.802  render           | Start rendering: Scene, ViewLayer
+00:03.802  render           | Engine: Cycles
+00:03.903  render           | Fra: 1 | Mem: 0M | Synchronizing object | Cube
+Blender 5.2.2 LTS
+00:03.903  render           | Fra: 1 | Mem: 0M | Synchronizing object | Light
+00:03.905  render           | Fra: 1 | Mem: 0M | Initializing
+00:03.905  render           | Fra: 1 | Mem: 0M | Waiting for render to start
+00:03.906  render           | Fra: 1 | Mem: 0M | Updating Scene
+00:03.906  render           | Fra: 1 | Mem: 0M | Updating Shaders
+00:03.907  render           | Fra: 1 | Mem: 0M | Loading render kernels (may take a few minutes the first time)
+00:03.970  render           | Fra: 1 | Mem: 1M | Updating Procedurals
+00:03.970  render           | Fra: 1 | Mem: 1M | Updating Background
+00:03.970  render           | Fra: 1 | Mem: 1M | Updating Scene Attribute
+00:03.970  render           | Fra: 1 | Mem: 1M | Updating Camera
+00:03.970  render           | Fra: 1 | Mem: 1M | Updating Meshes Flags
+00:03.971  render           | Fra: 1 | Mem: 1M | Updating Objects
+00:03.971  render           | Fra: 1 | Mem: 1M | Updating Objects | Copying Transformations to device
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Particle Systems
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Particle Systems | Copying Particles to device
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Meshes
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Objects | Applying Static Transformations
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Building
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Building BVH
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Packing BVH triangles and strands
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Packing BVH nodes
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Copying BVH to device
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Mesh | Computing attributes
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Mesh | Copying Attributes to device
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Mesh | Computing normals
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Mesh | Copying Mesh to device
+00:03.972  render           | Fra: 1 | Mem: 1M | Updating Objects Flags
+00:03.973  render           | Fra: 1 | Mem: 1M | Updating Primitive Offsets
+00:03.973  render           | Fra: 1 | Mem: 1M | Updating Images
+00:03.973  render           | Fra: 1 | Mem: 1M | Updating Volume
+00:03.973  render           | Fra: 1 | Mem: 1M | Updating Camera Volume
+00:03.973  render           | Fra: 1 | Mem: 1M | Updating Lookup Tables
+00:03.977  render           | Fra: 1 | Mem: 1M | Updating Lights
+00:03.978  render           | Fra: 1 | Mem: 1M | Updating Lights | Computing tree
+00:03.978  render           | Fra: 1 | Mem: 1M | Updating Integrator
+00:03.978  render           | Fra: 1 | Mem: 1M | Updating Film
+00:03.979  render           | Fra: 1 | Mem: 1M | Updating Lookup Tables
+00:03.979  render           | Fra: 1 | Mem: 1M | Updating Baking
+00:03.979  render           | Fra: 1 | Mem: 1M | Updating Device | Writing constant memory
+00:03.979  render           | Fra: 1 | Mem: 1M | Loading denoising kernels (may take a few minutes the first time)
+00:03.996  render           | Fra: 1 | Mem: 342M | Sample 0/4096
+00:04.026  render           | Fra: 1 | Remaining: 01:59.02 | Mem: 492M | Sample 1/4096
+00:04.794  render           | Fra: 1 | Remaining: 00:40.05 | Mem: 492M | Sample 80/4096
+00:04.827  render           | Fra: 1 | Remaining: 00:34.63 | Mem: 492M | Sample 96/4096
+00:04.857  render           | Fra: 1 | Remaining: 00:30.62 | Mem: 492M | Sample 112/4096
+00:04.886  render           | Fra: 1 | Remaining: 00:27.57 | Mem: 492M | Sample 128/4096
+00:04.913  render           | Fra: 1 | Remaining: 00:25.16 | Mem: 492M | Sample 144/4096
+00:04.941  render           | Fra: 1 | Remaining: 00:23.25 | Mem: 492M | Sample 160/4096
+00:04.971  render           | Fra: 1 | Remaining: 00:21.71 | Mem: 492M | Sample 176/4096
+00:04.997  render           | Fra: 1 | Remaining: 00:20.35 | Mem: 492M | Sample 192/4096
+00:05.024  render           | Fra: 1 | Remaining: 00:19.21 | Mem: 492M | Sample 208/4096
+00:05.048  render           | Fra: 1 | Remaining: 00:18.18 | Mem: 492M | Sample 224/4096
+00:05.073  render           | Fra: 1 | Remaining: 00:17.29 | Mem: 492M | Sample 240/4096
+00:05.097  render           | Fra: 1 | Remaining: 00:16.51 | Mem: 492M | Sample 256/4096
+00:05.122  render           | Fra: 1 | Remaining: 00:15.82 | Mem: 492M | Sample 272/4096
+00:05.144  render           | Fra: 1 | Remaining: 00:15.18 | Mem: 492M | Sample 288/4096
+00:05.167  render           | Fra: 1 | Remaining: 00:14.60 | Mem: 492M | Sample 304/4096
+00:05.189  render           | Fra: 1 | Remaining: 00:14.07 | Mem: 492M | Sample 320/4096
+00:05.210  render           | Fra: 1 | Remaining: 00:13.58 | Mem: 492M | Sample 336/4096
+00:05.233  render           | Fra: 1 | Remaining: 00:13.15 | Mem: 492M | Sample 352/4096
+00:05.253  render           | Fra: 1 | Remaining: 00:12.73 | Mem: 492M | Sample 368/4096
+00:05.274  render           | Fra: 1 | Remaining: 00:12.35 | Mem: 492M | Sample 384/4096
+00:05.293  render           | Fra: 1 | Remaining: 00:11.98 | Mem: 492M | Sample 400/4096
+00:05.312  render           | Fra: 1 | Remaining: 00:11.64 | Mem: 492M | Sample 416/4096
+00:05.331  render           | Fra: 1 | Remaining: 00:11.32 | Mem: 492M | Sample 432/4096
+00:05.350  render           | Fra: 1 | Remaining: 00:11.02 | Mem: 492M | Sample 448/4096
+00:05.368  render           | Fra: 1 | Remaining: 00:10.73 | Mem: 492M | Sample 464/4096
+00:05.385  render           | Fra: 1 | Remaining: 00:10.46 | Mem: 492M | Sample 480/4096
+00:05.403  render           | Fra: 1 | Remaining: 00:10.21 | Mem: 492M | Sample 496/4096
+00:05.422  render           | Fra: 1 | Remaining: 00:09.98 | Mem: 492M | Sample 512/4096
+00:05.440  render           | Fra: 1 | Remaining: 00:09.75 | Mem: 492M | Sample 528/4096
+00:05.457  render           | Fra: 1 | Remaining: 00:09.53 | Mem: 492M | Sample 544/4096
+00:05.475  render           | Fra: 1 | Remaining: 00:09.33 | Mem: 492M | Sample 560/4096
+00:05.493  render           | Fra: 1 | Remaining: 00:09.14 | Mem: 492M | Sample 576/4096
+00:05.511  render           | Fra: 1 | Remaining: 00:08.96 | Mem: 492M | Sample 592/4096
+00:05.530  render           | Fra: 1 | Remaining: 00:08.80 | Mem: 492M | Sample 608/4096
+00:05.549  render           | Fra: 1 | Remaining: 00:08.64 | Mem: 492M | Sample 624/4096
+00:05.566  render           | Fra: 1 | Remaining: 00:08.47 | Mem: 492M | Sample 640/4096
+00:05.580  render           | Fra: 1 | Remaining: 00:08.30 | Mem: 492M | Sample 656/4096
+00:05.594  render           | Fra: 1 | Remaining: 00:08.14 | Mem: 492M | Sample 672/4096
+00:05.608  render           | Fra: 1 | Remaining: 00:07.98 | Mem: 492M | Sample 688/4096
+00:05.622  render           | Fra: 1 | Remaining: 00:07.83 | Mem: 492M | Sample 704/4096
+00:05.635  render           | Fra: 1 | Remaining: 00:07.68 | Mem: 492M | Sample 720/4096
+00:05.649  render           | Fra: 1 | Remaining: 00:07.54 | Mem: 492M | Sample 736/4096
+00:05.662  render           | Fra: 1 | Remaining: 00:07.40 | Mem: 492M | Sample 752/4096
+00:05.675  render           | Fra: 1 | Remaining: 00:07.27 | Mem: 492M | Sample 768/4096
+00:05.688  render           | Fra: 1 | Remaining: 00:07.14 | Mem: 492M | Sample 784/4096
+00:05.701  render           | Fra: 1 | Remaining: 00:07.02 | Mem: 492M | Sample 800/4096
+00:05.714  render           | Fra: 1 | Remaining: 00:06.90 | Mem: 492M | Sample 816/4096
+00:05.723  render           | Fra: 1 | Remaining: 00:06.77 | Mem: 492M | Sample 832/4096
+00:05.732  render           | Fra: 1 | Remaining: 00:06.65 | Mem: 492M | Sample 848/4096
+00:05.742  render           | Fra: 1 | Remaining: 00:06.52 | Mem: 492M | Sample 864/4096
+00:05.749  render           | Fra: 1 | Remaining: 00:06.40 | Mem: 492M | Sample 880/4096
+00:05.757  render           | Fra: 1 | Remaining: 00:06.28 | Mem: 492M | Sample 896/4096
+00:05.764  render           | Fra: 1 | Remaining: 00:06.17 | Mem: 492M | Sample 912/4096
+00:05.772  render           | Fra: 1 | Remaining: 00:06.06 | Mem: 492M | Sample 928/4096
+00:05.780  render           | Fra: 1 | Remaining: 00:05.95 | Mem: 492M | Sample 944/4096
+00:05.787  render           | Fra: 1 | Remaining: 00:05.85 | Mem: 492M | Sample 960/4096
+00:05.795  render           | Fra: 1 | Remaining: 00:05.75 | Mem: 492M | Sample 976/4096
+00:05.803  render           | Fra: 1 | Remaining: 00:05.65 | Mem: 492M | Sample 992/4096
+00:05.810  render           | Fra: 1 | Remaining: 00:05.55 | Mem: 492M | Sample 1008/4096
+00:05.818  render           | Fra: 1 | Remaining: 00:05.46 | Mem: 492M | Sample 1024/4096
+00:05.825  render           | Fra: 1 | Remaining: 00:05.37 | Mem: 492M | Sample 1040/4096
+00:05.833  render           | Fra: 1 | Remaining: 00:05.28 | Mem: 492M | Sample 1056/4096
+00:05.840  render           | Fra: 1 | Remaining: 00:05.20 | Mem: 492M | Sample 1072/4096
+00:05.848  render           | Fra: 1 | Remaining: 00:05.11 | Mem: 492M | Sample 1088/4096
+00:05.856  render           | Fra: 1 | Remaining: 00:05.03 | Mem: 492M | Sample 1104/4096
+00:05.863  render           | Fra: 1 | Remaining: 00:04.96 | Mem: 492M | Sample 1120/4096
+00:05.871  render           | Fra: 1 | Remaining: 00:04.88 | Mem: 492M | Sample 1136/4096
+00:05.878  render           | Fra: 1 | Remaining: 00:04.80 | Mem: 492M | Sample 1152/4096
+00:05.886  render           | Fra: 1 | Remaining: 00:04.73 | Mem: 492M | Sample 1168/4096
+00:05.893  render           | Fra: 1 | Remaining: 00:04.66 | Mem: 492M | Sample 1184/4096
+00:05.901  render           | Fra: 1 | Remaining: 00:04.59 | Mem: 492M | Sample 1200/4096
+00:05.908  render           | Fra: 1 | Remaining: 00:04.52 | Mem: 492M | Sample 1216/4096
+00:05.916  render           | Fra: 1 | Remaining: 00:04.46 | Mem: 492M | Sample 1232/4096
+00:05.923  render           | Fra: 1 | Remaining: 00:04.39 | Mem: 492M | Sample 1248/4096
+00:05.931  render           | Fra: 1 | Remaining: 00:04.33 | Mem: 492M | Sample 1264/4096
+00:05.938  render           | Fra: 1 | Remaining: 00:04.27 | Mem: 492M | Sample 1280/4096
+00:05.946  render           | Fra: 1 | Remaining: 00:04.21 | Mem: 492M | Sample 1296/4096
+00:05.953  render           | Fra: 1 | Remaining: 00:04.15 | Mem: 492M | Sample 1312/4096
+00:16.541  render           | Fra: 1 | Remaining: 00:26.14 | Mem: 492M | Sample 1328/4096
+00:26.730  render           | Fra: 1 | Remaining: 00:47.38 | Mem: 492M | Sample 0/4096
+00:26.730  render           | Fra: 1 | Remaining: 00:47.38 | Mem: 492M | Finished
+00:27.106  render           | Saved: '/tmp/rocm_test_7/render_1.png'
+00:27.106  render           | Time: 00:23.30 (Saving: 00:00.36)
+
+Blender quit
+[PASS] Blender rendered frame on GPU in 29.87s
+------------------------------------------
+Running llama.cpp HIP Benchmark Check
+------------------------------------------
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 16368 MiB):
+  Device 0: AMD Radeon RX 7800 XT, gfx1101 (0x1101), VMM: no, Wave Size: 32, VRAM: 16368 MiB
+load_backend: loaded ROCm backend from /usr/lib64/ggml/libggml-hip.so
+ggml_opencl: platform IDs not available.
+load_backend: loaded OpenCL backend from /usr/lib64/ggml/libggml-opencl.so
+load_backend: loaded CPU backend from /usr/lib64/ggml/libggml-cpu-haswell.so
+load_backend: loaded ROCm backend from /usr/lib64/ggml/libggml-hip.so
+load_backend: loaded OpenCL backend from /usr/lib64/ggml/libggml-opencl.so
+load_backend: loaded CPU backend from /usr/lib64/ggml/libggml-cpu-haswell.so
+Available devices:
+  ROCm0: AMD Radeon RX 7800 XT (16368 MiB, 16184 MiB free)
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 16368 MiB):
+  Device 0: AMD Radeon RX 7800 XT, gfx1101 (0x1101), VMM: no, Wave Size: 32, VRAM: 16368 MiB
+load_backend: loaded ROCm backend from /usr/lib64/ggml/libggml-hip.so
+ggml_opencl: platform IDs not available.
+load_backend: loaded OpenCL backend from /usr/lib64/ggml/libggml-opencl.so
+load_backend: loaded CPU backend from /usr/lib64/ggml/libggml-cpu-haswell.so
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm,OpenCL |  99 |           pp128 |   10766.48 ± 2783.39 |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm,OpenCL |  99 |            tg32 |        291.28 ± 4.76 |
+
+build: unknown (11146)
+--> [PASS] llama-bench executed successfully via HIP/ROCm (291.28 t/s)
+------------------------------------------
+Running PyTorch HIP Benchmark Check
+------------------------------------------
+Traceback (most recent call last):
+  File "<string>", line 11, in <module>
+RuntimeError: HIP error: invalid device function
+HIP kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing AMD_SERIALIZE_KERNEL=3
+Compile with `TORCH_USE_HIP_DSA` to enable device-side assertions.
+
+PyTorch Device: AMD Radeon RX 7800 XT
+--> [FAIL] PyTorch GPU execution failed
+==========================================
+Run #7 [rocm-devel] complete on 7800xt. Status: FAIL
+Results written to: /mnt/storage/rocm/rocm-devel/7/7800xt/result.json
+==========================================
