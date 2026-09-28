@@ -6,15 +6,15 @@
     <title>ROCm Test Run History</title>
     <style>
         :root {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --accent: #38bdf8;
+            --bg: #f6f8fa;
+            --card-bg: #ffffff;
+            --text: #24292f;
+            --text-muted: #57606a;
+            --border: #d0d7de;
+            --accent: #0969da;
         }
         body {
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             margin: 0;
@@ -25,12 +25,12 @@
             margin: 0 auto;
         }
         header {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             border-bottom: 1px solid var(--border);
             padding-bottom: 1rem;
         }
-        h1 { margin: 0 0 0.5rem 0; font-size: 1.8rem; font-weight: 700; }
-        p { color: var(--text-muted); margin: 0 0 1rem 0; }
+        h1 { margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: 600; color: var(--text); }
+        p { color: var(--text-muted); margin: 0 0 1rem 0; font-size: 0.9rem; }
         .nav-link {
             color: var(--accent);
             text-decoration: none;
@@ -40,37 +40,38 @@
         .table-container {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 6px;
             overflow-x: auto;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 3px rgba(31, 35, 40, 0.12);
         }
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            font-size: 0.95rem;
+            font-size: 0.875rem;
         }
         th, td {
-            padding: 0.85rem 1.2rem;
+            padding: 0.75rem 1rem;
             border-bottom: 1px solid var(--border);
             white-space: nowrap;
         }
         th {
-            background-color: #0f172a;
+            background-color: #f6f8fa;
             color: var(--text-muted);
             font-weight: 600;
-            text-transform: uppercase;
             font-size: 0.75rem;
-            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
         tr:last-child td { border-bottom: none; }
-        tr:hover td { background-color: rgba(255, 255, 255, 0.02); }
+        tr:hover td { background-color: #f6f8fa; }
         code {
-            background: #0f172a;
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            color: #38bdf8;
+            background: rgba(175, 184, 193, 0.2);
+            padding: 0.15rem 0.35rem;
+            border-radius: 6px;
+            color: #24292f;
             font-size: 0.85rem;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
         }
         .time { color: var(--text-muted); font-size: 0.85rem; }
         .log-link {
@@ -100,6 +101,13 @@
                 </thead>
                 <tbody>
                     
+        <tr>
+            <td><code>#4</code></td>
+            <td class="time">2026-09-28 07:53:45 UTC</td>
+            <td><a href="index_seq4_20260928_075345.html" class="log-link">Web Dashboard</a></td>
+            <td><a href="README_seq4_20260928_075345.md" target="_blank" class="log-link">Markdown</a></td>
+        </tr>
+        
         <tr>
             <td><code>#3</code></td>
             <td class="time">2026-09-28 07:38:47 UTC</td>
