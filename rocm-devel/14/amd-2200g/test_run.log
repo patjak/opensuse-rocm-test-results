@@ -1,0 +1,55 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-2200g
+OS: rocm-devel (x86_64) | Sequence: #14
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.2.7-1-default
+[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700] (gfx1010))
+--> Testing hipcc Compiler...
+HIP_TEST_SUCCESS
+[PASS] hipcc compilation and GPU execution succeeded.
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.2
+00:00.599  translation      | WARNING 'locale' data path for translations not found
+00:03.643  blend            | Read blend: "/root/rocm/scene.blend"
+00:03.660  cycles           | WARNING CUEW initialization failed: Error opening the library
+Enabled HIP Device: AMD Radeon Pro W5700
+00:03.701  render           | Rendering single frame
+00:03.701  render           | Rendering frame 1
+00:03.704  render           | Start rendering: Scene, ViewLayer
+00:03.704  render           | Engine: Cycles
+00:03.761  render           | Fra: 1 | Mem: 0M | Synchronizing object | Cube
+Blender 5.2.2 LTS
+00:03.761  render           | Fra: 1 | Mem: 0M | Synchronizing object | Light
+00:03.763  render           | Fra: 1 | Mem: 0M | Initializing
+00:03.763  render           | Fra: 1 | Mem: 0M | Waiting for render to start
+00:03.764  render           | Fra: 1 | Mem: 0M | Updating Scene
+00:03.764  render           | Fra: 1 | Mem: 0M | Updating Shaders
+00:03.765  render           | Fra: 1 | Mem: 0M | Loading render kernels (may take a few minutes the first time)
+00:03.824  cycles           | ERROR Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+00:03.824  cycles           | ERROR Refer to the Cycles GPU rendering documentation for possible solutions:
+                            | https://docs.blender.org/manual/en/latest/render/cycles/gpu_rendering.html
+                            | 
+00:03.824  render           | Fra: 1 | Mem: 0M | Updating Device | Writing constant memory
+00:03.827  render           | Fra: 1 | Mem: 0M | Loading denoising kernels (may take a few minutes the first time)
+00:03.843  render           | Fra: 1 | Mem: 256M | Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+00:03.843  reports          | ERROR Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+
+Blender quit
+[FAIL] Blender execution failed (no HIP GPU detected or rendering error).
+------------------------------------------
+Running llama.cpp HIP Benchmark Check
+------------------------------------------
+--> [SKIP] GPU architecture 'gfx1010' is not supported by ROCm 6.x HIP runtime
+------------------------------------------
+Running PyTorch HIP Benchmark Check
+------------------------------------------
+--> Detected RDNA1/2 variant (gfx1010). Setting HSA_OVERRIDE_GFX_VERSION=10.3.0
+<string>:15: UserWarning: Attempting to use hipBLASLt on an unsupported architecture! Overriding blas backend to hipblas (Triggered internally at ../aten/src/ATen/Context.cpp:296.)
+PyTorch Device: AMD Radeon Pro W5700
+GEMM 4096x4096: 0.72s (0.19 TFLOPS)
+--> [PASS] PyTorch executed successfully on GPU (0.72s)
+==========================================
+Run #14 [rocm-devel] complete on amd-2200g. Status: FAIL
+Results written to: /mnt/storage/rocm/rocm-devel/14/amd-2200g/result.json
+==========================================
