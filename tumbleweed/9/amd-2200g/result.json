@@ -1,0 +1,20 @@
+{
+  "sequence_number": 9,
+  "timestamp": "2026-09-28 17:58 UTC",
+  "os": "tumbleweed",
+  "arch": "x86_64",
+  "hostname": "amd-2200g",
+  "gpu_model": "Navi 10 [Radeon Pro W5700]",
+  "gfx_version": "gfx1010",
+  "rocm_version": "7.2.53211-9999",
+  "kernel_version": "7.2.7-1-default",
+  "driver_check": "PASS",
+  "hipcc_check": "PASS",
+  "blender_check": "FAIL",
+  "blender_time_sec": "N/A",
+  "llama_check": "SKIP",
+  "llama_speed_ts": "N/A",
+  "pytorch_check": "PASS",
+  "pytorch_speed_sec": "0.44",
+  "overall_status": "FAIL"
+}
