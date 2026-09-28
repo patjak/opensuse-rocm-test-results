@@ -6,19 +6,5 @@ Automated validation suite for AMD ROCm across openSUSE distributions and homela
 
 ### Current Status Overview
 
-#### OS: `rocm-devel`
-
-| # | GPU | GFX | ROCm | Status | Last Tested |
-| :---: | :--- | :---: | :---: | :---: | :--- |
-| 14 | Radeon Pro W5700 | `gfx1010` | `7.2.53211` | ❌ FAIL | 2026-09-28 11:45 UTC |
-| 14 | Radeon RX 7700 XT / 7800 XT | `gfx1101` | `7.2.53211` | ✅ PASS | 2026-09-28 11:45 UTC |
-
-#### OS: `tumbleweed`
-
-| # | GPU | GFX | ROCm | Status | Last Tested |
-| :---: | :--- | :---: | :---: | :---: | :--- |
-| 14 | Radeon Pro W5700 | `gfx1010` | `7.2.53211` | ❌ FAIL | 2026-09-28 11:38 UTC |
-| 14 | Radeon RX 7700 XT / 7800 XT | `gfx1101` | `7.2.53211` | ✅ PASS | 2026-09-28 11:40 UTC |
-
 ---
 *Updated automatically by `mama` test runner.*
