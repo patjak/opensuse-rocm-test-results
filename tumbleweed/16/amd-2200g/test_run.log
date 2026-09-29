@@ -1,0 +1,56 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-2200g
+OS: tumbleweed (x86_64) | Sequence: #16
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.2.7-1-default
+[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700] (gfx1010))
+--> Testing hipcc Compiler...
+HIP_TEST_SUCCESS
+[PASS] hipcc compilation and GPU execution succeeded.
+--> Testing Blender HIP Rendering...
+--> Detected RDNA1/2 variant (gfx1010). Setting HSA_OVERRIDE_GFX_VERSION=10.3.0
+Using Blender binary: /usr/bin/blender-5.2
+00:00.566  translation      | WARNING 'locale' data path for translations not found
+00:03.552  blend            | Read blend: "/root/rocm/scene.blend"
+00:03.573  cycles           | WARNING CUEW initialization failed: Error opening the library
+Enabled HIP Device: AMD Radeon Pro W5700
+00:03.630  render           | Rendering single frame
+00:03.630  render           | Rendering frame 1
+00:03.633  render           | Start rendering: Scene, ViewLayer
+00:03.633  render           | Engine: Cycles
+00:04.070  render           | Fra: 1 | Mem: 0M | Synchronizing object | Cube
+Blender 5.2.2 LTS
+00:04.070  render           | Fra: 1 | Mem: 0M | Synchronizing object | Light
+00:04.072  render           | Fra: 1 | Mem: 0M | Initializing
+00:04.072  render           | Fra: 1 | Mem: 0M | Waiting for render to start
+00:04.073  render           | Fra: 1 | Mem: 0M | Updating Scene
+00:04.073  render           | Fra: 1 | Mem: 0M | Updating Shaders
+00:04.074  render           | Fra: 1 | Mem: 0M | Loading render kernels (may take a few minutes the first time)
+00:04.134  cycles           | ERROR Unknown HIP error value in HIP queue enqueue (integrator_shade_surface)
+00:04.134  cycles           | ERROR Refer to the Cycles GPU rendering documentation for possible solutions:
+                            | https://docs.blender.org/manual/en/latest/render/cycles/gpu_rendering.html
+                            | 
+00:04.135  render           | Fra: 1 | Mem: 0M | Updating Device | Writing constant memory
+Failed to write segment data to pipe: Broken pipe
+GPU coredump: handler exited with error (status: 1)
+GPU core dump failed
+:0:rocdevice.cpp            :3588: 0032149008 us:  Callback: Queue 0x7fd2df400000 aborting with error : HSA_STATUS_ERROR_MEMORY_APERTURE_VIOLATION: The agent attempted to access memory beyond the largest legal address. code: 0x29
+/root/bin/test_blender.sh: line 77:  1257 Aborted                    (core dumped) "$BLENDER_BIN" -b "$BLEND_FILE" -P "$ENABLE_HIP_SCRIPT" -E CYCLES -o "${WORK_DIR}/render_#" -f 1
+[FAIL] Blender execution failed (no HIP GPU detected or rendering error).
+------------------------------------------
+Running llama.cpp HIP Benchmark Check
+------------------------------------------
+--> [SKIP] llama-bench is not installed on this OS
+------------------------------------------
+Running PyTorch HIP Benchmark Check
+------------------------------------------
+--> Detected RDNA1/2 variant (gfx1010). Setting HSA_OVERRIDE_GFX_VERSION=10.3.0
+<string>:15: UserWarning: Attempting to use hipBLASLt on an unsupported architecture! Overriding blas backend to hipblas (Triggered internally at ../aten/src/ATen/Context.cpp:296.)
+PyTorch Device: AMD Radeon Pro W5700
+GEMM 4096x4096: 0.53s (0.26 TFLOPS)
+--> [PASS] PyTorch executed successfully on GPU (0.53s)
+==========================================
+Run #16 [tumbleweed] complete on amd-2200g. Status: FAIL
+Results written to: /mnt/storage/rocm/tumbleweed/16/amd-2200g/result.json
+==========================================
