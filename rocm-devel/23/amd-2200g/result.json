@@ -1,0 +1,20 @@
+{
+  "sequence_number": 23,
+  "timestamp": "2026-09-30 14:25 UTC",
+  "os": "rocm-devel",
+  "arch": "x86_64",
+  "hostname": "amd-2200g",
+  "gpu_model": "Navi 10 [Radeon Pro W5700]",
+  "gfx_version": "gfx1010",
+  "rocm_version": "7.2.53211-9999",
+  "kernel_version": "7.2.7-1-default",
+  "driver_check": "PASS",
+  "hipcc_check": "PASS",
+  "blender_check": "SKIP",
+  "blender_time_sec": "N/A",
+  "llama_check": "SKIP",
+  "llama_speed_ts": "N/A",
+  "pytorch_check": "PASS",
+  "pytorch_speed_sec": "0.55",
+  "overall_status": "PASS"
+}
