@@ -1,0 +1,1 @@
+| Run #26 | tumbleweed (x86_64) | 7800xt | Navi 32 [Radeon RX 7700 XT / 7800 XT] (gfx1101) | 7.2.8-1-default | 7.2.53211-9999 | PASS | PASS | PASS (36.33s) | SKIP (N/A t/s) | PASS (0.42s) | **PASS** |

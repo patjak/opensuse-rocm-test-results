@@ -1,0 +1,30 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-2200g
+OS: tumbleweed (x86_64) | Sequence: #29
+Disabled Tests: none
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.2.8-1-default
+[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700] (gfx1010))
+--> Testing hipcc Compiler...
+HIP_TEST_SUCCESS
+[PASS] hipcc compilation and GPU execution succeeded.
+--> Testing Blender HIP Rendering...
+--> [SKIP] GPU architecture 'gfx1010' is not officially supported by Blender Cycles HIP runtime
+[SKIP] GPU architecture 'gfx1010' is not supported by Blender Cycles HIP backend.
+------------------------------------------
+Running llama.cpp HIP Benchmark Check
+------------------------------------------
+--> [SKIP] GPU architecture 'gfx1010' is not supported by ROCm 6.x HIP runtime
+------------------------------------------
+Running PyTorch HIP Benchmark Check
+------------------------------------------
+--> Detected RDNA1/2 variant (gfx1010). Setting HSA_OVERRIDE_GFX_VERSION=10.3.0
+<string>:15: UserWarning: Attempting to use hipBLASLt on an unsupported architecture! Overriding blas backend to hipblas (Triggered internally at ../aten/src/ATen/Context.cpp:296.)
+PyTorch Device: AMD Radeon Pro W5700
+GEMM 4096x4096: 0.42s (0.32 TFLOPS)
+--> [PASS] PyTorch executed successfully on GPU (0.42s)
+==========================================
+Run #29 [tumbleweed] complete on amd-2200g. Status: PASS
+Results written to: /mnt/storage/rocm/tumbleweed/29/amd-2200g/result.json
+==========================================
