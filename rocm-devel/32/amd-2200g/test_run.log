@@ -1,0 +1,26 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-2200g
+OS: rocm-devel (x86_64) | Sequence: #32
+Disabled Tests: pytorch
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.2.8-1-default
+[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700] (gfx1010))
+--> Testing hipcc Compiler...
+HIP_TEST_SUCCESS
+[PASS] hipcc compilation and GPU execution succeeded.
+--> Testing Blender HIP Rendering...
+--> [SKIP] GPU architecture 'gfx1010' is not officially supported by Blender Cycles HIP runtime
+[SKIP] GPU architecture 'gfx1010' is not supported by Blender Cycles HIP backend.
+------------------------------------------
+Running llama.cpp HIP Benchmark Check
+------------------------------------------
+--> [SKIP] GPU architecture 'gfx1010' is not supported by ROCm 6.x HIP runtime
+------------------------------------------
+Running PyTorch HIP Benchmark Check
+------------------------------------------
+--> [OFF] PyTorch test is disabled by configuration
+==========================================
+Run #32 [rocm-devel] complete on amd-2200g. Status: PASS
+Results written to: /mnt/storage/rocm/rocm-devel/32/amd-2200g/result.json
+==========================================
