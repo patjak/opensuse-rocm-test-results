@@ -1,0 +1,27 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-2200g
+OS: tumbleweed (x86_64) | Sequence: #37
+Disabled Tests: pytorch
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.2.8-1-default
+[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700] (gfx1010))
+--> Testing hipcc Compiler...
+HIP_TEST_SUCCESS
+[PASS] hipcc compilation and GPU execution succeeded.
+--> Testing Blender HIP Rendering...
+--> [SKIP] GPU architecture 'gfx1010' is not officially supported by Blender Cycles HIP runtime
+[SKIP] GPU architecture 'gfx1010' is not supported by Blender Cycles HIP backend.
+------------------------------------------
+Running llama.cpp HIP Benchmark Check
+------------------------------------------
+--> Detected RDNA1/2 variant (gfx1010). Setting HSA_OVERRIDE_GFX_VERSION=10.3.0
+--> [SKIP] GPU architecture 'gfx1010' is not supported by ROCm HIP runtime
+------------------------------------------
+Running PyTorch HIP Benchmark Check
+------------------------------------------
+--> [OFF] PyTorch test is disabled by configuration
+==========================================
+Run #37 [tumbleweed] complete on amd-2200g. Status: PASS
+Results written to: /mnt/storage/rocm/tumbleweed/37/amd-2200g/result.json
+==========================================
