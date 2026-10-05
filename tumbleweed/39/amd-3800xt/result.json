@@ -1,0 +1,20 @@
+{
+  "sequence_number": 39,
+  "timestamp": "2026-10-05 07:40 UTC",
+  "os": "tumbleweed",
+  "arch": "x86_64",
+  "hostname": "amd-3800xt",
+  "gpu_model": "01:00.0 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD] Device [1022:43d0] (rev 01)",
+  "gfx_version": "gfx1201",
+  "rocm_version": "7.2.53211-9999",
+  "kernel_version": "7.2.8-1-default",
+  "driver_check": "PASS",
+  "hipcc_check": "PASS",
+  "blender_check": "PASS",
+  "blender_time_sec": "19.02",
+  "llama_check": "SKIP",
+  "llama_speed_ts": "N/A",
+  "pytorch_check": "OFF",
+  "pytorch_speed_sec": "N/A",
+  "overall_status": "PASS"
+}
