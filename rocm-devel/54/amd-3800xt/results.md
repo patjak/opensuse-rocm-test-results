@@ -1,0 +1,1 @@
+| Run #54 | rocm-devel (x86_64) | amd-3800xt | 01:00.0 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD] Device [1022:43d0] (rev 01) (gfx1201) | 7.2.8-1-default | 7.2.53211-9999 | PASS | PASS | PASS (19.53s) | PASS (307.93 t/s) | PASS (0.0085s) | **PASS** |
