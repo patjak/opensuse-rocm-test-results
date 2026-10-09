@@ -1,0 +1,170 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-2200g
+OS: tumbleweed (x86_64) | Sequence: #58
+Disabled Tests: none
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.2.8-1-default
+[PASS] Driver & GPU detection succeeded (Navi 10 [Radeon Pro W5700] (gfx1010))
+--> Testing hipcc Compiler...
+[PASS] hipcc compilation and GPU execution succeeded
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.2
+00:00.649  translation      | WARNING 'locale' data path for translations not found
+00:04.517  blend            | Read blend: "/root/rocm/scene.blend"
+00:04.537  cycles           | WARNING CUEW initialization failed: Error opening the library
+Enabled HIP Device: AMD Radeon Pro W5700
+00:04.581  render           | Rendering single frame
+00:04.581  render           | Rendering frame 1
+00:04.584  render           | Start rendering: Scene, ViewLayer
+00:04.584  render           | Engine: Cycles
+00:04.648  render           | Fra: 1 | Mem: 0M | Synchronizing object | Cube
+Blender 5.2.2 LTS
+00:04.648  render           | Fra: 1 | Mem: 0M | Synchronizing object | Light
+00:04.650  render           | Fra: 1 | Mem: 0M | Initializing
+00:04.650  render           | Fra: 1 | Mem: 0M | Waiting for render to start
+00:04.651  render           | Fra: 1 | Mem: 0M | Updating Scene
+00:04.651  render           | Fra: 1 | Mem: 0M | Updating Shaders
+00:04.652  render           | Fra: 1 | Mem: 0M | Loading render kernels (may take a few minutes the first time)
+00:04.718  render           | Fra: 1 | Mem: 1M | Updating Procedurals
+00:04.718  render           | Fra: 1 | Mem: 1M | Updating Background
+00:04.718  render           | Fra: 1 | Mem: 1M | Updating Scene Attribute
+00:04.718  render           | Fra: 1 | Mem: 1M | Updating Camera
+00:04.718  render           | Fra: 1 | Mem: 1M | Updating Meshes Flags
+00:04.718  render           | Fra: 1 | Mem: 1M | Updating Objects
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Objects | Copying Transformations to device
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Particle Systems
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Particle Systems | Copying Particles to device
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Meshes
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Objects | Applying Static Transformations
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Building
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Building BVH
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Packing BVH triangles and strands
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Packing BVH nodes
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Copying BVH to device
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Mesh | Computing attributes
+00:04.719  render           | Fra: 1 | Mem: 1M | Updating Mesh | Copying Attributes to device
+00:04.720  render           | Fra: 1 | Mem: 1M | Updating Mesh | Computing normals
+00:04.720  render           | Fra: 1 | Mem: 1M | Updating Mesh | Copying Mesh to device
+00:04.720  render           | Fra: 1 | Mem: 1M | Updating Objects Flags
+00:04.720  render           | Fra: 1 | Mem: 1M | Updating Primitive Offsets
+00:04.720  render           | Fra: 1 | Mem: 1M | Updating Images
+00:04.720  render           | Fra: 1 | Mem: 1M | Updating Volume
+00:04.720  render           | Fra: 1 | Mem: 1M | Updating Camera Volume
+00:04.720  render           | Fra: 1 | Mem: 1M | Updating Lookup Tables
+00:04.723  render           | Fra: 1 | Mem: 1M | Updating Lights
+00:04.724  render           | Fra: 1 | Mem: 1M | Updating Lights | Computing tree
+00:04.724  render           | Fra: 1 | Mem: 1M | Updating Integrator
+00:04.724  render           | Fra: 1 | Mem: 1M | Updating Film
+00:04.724  render           | Fra: 1 | Mem: 1M | Updating Lookup Tables
+00:04.724  render           | Fra: 1 | Mem: 1M | Updating Baking
+00:04.724  render           | Fra: 1 | Mem: 1M | Updating Device | Writing constant memory
+00:04.725  render           | Fra: 1 | Mem: 1M | Loading denoising kernels (may take a few minutes the first time)
+00:04.739  render           | Fra: 1 | Mem: 257M | Sample 0/4096
+00:04.786  render           | Fra: 1 | Remaining: 03:07.81 | Mem: 407M | Sample 1/4096
+00:06.406  render           | Fra: 1 | Remaining: 01:23.64 | Mem: 407M | Sample 80/4096
+00:06.462  render           | Fra: 1 | Remaining: 01:11.76 | Mem: 407M | Sample 96/4096
+00:06.518  render           | Fra: 1 | Remaining: 01:03.28 | Mem: 407M | Sample 112/4096
+00:06.575  render           | Fra: 1 | Remaining: 00:56.89 | Mem: 407M | Sample 128/4096
+00:06.628  render           | Fra: 1 | Remaining: 00:51.84 | Mem: 407M | Sample 144/4096
+00:06.680  render           | Fra: 1 | Remaining: 00:47.75 | Mem: 407M | Sample 160/4096
+00:06.737  render           | Fra: 1 | Remaining: 00:44.49 | Mem: 407M | Sample 176/4096
+00:06.788  render           | Fra: 1 | Remaining: 00:41.65 | Mem: 407M | Sample 192/4096
+00:06.838  render           | Fra: 1 | Remaining: 00:39.23 | Mem: 407M | Sample 208/4096
+00:06.883  render           | Fra: 1 | Remaining: 00:37.05 | Mem: 407M | Sample 224/4096
+00:06.928  render           | Fra: 1 | Remaining: 00:35.15 | Mem: 407M | Sample 240/4096
+00:06.969  render           | Fra: 1 | Remaining: 00:33.44 | Mem: 407M | Sample 256/4096
+00:07.010  render           | Fra: 1 | Remaining: 00:31.92 | Mem: 407M | Sample 272/4096
+00:07.053  render           | Fra: 1 | Remaining: 00:30.58 | Mem: 407M | Sample 288/4096
+00:07.091  render           | Fra: 1 | Remaining: 00:29.33 | Mem: 407M | Sample 304/4096
+00:07.128  render           | Fra: 1 | Remaining: 00:28.18 | Mem: 407M | Sample 320/4096
+00:07.166  render           | Fra: 1 | Remaining: 00:27.15 | Mem: 407M | Sample 336/4096
+00:07.204  render           | Fra: 1 | Remaining: 00:26.21 | Mem: 407M | Sample 352/4096
+00:07.237  render           | Fra: 1 | Remaining: 00:25.30 | Mem: 407M | Sample 368/4096
+00:07.269  render           | Fra: 1 | Remaining: 00:24.45 | Mem: 407M | Sample 384/4096
+00:07.300  render           | Fra: 1 | Remaining: 00:23.65 | Mem: 407M | Sample 400/4096
+00:07.331  render           | Fra: 1 | Remaining: 00:22.92 | Mem: 407M | Sample 416/4096
+00:07.361  render           | Fra: 1 | Remaining: 00:22.23 | Mem: 407M | Sample 432/4096
+00:07.394  render           | Fra: 1 | Remaining: 00:21.61 | Mem: 407M | Sample 448/4096
+00:07.426  render           | Fra: 1 | Remaining: 00:21.02 | Mem: 407M | Sample 464/4096
+00:07.458  render           | Fra: 1 | Remaining: 00:20.48 | Mem: 407M | Sample 480/4096
+00:07.489  render           | Fra: 1 | Remaining: 00:19.95 | Mem: 407M | Sample 496/4096
+00:07.521  render           | Fra: 1 | Remaining: 00:19.46 | Mem: 407M | Sample 512/4096
+00:07.551  render           | Fra: 1 | Remaining: 00:19.00 | Mem: 407M | Sample 528/4096
+00:07.583  render           | Fra: 1 | Remaining: 00:18.57 | Mem: 407M | Sample 544/4096
+00:07.614  render           | Fra: 1 | Remaining: 00:18.15 | Mem: 407M | Sample 560/4096
+00:07.645  render           | Fra: 1 | Remaining: 00:17.75 | Mem: 407M | Sample 576/4096
+00:07.675  render           | Fra: 1 | Remaining: 00:17.37 | Mem: 407M | Sample 592/4096
+00:07.707  render           | Fra: 1 | Remaining: 00:17.02 | Mem: 407M | Sample 608/4096
+00:07.740  render           | Fra: 1 | Remaining: 00:16.69 | Mem: 407M | Sample 624/4096
+00:07.771  render           | Fra: 1 | Remaining: 00:16.37 | Mem: 407M | Sample 640/4096
+00:07.797  render           | Fra: 1 | Remaining: 00:16.03 | Mem: 407M | Sample 656/4096
+00:07.823  render           | Fra: 1 | Remaining: 00:15.71 | Mem: 407M | Sample 672/4096
+00:07.849  render           | Fra: 1 | Remaining: 00:15.40 | Mem: 407M | Sample 688/4096
+00:07.871  render           | Fra: 1 | Remaining: 00:15.09 | Mem: 407M | Sample 704/4096
+00:07.895  render           | Fra: 1 | Remaining: 00:14.79 | Mem: 407M | Sample 720/4096
+00:07.919  render           | Fra: 1 | Remaining: 00:14.51 | Mem: 407M | Sample 736/4096
+00:07.943  render           | Fra: 1 | Remaining: 00:14.24 | Mem: 407M | Sample 752/4096
+00:07.966  render           | Fra: 1 | Remaining: 00:13.98 | Mem: 407M | Sample 768/4096
+00:07.991  render           | Fra: 1 | Remaining: 00:13.73 | Mem: 407M | Sample 784/4096
+00:08.014  render           | Fra: 1 | Remaining: 00:13.49 | Mem: 407M | Sample 800/4096
+00:08.038  render           | Fra: 1 | Remaining: 00:13.25 | Mem: 407M | Sample 816/4096
+00:08.055  render           | Fra: 1 | Remaining: 00:13.00 | Mem: 407M | Sample 832/4096
+00:08.073  render           | Fra: 1 | Remaining: 00:12.76 | Mem: 407M | Sample 848/4096
+00:08.091  render           | Fra: 1 | Remaining: 00:12.53 | Mem: 407M | Sample 864/4096
+00:08.106  render           | Fra: 1 | Remaining: 00:12.30 | Mem: 407M | Sample 880/4096
+00:08.121  render           | Fra: 1 | Remaining: 00:12.07 | Mem: 407M | Sample 896/4096
+00:08.137  render           | Fra: 1 | Remaining: 00:11.86 | Mem: 407M | Sample 912/4096
+00:08.153  render           | Fra: 1 | Remaining: 00:11.65 | Mem: 407M | Sample 928/4096
+00:08.169  render           | Fra: 1 | Remaining: 00:11.44 | Mem: 407M | Sample 944/4096
+00:08.184  render           | Fra: 1 | Remaining: 00:11.25 | Mem: 407M | Sample 960/4096
+00:08.200  render           | Fra: 1 | Remaining: 00:11.06 | Mem: 407M | Sample 976/4096
+00:08.215  render           | Fra: 1 | Remaining: 00:10.87 | Mem: 407M | Sample 992/4096
+00:08.231  render           | Fra: 1 | Remaining: 00:10.69 | Mem: 407M | Sample 1008/4096
+00:08.247  render           | Fra: 1 | Remaining: 00:10.52 | Mem: 407M | Sample 1024/4096
+00:08.263  render           | Fra: 1 | Remaining: 00:10.35 | Mem: 407M | Sample 1040/4096
+00:08.278  render           | Fra: 1 | Remaining: 00:10.18 | Mem: 407M | Sample 1056/4096
+00:08.294  render           | Fra: 1 | Remaining: 00:10.02 | Mem: 407M | Sample 1072/4096
+00:08.309  render           | Fra: 1 | Remaining: 00:09.86 | Mem: 407M | Sample 1088/4096
+00:08.325  render           | Fra: 1 | Remaining: 00:09.71 | Mem: 407M | Sample 1104/4096
+00:08.341  render           | Fra: 1 | Remaining: 00:09.57 | Mem: 407M | Sample 1120/4096
+00:08.356  render           | Fra: 1 | Remaining: 00:09.42 | Mem: 407M | Sample 1136/4096
+00:08.372  render           | Fra: 1 | Remaining: 00:09.28 | Mem: 407M | Sample 1152/4096
+00:08.388  render           | Fra: 1 | Remaining: 00:09.14 | Mem: 407M | Sample 1168/4096
+00:08.404  render           | Fra: 1 | Remaining: 00:09.01 | Mem: 407M | Sample 1184/4096
+00:08.420  render           | Fra: 1 | Remaining: 00:08.88 | Mem: 407M | Sample 1200/4096
+00:08.435  render           | Fra: 1 | Remaining: 00:08.75 | Mem: 407M | Sample 1216/4096
+00:08.451  render           | Fra: 1 | Remaining: 00:08.62 | Mem: 407M | Sample 1232/4096
+00:08.466  render           | Fra: 1 | Remaining: 00:08.50 | Mem: 407M | Sample 1248/4096
+00:08.481  render           | Fra: 1 | Remaining: 00:08.38 | Mem: 407M | Sample 1264/4096
+00:08.497  render           | Fra: 1 | Remaining: 00:08.26 | Mem: 407M | Sample 1280/4096
+00:08.514  render           | Fra: 1 | Remaining: 00:08.15 | Mem: 407M | Sample 1296/4096
+00:08.529  render           | Fra: 1 | Remaining: 00:08.04 | Mem: 407M | Sample 1312/4096
+00:28.020  render           | Fra: 1 | Remaining: 00:48.52 | Mem: 407M | Sample 1328/4096
+00:47.660  render           | Fra: 1 | Remaining: 01:29.46 | Mem: 407M | Sample 0/4096
+00:47.660  render           | Fra: 1 | Remaining: 01:29.46 | Mem: 407M | Finished
+00:48.065  render           | Saved: '/tmp/rocm_test_58/render_1.png'
+00:48.065  render           | Time: 00:43.48 (Saving: 00:00.39)
+
+Blender quit
+[PASS] Blender rendered frame on GPU in 50.90s
+------------------------------------------
+Running llama.cpp HIP Benchmark Check
+------------------------------------------
+------------------------------------------
+Inspecting Installed GGML / HIP Backends
+------------------------------------------
+--> Package versions:
+package llamacpp is not installed
+package libggml-hip is not installed
+Unable to query RPM package version
+--> [WARNING] /usr/lib64/ggml/libggml-hip.so not found.
+--> [SKIP] llama-bench is not installed on this OS
+--> Testing PyTorch HIP Execution (Distro Package)...
+--> Found PyTorch using Python interpreter: /usr/bin/python3.13
+ERROR: torch.cuda.is_available() returned False. No ROCm/HIP device detected.
+[NOT] GPU architecture is not supported by installed PyTorch ROCm package
+==========================================
+Run #58 [tumbleweed] complete on amd-2200g. Status: PASS / NOT
+Results written to: /mnt/storage/rocm/tumbleweed/58/amd-2200g/result.json
+==========================================
