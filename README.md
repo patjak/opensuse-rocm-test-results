@@ -2,7 +2,7 @@
 
 Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
-📊 **[View Detailed Web Dashboard](https://patjak.github.io/opensuse-rocm-test-results/history/index_seq67_20261012_190630.html)** | 📜 **[Browse All Past Test Runs](https://patjak.github.io/opensuse-rocm-test-results/history/index.html)**
+📊 **[View Detailed Web Dashboard](https://patjak.github.io/opensuse-rocm-test-results/history/index_seq68_20261012_192547.html)** | 📜 **[Browse All Past Test Runs](https://patjak.github.io/opensuse-rocm-test-results/history/index.html)**
 
 ### Current Status Overview
 
@@ -10,17 +10,9 @@ Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
 | # | GPU | GFX | ROCm | Status | Last Tested |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 67 | Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="PASS / NOT Supported">✅ ⚠️</span> | 2026-10-12 19:06 UTC |
-| 67 | Radeon RX 7700 XT / 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS / NOT Supported">✅ ⚠️</span> | 2026-10-12 19:06 UTC |
-| 67 | Radeon RX 9070 / 9070 XT (Navi 48) | `gfx1201` | `7.2.53211` | <span style="cursor: default;" title="PASS / NOT Supported">✅ ⚠️</span> | 2026-10-12 19:06 UTC |
-
-#### OS: `tumbleweed`
-
-| # | GPU | GFX | ROCm | Status | Last Tested |
-| :---: | :--- | :---: | :---: | :---: | :--- |
-| 67 | Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="PASS / NOT Supported">✅ ⚠️</span> | 2026-10-12 18:54 UTC |
-| 67 | Radeon RX 7700 XT / 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS / NOT Supported">✅ ⚠️</span> | 2026-10-12 18:54 UTC |
-| 67 | Radeon RX 9070 / 9070 XT (Navi 48) | `gfx1201` | `7.2.53211` | <span style="cursor: default;" title="PASS / NOT Supported">✅ ⚠️</span> | 2026-10-12 18:53 UTC |
+| 68 | Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-10-12 19:25 UTC |
+| 68 | Radeon RX 7700 XT / 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-10-12 19:25 UTC |
+| 68 | Radeon RX 9070 / 9070 XT (Navi 48) | `gfx1201` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-10-12 19:25 UTC |
 
 ---
 *Updated automatically by `mama` test runner.*
