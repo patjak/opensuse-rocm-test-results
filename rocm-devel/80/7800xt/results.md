@@ -1,0 +1,1 @@
+| Run #80 | rocm-devel (x86_64) | 7800xt | Navi 32 [Radeon RX 7700 XT / 7800 XT] (gfx1101) | 7.2.11-1-default | 7.2.53211-9999 | PASS | PASS | PASS (82.87s) | PASS (272.31 t/s) | SKIP (N/As) | PASS | **PASS** |
