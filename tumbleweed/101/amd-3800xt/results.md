@@ -1,0 +1,1 @@
+| Run #101 | tumbleweed (x86_64) | amd-3800xt | 01:00.0 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD] Device [1022:43d0] (rev 01) | 7.3.0-1-default | 7.2.53211-9999 | FAIL | FAIL | NOT (N/As) | SKIP (N/A t/s) | SKIP (N/As) | NOT | **FAIL** |
