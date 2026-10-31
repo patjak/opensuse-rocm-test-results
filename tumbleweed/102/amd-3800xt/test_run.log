@@ -1,0 +1,46 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-3800xt
+OS: tumbleweed (x86_64) | Sequence: #102
+Disabled Tests: none
+==========================================
+--> Checking Hardware, Kernel, and ROCm Drivers...
+Kernel Version: 7.3.0-1-default
+[FAIL] rocminfo failed to detect HSA agents or GPU permissions
+--> Testing hipcc Compiler...
+HIP error: hipErrorNoDevice: no ROCm-capable device is detected
+HIP_TEST_FAILED
+[FAIL] hipcc binary compiled but failed runtime execution
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.2
+00:00.548  translation      | WARNING 'locale' data path for translations not found
+00:03.280  blend            | Read blend: "/root/rocm/scene.blend"
+00:03.291  cycles           | WARNING CUEW initialization failed: Error opening the library
+Blender 5.2.3 LTS
+ERROR: No HIP GPU devices detected or enabled in Blender preferences!
+[NOT] GPU architecture is not supported by Blender Cycles HIP backend
+------------------------------------------
+Running llama.cpp HIP Benchmark Check
+------------------------------------------
+------------------------------------------
+Inspecting Installed GGML / HIP Backends
+------------------------------------------
+--> Package versions:
+package llamacpp is not installed
+package libggml-hip is not installed
+Unable to query RPM package version
+--> [WARNING] /usr/lib64/ggml/libggml-hip.so not found.
+--> [SKIP] llama-bench is not installed on this OS
+--> Testing PyTorch HIP Execution (Distro Package)...
+[SKIP] Distro package 'torch' not found for available Python interpreters (checked python3.14, python3.13, python3)
+--> Testing ROCm Validation Suite (rvs)...
+--> Listing GPUs supported by RVS...
+
+ROCm Validation Suite (version 1.3.0)
+
+
+ No supported GPUs available.
+[NOT] No supported GPUs detected by ROCm Validation Suite
+==========================================
+Run #102 [tumbleweed] complete on amd-3800xt. Status: FAIL
+Results written to: /mnt/storage/rocm/tumbleweed/102/amd-3800xt/result.json
+==========================================
