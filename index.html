@@ -143,7 +143,7 @@
     <div class="container">
         <header>
             <a href="history/index.html" class="log-link" style="float: right;">📜 View Test History</a>
-            <h1>openSUSE ROCm Test Dashboard <span class="seq-badge">Batch 102</span></h1>
+            <h1>openSUSE ROCm Test Dashboard <span class="seq-badge">Batch 103</span></h1>
             <p>Automated status across hardware and distribution releases.</p>
             <div class="legend">
                 <span class="legend-item"><span class="status pass">PASS</span> Test passed successfully</span>
@@ -158,6 +158,7 @@
                 <thead>
                     <tr>
                         <th>OS</th>
+                        <th>Machine</th>
                         <th>GPU Model</th>
                         <th>GFX</th>
                         <th>ROCm</th>
@@ -176,6 +177,7 @@
                     
         <tr>
             <td><span class="badge os">tumbleweed</span></td>
+            <td><code>amd-3800xt [GPU 0]</code></td>
             <td>Unknown GPU</td>
             <td><code>Unknown</code></td>
             <td><code>7.2.53211</code></td>
@@ -186,40 +188,42 @@
             <td><span class="status skip" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)">SKIP</span></td>
             <td><span class="status not" title="No supported GPUs detected by ROCm Validation Suite">NOT</span></td>
             <td><span class="status fail bold">FAIL</span></td>
-            <td class="time">2026-10-31 00:14 UTC</td>
-            <td><a href="tumbleweed/102/amd-3800xt/test_run.log" target="_blank" class="log-link">View Log</a></td>
+            <td class="time">2026-10-31 15:49 UTC</td>
+            <td><a href="tumbleweed/103/amd-3800xt/test_run.log" target="_blank" class="log-link">View Log</a></td>
         </tr>
         
         <tr>
             <td><span class="badge os">tumbleweed</span></td>
-            <td>Radeon Pro W5700</td>
+            <td><code>amd-2200g [GPU 0]</code></td>
+            <td>AMD Radeon Pro W5700</td>
             <td><code>gfx1010</code></td>
             <td><code>7.2.53211</code></td>
-            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (Navi 10 [Radeon Pro W5700] (gfx1010))">PASS</span></td>
+            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))">PASS</span></td>
             <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
-            <td><span class="status pass" title="Blender rendered frame on GPU in 50.81s">PASS (50.81s)</span></td>
+            <td><span class="status pass" title="Blender rendered frame on GPU in 49.71s">PASS (49.71s)</span></td>
             <td><span class="status skip" title="llama-bench is not installed on this OS">SKIP</span></td>
             <td><span class="status skip" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)">SKIP</span></td>
             <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
             <td><span class="status pass bold">PASS</span></td>
-            <td class="time">2026-10-31 00:15 UTC</td>
-            <td><a href="tumbleweed/102/amd-2200g/test_run.log" target="_blank" class="log-link">View Log</a></td>
+            <td class="time">2026-10-31 15:50 UTC</td>
+            <td><a href="tumbleweed/103/amd-2200g/test_run.log" target="_blank" class="log-link">View Log</a></td>
         </tr>
         
         <tr>
             <td><span class="badge os">tumbleweed</span></td>
-            <td>Radeon RX 7700 XT / 7800 XT</td>
+            <td><code>7800xt [GPU 0]</code></td>
+            <td>AMD Radeon RX 7800 XT</td>
             <td><code>gfx1101</code></td>
             <td><code>7.2.53211</code></td>
-            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (Navi 32 [Radeon RX 7700 XT / 7800 XT] (gfx1101))">PASS</span></td>
+            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon RX 7800 XT (gfx1101))">PASS</span></td>
             <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
-            <td><span class="status pass" title="Blender rendered frame on GPU in 30.82s">PASS (30.82s)</span></td>
+            <td><span class="status pass" title="Blender rendered frame on GPU in 30.22s">PASS (30.22s)</span></td>
             <td><span class="status skip" title="llama-bench is not installed on this OS">SKIP</span></td>
             <td><span class="status skip" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)">SKIP</span></td>
             <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
             <td><span class="status pass bold">PASS</span></td>
-            <td class="time">2026-10-31 00:15 UTC</td>
-            <td><a href="tumbleweed/102/7800xt/test_run.log" target="_blank" class="log-link">View Log</a></td>
+            <td class="time">2026-10-31 15:50 UTC</td>
+            <td><a href="tumbleweed/103/7800xt/test_run.log" target="_blank" class="log-link">View Log</a></td>
         </tr>
         
                 </tbody>
