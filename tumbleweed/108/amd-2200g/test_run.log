@@ -1,0 +1,359 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-2200g
+OS: tumbleweed (x86_64) | Sequence: #108
+Target GPU: [Index: 0] AMD Radeon Pro W5700 (gfx1010) PCI: 0000:12:00.0
+Disabled Tests: none
+==========================================
+
+------------------------------------------
+Installed ROCm & Graphics Packages:
+------------------------------------------
+Package                                  Version
+---------------------------------------- -----------------------------------
+blender                                  5.2.0-1.2
+blender-5.2                              5.2.3-1.1
+blender-lts                              5.2.0-1.2
+hipcc                                    22-14.1
+kernel-firmware-amdgpu                   20260926-1.1
+libdrm_amdgpu1                           2.4.134-2.2
+libggml-base0                            0.8.0-1.1
+libggml-cpu                              0.8.0-1.1
+libggml-hip                              0.8.0-1.1
+libggml-opencl                           0.8.0-1.1
+libggml-vulkan                           0.8.0-1.1
+libggml0                                 0.8.0-1.1
+llamacpp                                 0.8.0-1.1
+rocm-clang                               22-14.1
+rocm-clang-devel                         22-14.1
+rocm-clang-libs                          22-14.1
+rocm-clang-runtime-devel                 22-14.1
+rocm-device-libs                         22-14.1
+rocm-filesystem                          7.2.0-8.1
+rocm-hip                                 7.2.2-4.1
+rocm-hip-devel                           7.2.2-4.1
+rocm-lld                                 22-14.1
+rocm-llvm                                22-14.1
+rocm-llvm-devel                          22-14.1
+rocm-llvm-filesystem                     22-14.1
+rocm-llvm-libs                           22-14.1
+rocm-llvm-static                         22-14.1
+rocm-runtime-devel                       7.2.1-4.1
+rocm-smi                                 7.2.1-4.1
+rocm-smi-libs                            7.2.1-4.1
+rocm-validation-suite                    7.2.1-2.1
+rocminfo                                 7.2.0-5.1
+------------------------------------------
+
+--> Checking Hardware, Kernel, and ROCm Drivers (GPU Index: 0)...
+Kernel Version: 7.3.0-1-default
+[PASS] Driver & GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))
+--> Testing hipcc Compiler...
+[PASS] hipcc compilation and GPU execution succeeded
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.2
+00:00.668  translation      | WARNING 'locale' data path for translations not found
+00:04.889  blend            | Read blend: "/root/rocm/scene.blend"
+00:04.903  cycles           | WARNING CUEW initialization failed: Error opening the library
+Enabled HIP Device: AMD Radeon Pro W5700
+00:04.943  render           | Rendering single frame
+00:04.943  render           | Rendering frame 1
+00:04.946  render           | Start rendering: Scene, ViewLayer
+00:04.946  render           | Engine: Cycles
+00:05.003  render           | Fra: 1 | Mem: 0M | Synchronizing object | Cube
+Blender 5.2.3 LTS
+00:05.003  render           | Fra: 1 | Mem: 0M | Synchronizing object | Light
+00:05.005  render           | Fra: 1 | Mem: 0M | Initializing
+00:05.005  render           | Fra: 1 | Mem: 0M | Waiting for render to start
+00:05.006  render           | Fra: 1 | Mem: 0M | Updating Scene
+00:05.006  render           | Fra: 1 | Mem: 0M | Updating Shaders
+00:05.007  render           | Fra: 1 | Mem: 0M | Loading render kernels (may take a few minutes the first time)
+00:05.070  render           | Fra: 1 | Mem: 1M | Updating Procedurals
+00:05.070  render           | Fra: 1 | Mem: 1M | Updating Background
+00:05.070  render           | Fra: 1 | Mem: 1M | Updating Scene Attribute
+00:05.070  render           | Fra: 1 | Mem: 1M | Updating Camera
+00:05.070  render           | Fra: 1 | Mem: 1M | Updating Meshes Flags
+00:05.070  render           | Fra: 1 | Mem: 1M | Updating Objects
+00:05.070  render           | Fra: 1 | Mem: 1M | Updating Objects | Copying Transformations to device
+00:05.071  render           | Fra: 1 | Mem: 1M | Updating Particle Systems
+00:05.071  render           | Fra: 1 | Mem: 1M | Updating Particle Systems | Copying Particles to device
+00:05.071  render           | Fra: 1 | Mem: 1M | Updating Meshes
+00:05.071  render           | Fra: 1 | Mem: 1M | Updating Objects | Applying Static Transformations
+00:05.071  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Building
+00:05.071  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Building BVH
+00:05.072  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Packing BVH triangles and strands
+00:05.072  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Packing BVH nodes
+00:05.072  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Copying BVH to device
+00:05.073  render           | Fra: 1 | Mem: 1M | Updating Mesh | Computing attributes
+00:05.073  render           | Fra: 1 | Mem: 1M | Updating Mesh | Copying Attributes to device
+00:05.073  render           | Fra: 1 | Mem: 1M | Updating Mesh | Computing normals
+00:05.073  render           | Fra: 1 | Mem: 1M | Updating Mesh | Copying Mesh to device
+00:05.073  render           | Fra: 1 | Mem: 1M | Updating Objects Flags
+00:05.073  render           | Fra: 1 | Mem: 1M | Updating Primitive Offsets
+00:05.073  render           | Fra: 1 | Mem: 1M | Updating Images
+00:05.073  render           | Fra: 1 | Mem: 1M | Updating Volume
+00:05.073  render           | Fra: 1 | Mem: 1M | Updating Camera Volume
+00:05.073  render           | Fra: 1 | Mem: 1M | Updating Lookup Tables
+00:05.076  render           | Fra: 1 | Mem: 1M | Updating Lights
+00:05.077  render           | Fra: 1 | Mem: 1M | Updating Lights | Computing tree
+00:05.077  render           | Fra: 1 | Mem: 1M | Updating Integrator
+00:05.077  render           | Fra: 1 | Mem: 1M | Updating Film
+00:05.077  render           | Fra: 1 | Mem: 1M | Updating Lookup Tables
+00:05.078  render           | Fra: 1 | Mem: 1M | Updating Baking
+00:05.078  render           | Fra: 1 | Mem: 1M | Updating Device | Writing constant memory
+00:05.078  render           | Fra: 1 | Mem: 1M | Loading denoising kernels (may take a few minutes the first time)
+00:05.094  render           | Fra: 1 | Mem: 257M | Sample 0/4096
+00:05.132  render           | Fra: 1 | Remaining: 02:33.48 | Mem: 407M | Sample 1/4096
+00:06.638  render           | Fra: 1 | Remaining: 01:17.49 | Mem: 407M | Sample 80/4096
+00:06.688  render           | Fra: 1 | Remaining: 01:06.44 | Mem: 407M | Sample 96/4096
+00:06.740  render           | Fra: 1 | Remaining: 00:58.55 | Mem: 407M | Sample 112/4096
+00:06.790  render           | Fra: 1 | Remaining: 00:52.58 | Mem: 407M | Sample 128/4096
+00:06.839  render           | Fra: 1 | Remaining: 00:47.89 | Mem: 407M | Sample 144/4096
+00:06.886  render           | Fra: 1 | Remaining: 00:44.08 | Mem: 407M | Sample 160/4096
+00:06.933  render           | Fra: 1 | Remaining: 00:40.96 | Mem: 407M | Sample 176/4096
+00:06.979  render           | Fra: 1 | Remaining: 00:38.33 | Mem: 407M | Sample 192/4096
+00:07.023  render           | Fra: 1 | Remaining: 00:36.06 | Mem: 407M | Sample 208/4096
+00:07.065  render           | Fra: 1 | Remaining: 00:34.06 | Mem: 407M | Sample 224/4096
+00:07.106  render           | Fra: 1 | Remaining: 00:32.33 | Mem: 407M | Sample 240/4096
+00:07.145  render           | Fra: 1 | Remaining: 00:30.76 | Mem: 407M | Sample 256/4096
+00:07.183  render           | Fra: 1 | Remaining: 00:29.36 | Mem: 407M | Sample 272/4096
+00:07.222  render           | Fra: 1 | Remaining: 00:28.13 | Mem: 407M | Sample 288/4096
+00:07.258  render           | Fra: 1 | Remaining: 00:26.99 | Mem: 407M | Sample 304/4096
+00:07.292  render           | Fra: 1 | Remaining: 00:25.94 | Mem: 407M | Sample 320/4096
+00:07.327  render           | Fra: 1 | Remaining: 00:24.98 | Mem: 407M | Sample 336/4096
+00:07.361  render           | Fra: 1 | Remaining: 00:24.11 | Mem: 407M | Sample 352/4096
+00:07.392  render           | Fra: 1 | Remaining: 00:23.28 | Mem: 407M | Sample 368/4096
+00:07.421  render           | Fra: 1 | Remaining: 00:22.49 | Mem: 407M | Sample 384/4096
+00:07.450  render           | Fra: 1 | Remaining: 00:21.76 | Mem: 407M | Sample 400/4096
+00:07.479  render           | Fra: 1 | Remaining: 00:21.09 | Mem: 407M | Sample 416/4096
+00:07.507  render           | Fra: 1 | Remaining: 00:20.47 | Mem: 407M | Sample 432/4096
+00:07.538  render           | Fra: 1 | Remaining: 00:19.89 | Mem: 407M | Sample 448/4096
+00:07.566  render           | Fra: 1 | Remaining: 00:19.35 | Mem: 407M | Sample 464/4096
+00:07.596  render           | Fra: 1 | Remaining: 00:18.84 | Mem: 407M | Sample 480/4096
+00:07.624  render           | Fra: 1 | Remaining: 00:18.36 | Mem: 407M | Sample 496/4096
+00:07.653  render           | Fra: 1 | Remaining: 00:17.91 | Mem: 407M | Sample 512/4096
+00:07.681  render           | Fra: 1 | Remaining: 00:17.48 | Mem: 407M | Sample 528/4096
+00:07.710  render           | Fra: 1 | Remaining: 00:17.08 | Mem: 407M | Sample 544/4096
+00:07.739  render           | Fra: 1 | Remaining: 00:16.70 | Mem: 407M | Sample 560/4096
+00:07.767  render           | Fra: 1 | Remaining: 00:16.33 | Mem: 407M | Sample 576/4096
+00:07.794  render           | Fra: 1 | Remaining: 00:15.98 | Mem: 407M | Sample 592/4096
+00:07.823  render           | Fra: 1 | Remaining: 00:15.65 | Mem: 407M | Sample 608/4096
+00:07.852  render           | Fra: 1 | Remaining: 00:15.34 | Mem: 407M | Sample 624/4096
+00:07.881  render           | Fra: 1 | Remaining: 00:15.04 | Mem: 407M | Sample 640/4096
+00:07.904  render           | Fra: 1 | Remaining: 00:14.73 | Mem: 407M | Sample 656/4096
+00:07.927  render           | Fra: 1 | Remaining: 00:14.43 | Mem: 407M | Sample 672/4096
+00:07.950  render           | Fra: 1 | Remaining: 00:14.15 | Mem: 407M | Sample 688/4096
+00:07.971  render           | Fra: 1 | Remaining: 00:13.86 | Mem: 407M | Sample 704/4096
+00:07.992  render           | Fra: 1 | Remaining: 00:13.58 | Mem: 407M | Sample 720/4096
+00:08.013  render           | Fra: 1 | Remaining: 00:13.32 | Mem: 407M | Sample 736/4096
+00:08.035  render           | Fra: 1 | Remaining: 00:13.08 | Mem: 407M | Sample 752/4096
+00:08.057  render           | Fra: 1 | Remaining: 00:12.84 | Mem: 407M | Sample 768/4096
+00:08.079  render           | Fra: 1 | Remaining: 00:12.61 | Mem: 407M | Sample 784/4096
+00:08.100  render           | Fra: 1 | Remaining: 00:12.38 | Mem: 407M | Sample 800/4096
+00:08.122  render           | Fra: 1 | Remaining: 00:12.17 | Mem: 407M | Sample 816/4096
+00:08.138  render           | Fra: 1 | Remaining: 00:11.94 | Mem: 407M | Sample 832/4096
+00:08.155  render           | Fra: 1 | Remaining: 00:11.72 | Mem: 407M | Sample 848/4096
+00:08.171  render           | Fra: 1 | Remaining: 00:11.51 | Mem: 407M | Sample 864/4096
+00:08.186  render           | Fra: 1 | Remaining: 00:11.29 | Mem: 407M | Sample 880/4096
+00:08.200  render           | Fra: 1 | Remaining: 00:11.09 | Mem: 407M | Sample 896/4096
+00:08.214  render           | Fra: 1 | Remaining: 00:10.89 | Mem: 407M | Sample 912/4096
+00:08.229  render           | Fra: 1 | Remaining: 00:10.70 | Mem: 407M | Sample 928/4096
+00:08.244  render           | Fra: 1 | Remaining: 00:10.51 | Mem: 407M | Sample 944/4096
+00:08.258  render           | Fra: 1 | Remaining: 00:10.33 | Mem: 407M | Sample 960/4096
+00:08.273  render           | Fra: 1 | Remaining: 00:10.16 | Mem: 407M | Sample 976/4096
+00:08.288  render           | Fra: 1 | Remaining: 00:09.99 | Mem: 407M | Sample 992/4096
+00:08.302  render           | Fra: 1 | Remaining: 00:09.82 | Mem: 407M | Sample 1008/4096
+00:08.317  render           | Fra: 1 | Remaining: 00:09.67 | Mem: 407M | Sample 1024/4096
+00:08.337  render           | Fra: 1 | Remaining: 00:09.52 | Mem: 407M | Sample 1040/4096
+00:08.352  render           | Fra: 1 | Remaining: 00:09.37 | Mem: 407M | Sample 1056/4096
+00:08.366  render           | Fra: 1 | Remaining: 00:09.23 | Mem: 407M | Sample 1072/4096
+00:08.380  render           | Fra: 1 | Remaining: 00:09.08 | Mem: 407M | Sample 1088/4096
+00:08.395  render           | Fra: 1 | Remaining: 00:08.94 | Mem: 407M | Sample 1104/4096
+00:08.410  render           | Fra: 1 | Remaining: 00:08.81 | Mem: 407M | Sample 1120/4096
+00:08.424  render           | Fra: 1 | Remaining: 00:08.67 | Mem: 407M | Sample 1136/4096
+00:08.438  render           | Fra: 1 | Remaining: 00:08.54 | Mem: 407M | Sample 1152/4096
+00:08.453  render           | Fra: 1 | Remaining: 00:08.42 | Mem: 407M | Sample 1168/4096
+00:08.468  render           | Fra: 1 | Remaining: 00:08.29 | Mem: 407M | Sample 1184/4096
+00:08.482  render           | Fra: 1 | Remaining: 00:08.17 | Mem: 407M | Sample 1200/4096
+00:08.497  render           | Fra: 1 | Remaining: 00:08.06 | Mem: 407M | Sample 1216/4096
+00:08.512  render           | Fra: 1 | Remaining: 00:07.94 | Mem: 407M | Sample 1232/4096
+00:08.526  render           | Fra: 1 | Remaining: 00:07.83 | Mem: 407M | Sample 1248/4096
+00:08.540  render           | Fra: 1 | Remaining: 00:07.72 | Mem: 407M | Sample 1264/4096
+00:08.555  render           | Fra: 1 | Remaining: 00:07.61 | Mem: 407M | Sample 1280/4096
+00:08.570  render           | Fra: 1 | Remaining: 00:07.50 | Mem: 407M | Sample 1296/4096
+00:08.584  render           | Fra: 1 | Remaining: 00:07.40 | Mem: 407M | Sample 1312/4096
+00:28.047  render           | Fra: 1 | Remaining: 00:47.84 | Mem: 407M | Sample 1328/4096
+00:46.907  render           | Fra: 1 | Remaining: 01:27.15 | Mem: 407M | Sample 0/4096
+00:46.907  render           | Fra: 1 | Remaining: 01:27.15 | Mem: 407M | Finished
+00:47.399  render           | Saved: '/tmp/rocm_test_108_gpu0/render_1.png'
+00:47.399  render           | Time: 00:42.45 (Saving: 00:00.48)
+
+Blender quit
+[PASS] Blender rendered frame on GPU in 51.22s
+------------------------------------------
+Running llama.cpp HIP Benchmark Check
+------------------------------------------
+------------------------------------------
+Inspecting Installed GGML / HIP Backends
+------------------------------------------
+--> Package versions:
+llamacpp-0.8.0-1.1.x86_64
+libggml-hip-0.8.0-1.1.x86_64
+--> Compiled GPU architectures in /usr/lib64/ggml/libggml-hip.so:
+Warning:  This tool has been DEPRECATED. Similar functionality is provided by llvm-objdump in the rocm-llvm package.
+None detected
+Using benchmark model: /root/rocm/qwen2.5-0.5b-instruct-q4_k_m.gguf
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 8176 MiB):
+  Device 0: AMD Radeon Pro W5700, gfx1010:xnack- (0x1010), VMM: no, Wave Size: 32, VRAM: 8176 MiB
+load_backend: loaded ROCm backend from /usr/lib64/ggml/libggml-hip.so
+ggml_opencl: platform IDs not available.
+load_backend: loaded OpenCL backend from /usr/lib64/ggml/libggml-opencl.so
+load_backend: loaded CPU backend from /usr/lib64/ggml/libggml-cpu-haswell.so
+load_backend: loaded ROCm backend from /usr/lib64/ggml/libggml-hip.so
+load_backend: loaded OpenCL backend from /usr/lib64/ggml/libggml-opencl.so
+load_backend: loaded CPU backend from /usr/lib64/ggml/libggml-cpu-haswell.so
+Available devices:
+  ROCm0: AMD Radeon Pro W5700 (8176 MiB, 8146 MiB free)
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 8176 MiB):
+  Device 0: AMD Radeon Pro W5700, gfx1010:xnack- (0x1010), VMM: no, Wave Size: 32, VRAM: 8176 MiB
+load_backend: loaded ROCm backend from /usr/lib64/ggml/libggml-hip.so
+ggml_opencl: platform IDs not available.
+load_backend: loaded OpenCL backend from /usr/lib64/ggml/libggml-opencl.so
+load_backend: loaded CPU backend from /usr/lib64/ggml/libggml-cpu-haswell.so
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm,OpenCL |  99 |           pp128 |     2154.08 ± 154.51 |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm,OpenCL |  99 |            tg32 |        232.31 ± 1.40 |
+
+build: unknown (11960)
+--> [PASS] llama-bench executed successfully via HIP/ROCm (232.31 t/s)
+--> Testing PyTorch HIP Execution (Distro Package)...
+[SKIP] Distro package 'torch' not found for available Python interpreters (checked python3.14, python3.13, python3)
+--> Testing ROCm Validation Suite (rvs)...
+--> Listing GPUs supported by RVS...
+
+ROCm Validation Suite (version 1.3.0)
+
+Supported GPUs available:
+0000:12:00.0 - GPU[ 1 - 24544] AMD Radeon Pro W5700 (Device 29458)
+--> Configured RVS to target GPU ID: 24544
+--> Running RVS Qualification & Short Stress Suite (~10s)...
+[RESULT] [    88.20976 ] Action name :qual_gpup
+[RESULT] [    88.30203 ] Module name :gpup
+[INFO  ] [    88.30226 ] Missing 'device_index' key.
+[RESULT] [    88.30362 ] [qual_gpup] gpup 24544 cpu_cores_count 0
+[RESULT] [    88.30364 ] [qual_gpup] gpup 24544 simd_count 72
+[RESULT] [    88.30366 ] [qual_gpup] gpup 24544 mem_banks_count 1
+[RESULT] [    88.30367 ] [qual_gpup] gpup 24544 caches_count 77
+[RESULT] [    88.30368 ] [qual_gpup] gpup 24544 io_links_count 1
+[RESULT] [    88.30369 ] [qual_gpup] gpup 24544 p2p_links_count 0
+[RESULT] [    88.30370 ] [qual_gpup] gpup 24544 cpu_core_id_base 0
+[RESULT] [    88.30371 ] [qual_gpup] gpup 24544 simd_id_base 2147487744
+[RESULT] [    88.30372 ] [qual_gpup] gpup 24544 max_waves_per_simd 20
+[RESULT] [    88.30373 ] [qual_gpup] gpup 24544 lds_size_in_kb 64
+[RESULT] [    88.30374 ] [qual_gpup] gpup 24544 gds_size_in_kb 0
+[RESULT] [    88.30375 ] [qual_gpup] gpup 24544 num_gws 0
+[RESULT] [    88.30376 ] [qual_gpup] gpup 24544 wave_front_size 32
+[RESULT] [    88.30377 ] [qual_gpup] gpup 24544 array_count 4
+[RESULT] [    88.30378 ] [qual_gpup] gpup 24544 simd_arrays_per_engine 2
+[RESULT] [    88.30379 ] [qual_gpup] gpup 24544 cu_per_simd_array 10
+[RESULT] [    88.30380 ] [qual_gpup] gpup 24544 simd_per_cu 2
+[RESULT] [    88.30381 ] [qual_gpup] gpup 24544 max_slots_scratch_cu 32
+[RESULT] [    88.30382 ] [qual_gpup] gpup 24544 gfx_target_version 100100
+[RESULT] [    88.30384 ] [qual_gpup] gpup 24544 vendor_id 4098
+[RESULT] [    88.30385 ] [qual_gpup] gpup 24544 device_id 29458
+[RESULT] [    88.30386 ] [qual_gpup] gpup 24544 location_id 4608
+[RESULT] [    88.30387 ] [qual_gpup] gpup 24544 domain 0
+[RESULT] [    88.30388 ] [qual_gpup] gpup 24544 drm_render_minor 129
+[RESULT] [    88.30389 ] [qual_gpup] gpup 24544 hive_id 0
+[RESULT] [    88.30390 ] [qual_gpup] gpup 24544 num_sdma_engines 2
+[RESULT] [    88.30391 ] [qual_gpup] gpup 24544 num_sdma_xgmi_engines 0
+[RESULT] [    88.30392 ] [qual_gpup] gpup 24544 num_sdma_queues_per_engine 8
+[RESULT] [    88.30393 ] [qual_gpup] gpup 24544 num_cp_queues 24
+[RESULT] [    88.30394 ] [qual_gpup] gpup 24544 cwsr_size 12550144
+[RESULT] [    88.30395 ] [qual_gpup] gpup 24544 ctl_stack_size 16384
+[RESULT] [    88.30396 ] [qual_gpup] gpup 24544 max_engine_clk_fcompute 1930
+[RESULT] [    88.30397 ] [qual_gpup] gpup 24544 local_mem_size 0
+[RESULT] [    88.30398 ] [qual_gpup] gpup 24544 fw_version 157
+[RESULT] [    88.30399 ] [qual_gpup] gpup 24544 capability 679715456
+[RESULT] [    88.30400 ] [qual_gpup] gpup 24544 capability2 0
+[RESULT] [    88.30401 ] [qual_gpup] gpup 24544 debug_prop 1495
+[RESULT] [    88.30402 ] [qual_gpup] gpup 24544 sdma_fw_version 35
+[RESULT] [    88.30403 ] [qual_gpup] gpup 24544 unique_id 0
+[RESULT] [    88.30404 ] [qual_gpup] gpup 24544 num_xcc 1
+[RESULT] [    88.30405 ] [qual_gpup] gpup 24544 max_engine_clk_ccompute 3500
+[RESULT] [    88.30430 ] [qual_gpup] gpup 24544 0 type 2
+[RESULT] [    88.30431 ] [qual_gpup] gpup 24544 0 version_major 0
+[RESULT] [    88.30432 ] [qual_gpup] gpup 24544 0 version_minor 0
+[RESULT] [    88.30434 ] [qual_gpup] gpup 24544 0 node_from 1
+[RESULT] [    88.30435 ] [qual_gpup] gpup 24544 0 node_to 0
+[RESULT] [    88.30436 ] [qual_gpup] gpup 24544 0 weight 20
+[RESULT] [    88.30437 ] [qual_gpup] gpup 24544 0 min_latency 0
+[RESULT] [    88.30438 ] [qual_gpup] gpup 24544 0 max_latency 0
+[RESULT] [    88.30439 ] [qual_gpup] gpup 24544 0 min_bandwidth 0
+[RESULT] [    88.30440 ] [qual_gpup] gpup 24544 0 max_bandwidth 8000
+[RESULT] [    88.30441 ] [qual_gpup] gpup 24544 0 recommended_transfer_size 0
+[RESULT] [    88.30442 ] [qual_gpup] gpup 24544 0 recommended_sdma_engine_id_mask 3
+[RESULT] [    88.30443 ] [qual_gpup] gpup 24544 0 flags 1
+[RESULT] [    88.30451 ] Action name :qual_peqt
+[RESULT] [    88.36144 ] Module name :peqt
+[INFO  ] [    88.36167 ] Missing 'device_index' key.
+[INFO  ] [    88.37650 ] [qual_peqt] peqt atomic_op_32_completer TRUE
+[INFO  ] [    88.37656 ] [qual_peqt] peqt atomic_op_64_completer TRUE
+[INFO  ] [    88.37660 ] [qual_peqt] peqt atomic_op_routing TRUE
+[INFO  ] [    88.37661 ] [qual_peqt] peqt dev_serial_num NOT SUPPORTED
+[INFO  ] [    88.37673 ] [qual_peqt] peqt kernel_driver NOT SUPPORTED
+[INFO  ] [    88.37676 ] [qual_peqt] peqt link_cap_max_speed 16 GT/s
+[INFO  ] [    88.37678 ] [qual_peqt] peqt link_cap_max_width x16
+[INFO  ] [    88.37681 ] [qual_peqt] peqt link_stat_cur_speed 16 GT/s
+[INFO  ] [    88.37683 ] [qual_peqt] peqt link_stat_neg_width x16
+[INFO  ] [    88.37686 ] [qual_peqt] peqt slot_physical_num #0
+[INFO  ] [    88.37697 ] [qual_peqt] peqt slot_pwr_limit_value 0.000W
+[INFO  ] [    88.37698 ] [qual_peqt] peqt vendor_id 4098
+[RESULT] [    88.50203 ] [qual_peqt] peqt true
+[RESULT] [    88.50212 ] Action name :stress_gst
+[RESULT] [    88.55350 ] Module name :gst
+[INFO  ] [    88.55375 ] Missing 'device_index' key.
+[RESULT] [    88.570311] [stress_gst] [GPU:: 24544] Start of GPU ramp up
+[RESULT] [    89.116140] [stress_gst] [GPU:: 24544] End of GPU ramp up
+[INFO  ] [    89.116148] [stress_gst] gst 24544  GST ramp completed for interval : 1000
+[RESULT] [    90.117774] [stress_gst] [GPU:: 24544] GFLOPS 5592
+[RESULT] [    91.120424] [stress_gst] [GPU:: 24544] GFLOPS 5569
+[RESULT] [    92.120771] [stress_gst] [GPU:: 24544] GFLOPS 5565
+[RESULT] [    93.121720] [stress_gst] [GPU:: 24544] GFLOPS 5561
+[RESULT] [    94.116928] [stress_gst] [GPU:: 24544] GFLOPS 5592
+[RESULT] [    94.116934] [stress_gst] [GPU:: 24544] GFLOPS 5592 Target GFLOPS: 500 met: TRUE
+[RESULT] [    94.118342] Action name :stress_pebb
+[RESULT] [    94.133070] Module name :pebb
+[INFO  ] [    94.133101] Missing 'device_index' key.
+[RESULT] [    94.133552] [stress_pebb] pcie-bandwidth [CPU:: 0] [GPU:: 1 - 24544 - 0000:12:00.0] distance:20 PCIe:20
+[INFO  ] [    95.133626] [stress_pebb] pcie-bandwidth [ 1/1] [CPU:: 0] [GPU:: 1 - 24544 - 0000:12:00.0] h2d::true d2h::true 12.518 GBps
+[INFO  ] [    96.132725] [stress_pebb] pcie-bandwidth [ 1/1] [CPU:: 0] [GPU:: 1 - 24544 - 0000:12:00.0] h2d::true d2h::true 12.747 GBps
+[INFO  ] [    97.132470] [stress_pebb] pcie-bandwidth [ 1/1] [CPU:: 0] [GPU:: 1 - 24544 - 0000:12:00.0] h2d::true d2h::true 12.591 GBps
+[RESULT] [    97.145305] [stress_pebb] pcie-bandwidth [ 1/1] [CPU:: 0] [GPU:: 1 - 24544 - 0000:12:00.0] h2d::true d2h::true 12.617 GBps duration: 0.519424 secs
++=====================================================================+
+|                 ROCm Validation Suite (RVS) Summary                 |
++=====================================================================+
+|                           System Overview                           |
++---------------------------------------------------------------------+
+| Operating System                 | openSUSE Tumbleweed              |
+| RVS version                      | 1.3.0                            |
+| ROCm version                     | N/A                              |
+sh: line 1: dkms: command not found
+| amdgpu version                   | N/A                              |
+| GPUs                             | 1                                |
++---------------------------------------------------------------------+
+| GPU Name - GPU ID                | AMD Radeon Pro W5700 - 24544     |
+| ID - Node ID - BDF               | 0 - 1 - 0000:12:00.0             |
++=====================================================================+
+| Action Name                      | Module         | Result          |
++=====================================================================+
+| qual_gpup                        | GPUP           | [32mPASS          [0m  |
+| qual_peqt                        | PEQT           | [32mPASS          [0m  |
+| stress_gst                       | GST            | [32mPASS          [0m  |
+| stress_pebb                      | PEBB           | [32mPASS          [0m  |
++---------------------------------------------------------------------+
+[PASS] RVS qualification & short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)
+==========================================
+Run #108 [tumbleweed] complete for amd-2200g. Status: PASS
+Results written to: /mnt/storage/rocm/tumbleweed/108/amd-2200g/result.json
+==========================================

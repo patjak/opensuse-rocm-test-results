@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>openSUSE ROCm Test Dashboard</title>
+    <style>
+        :root {
+            --bg: #f6f8fa;
+            --card-bg: #ffffff;
+            --text: #24292f;
+            --text-muted: #57606a;
+            --border: #d0d7de;
+            --pass-bg: #dafbe1; --pass-fg: #1a7f37;
+            --fail-bg: #ffebe9; --fail-fg: #cf222e;
+            --not-bg: #fff8c5;  --not-fg: #9a6700;
+            --skip-bg: #ddf4ff; --skip-fg: #0969da;
+            --off-bg: #f0f1f2;  --off-fg: #6e7781;
+            --accent: #0969da;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text);
+        }
+        p { color: var(--text-muted); margin: 0; font-size: 0.9rem; }
+        .seq-badge {
+            background: #ddf4ff;
+            color: #0969da;
+            border: 1px solid rgba(54, 150, 255, 0.4);
+            font-size: 0.8rem;
+            padding: 0.15rem 0.55rem;
+            border-radius: 12px;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            font-weight: 600;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: var(--card-bg);
+            padding: 0.6rem 0.85rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .table-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow-x: auto;
+            box-shadow: 0 1px 3px rgba(31, 35, 40, 0.12);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.875rem;
+        }
+        th, td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        th {
+            background-color: #f6f8fa;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: #f6f8fa; }
+        .status {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            border: 1px solid transparent;
+        }
+        .status.pass { background: var(--pass-bg); color: var(--pass-fg); border-color: rgba(26, 127, 55, 0.2); }
+        .status.fail { background: var(--fail-bg); color: var(--fail-fg); border-color: rgba(207, 34, 46, 0.2); }
+        .status.skip { background: var(--skip-bg); color: var(--skip-fg); border-color: rgba(9, 105, 218, 0.2); }
+        .status.off  { background: var(--off-bg);  color: var(--off-fg);  border-color: rgba(110, 119, 129, 0.2); }
+        .status.not  { background: var(--not-bg);  color: var(--not-fg);  border-color: rgba(154, 103, 0, 0.2); }
+        .status.bold { font-weight: 700; }
+        .badge.os {
+            background: #f6f8fa;
+            color: #24292f;
+            border: 1px solid var(--border);
+            padding: 0.15rem 0.4rem;
+            border-radius: 6px;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            font-size: 0.8rem;
+        }
+        code {
+            background: rgba(175, 184, 193, 0.2);
+            padding: 0.15rem 0.35rem;
+            border-radius: 6px;
+            color: #24292f;
+            font-size: 0.85rem;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+        }
+        .time { color: var(--text-muted); font-size: 0.85rem; }
+        .log-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .log-link:hover { text-decoration: underline; }
+        .search-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        #tableFilter {
+            flex: 1;
+            padding: 0.55rem 0.85rem;
+            font-size: 0.875rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background-color: var(--card-bg);
+            color: var(--text);
+            outline: none;
+            box-shadow: inset 0 1px 2px rgba(31, 35, 40, 0.075);
+        }
+        #tableFilter:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+        }
+        .clear-btn {
+            padding: 0.55rem 1rem;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background-color: #f6f8fa;
+            color: var(--text);
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .clear-btn:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="log-link" style="float: right;">📜 View Test History</a>
+            <h1>openSUSE ROCm Test Dashboard <span class="seq-badge">Batch 108</span></h1>
+            <p>Automated status across hardware and distribution releases.</p>
+            <div class="legend">
+                <span class="legend-item"><span class="status pass">PASS</span> Test passed successfully</span>
+                <span class="legend-item"><span class="status fail">FAIL</span> Test failed during execution</span>
+                <span class="legend-item"><span class="status not">NOT</span> Device is not supported</span>
+                <span class="legend-item"><span class="status skip">SKIP</span> Test skipped (missing dependencies or setup)</span>
+                <span class="legend-item"><span class="status off">OFF</span> Test disabled by configuration</span>
+            </div>
+        </header>
+        <div class="search-container">
+            <input type="text" id="tableFilter" placeholder="Filter by GPU, GFX, OS, or status (e.g. PASS, FAIL, gfx1101)..." onkeyup="filterTable()">
+            <button class="clear-btn" onclick="clearFilter()">Clear</button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>OS</th>
+                        <th>GPU Model</th>
+                        <th>GFX</th>
+                        <th>ROCm</th>
+                        <th>Driver</th>
+                        <th>hipcc</th>
+                        <th>Blender HIP</th>
+                        <th>LLaMA HIP</th>
+                        <th>PyTorch HIP</th>
+                        <th>RVS</th>
+                        <th>Overall</th>
+                        <th>Last Tested</th>
+                        <th>Log</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td><span class="badge os">tumbleweed</span></td>
+            <td>Unknown GPU</td>
+            <td><code>Unknown</code></td>
+            <td><code>7.2.53211</code></td>
+            <td><span class="status fail" title="rocminfo failed to detect HSA agents or GPU permissions">FAIL</span></td>
+            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
+            <td><span class="status pass" title="Blender rendered frame on GPU in 5.71s">PASS (5.71s)</span></td>
+            <td><span class="status pass" title="llama-bench executed successfully via HIP/ROCm (104.44 t/s)">PASS (104.44 t/s)</span></td>
+            <td><span class="status skip" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)">SKIP</span></td>
+            <td><span class="status not" title="No supported GPUs detected by ROCm Validation Suite">NOT</span></td>
+            <td><span class="status fail bold">FAIL</span></td>
+            <td class="time">2026-11-01 13:03 UTC</td>
+            <td><a href="../tumbleweed/108/amd-3800xt/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="../tumbleweed/108/amd-3800xt/packages.txt" target="_blank" class="log-link">Packages</a></td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge os">tumbleweed</span></td>
+            <td><span title="PCI: 0000:12:00.0">AMD Radeon Pro W5700</span></td>
+            <td><code>gfx1010</code></td>
+            <td><code>7.2.53211</code></td>
+            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))">PASS</span></td>
+            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
+            <td><span class="status pass" title="Blender rendered frame on GPU in 51.22s">PASS (51.22s)</span></td>
+            <td><span class="status pass" title="llama-bench executed successfully via HIP/ROCm (232.31 t/s)">PASS (232.31 t/s)</span></td>
+            <td><span class="status skip" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)">SKIP</span></td>
+            <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
+            <td><span class="status pass bold">PASS</span></td>
+            <td class="time">2026-11-01 13:04 UTC</td>
+            <td><a href="../tumbleweed/108/amd-2200g/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="../tumbleweed/108/amd-2200g/packages.txt" target="_blank" class="log-link">Packages</a></td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge os">tumbleweed</span></td>
+            <td><span title="PCI: 0000:03:00.0">AMD Radeon RX 7800 XT</span></td>
+            <td><code>gfx1101</code></td>
+            <td><code>7.2.53211</code></td>
+            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon RX 7800 XT (gfx1101))">PASS</span></td>
+            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
+            <td><span class="status pass" title="Blender rendered frame on GPU in 32.22s">PASS (32.22s)</span></td>
+            <td><span class="status pass" title="llama-bench executed successfully via HIP/ROCm (279.89 t/s)">PASS (279.89 t/s)</span></td>
+            <td><span class="status skip" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)">SKIP</span></td>
+            <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
+            <td><span class="status pass bold">PASS</span></td>
+            <td class="time">2026-11-01 13:04 UTC</td>
+            <td><a href="../tumbleweed/108/7800xt/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="../tumbleweed/108/7800xt/packages.txt" target="_blank" class="log-link">Packages</a></td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function filterTable() {
+            const query = document.getElementById('tableFilter').value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+        function clearFilter() {
+            document.getElementById('tableFilter').value = '';
+            filterTable();
+        }
+    </script>
+</body>
+</html>
