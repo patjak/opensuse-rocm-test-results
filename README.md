@@ -2,17 +2,17 @@
 
 Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
-📊 **[View Detailed Web Dashboard](https://patjak.github.io/opensuse-rocm-test-results/history/index_seq104_20261101_002000.html)** | 📜 **[Browse All Past Test Runs](https://patjak.github.io/opensuse-rocm-test-results/history/index.html)**
+📊 **[View Detailed Web Dashboard](https://patjak.github.io/opensuse-rocm-test-results/history/index_seq105_20261101_085339.html)** | 📜 **[Browse All Past Test Runs](https://patjak.github.io/opensuse-rocm-test-results/history/index.html)**
 
 ### Current Status Overview
 
 #### OS: `tumbleweed`
 
-| # | Machine | GPU | GFX | ROCm | Status | Last Tested |
-| :---: | :--- | :--- | :---: | :---: | :---: | :--- |
-| 104 | `amd-3800xt [GPU 0]` | Unknown GPU | `Unknown` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-01 00:19 UTC |
-| 104 | `amd-2200g [GPU 0]` | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-01 00:19 UTC |
-| 104 | `7800xt [GPU 0]` | AMD Radeon RX 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-01 00:19 UTC |
+| # | GPU | GFX | ROCm | Status | Last Tested |
+| :---: | :--- | :---: | :---: | :---: | :--- |
+| 105 | Unknown GPU | `Unknown` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-01 08:52 UTC |
+| 105 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-01 08:53 UTC |
+| 105 | AMD Radeon RX 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-01 08:53 UTC |
 
 ---
 *Updated automatically by `mama` test runner.*
