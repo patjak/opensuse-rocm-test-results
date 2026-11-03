@@ -1,6 +1,6 @@
 {
   "sequence_number": null,
-  "timestamp": "2026-11-02 00:01 UTC",
+  "timestamp": "2026-11-03 00:00 UTC",
   "os": "tumbleweed",
   "arch": "x86_64",
   "hostname": "amd-3800xt",
@@ -16,8 +16,8 @@
   "hipcc_check": "PASS",
   "hipcc_reason": "hipcc compilation and GPU execution succeeded",
   "blender_check": "PASS",
-  "blender_reason": "Blender rendered frame on GPU in 5.85s",
-  "blender_time_sec": "5.85",
+  "blender_reason": "Blender rendered frame on GPU in 5.72s",
+  "blender_time_sec": "5.72",
   "llama_check": "SKIP",
   "llama_reason": "llama-bench is not installed on this OS",
   "llama_speed_ts": "N/A",
