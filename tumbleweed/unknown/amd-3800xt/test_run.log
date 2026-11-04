@@ -37,18 +37,18 @@ rocminfo                                 7.2.0-5.1
 ------------------------------------------
 
 --> Checking Hardware, Kernel, and ROCm Drivers (GPU Index: 0)...
-Kernel Version: 7.3.0-1-default
+Kernel Version: 7.3.1-1-default
 [FAIL] rocminfo failed to detect HSA agents or GPU permissions
 --> Testing hipcc Compiler...
 [PASS] hipcc compilation and GPU execution succeeded
 --> Testing Blender HIP Rendering...
 Using Blender binary: /usr/bin/blender-5.2
-00:00.552  translation      | WARNING 'locale' data path for translations not found
-00:02.847  blend            | Read blend: "/root/rocm/scene.blend"
-00:02.858  cycles           | WARNING CUEW initialization failed: Error opening the library
+00:00.607  translation      | WARNING 'locale' data path for translations not found
+00:02.880  blend            | Read blend: "/root/rocm/scene.blend"
+00:02.890  cycles           | WARNING CUEW initialization failed: Error opening the library
 Blender 5.2.3 LTS
 ERROR: No HIP GPU devices detected or enabled in Blender preferences!
-[PASS] Blender rendered frame on GPU in 5.72s
+[PASS] Blender rendered frame on GPU in 5.76s
 ------------------------------------------
 Running llama.cpp HIP Benchmark Check
 ------------------------------------------
