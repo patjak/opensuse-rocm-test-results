@@ -43,12 +43,12 @@ Kernel Version: 7.3.0-1-default
 [PASS] hipcc compilation and GPU execution succeeded
 --> Testing Blender HIP Rendering...
 Using Blender binary: /usr/bin/blender-5.2
-00:00.536  translation      | WARNING 'locale' data path for translations not found
-00:02.881  blend            | Read blend: "/root/rocm/scene.blend"
-00:02.891  cycles           | WARNING CUEW initialization failed: Error opening the library
+00:00.739  translation      | WARNING 'locale' data path for translations not found
+00:03.010  blend            | Read blend: "/root/rocm/scene.blend"
+00:03.023  cycles           | WARNING CUEW initialization failed: Error opening the library
 Blender 5.2.3 LTS
 ERROR: No HIP GPU devices detected or enabled in Blender preferences!
-[PASS] Blender rendered frame on GPU in 5.60s
+[PASS] Blender rendered frame on GPU in 5.85s
 ------------------------------------------
 Running llama.cpp HIP Benchmark Check
 ------------------------------------------
