@@ -2,7 +2,7 @@
 
 Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
-📊 **[View Detailed Web Dashboard](https://patjak.github.io/opensuse-rocm-test-results/history/index_seq108_20261105_233701.html)** | 📜 **[Browse All Past Test Runs](https://patjak.github.io/opensuse-rocm-test-results/history/index.html)**
+📊 **[View Detailed Web Dashboard](https://patjak.github.io/opensuse-rocm-test-results/history/index_seq108_20261107_000200.html)** | 📜 **[Browse All Past Test Runs](https://patjak.github.io/opensuse-rocm-test-results/history/index.html)**
 
 ### Current Status Overview
 

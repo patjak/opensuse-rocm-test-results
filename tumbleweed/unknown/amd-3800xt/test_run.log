@@ -11,7 +11,7 @@ Installed ROCm & Graphics Packages:
 Package                                  Version
 ---------------------------------------- -----------------------------------
 blender                                  5.2.0-1.2
-blender-5.2                              5.2.3-1.1
+blender-5.2                              5.2.3-2.1
 blender-lts                              5.2.0-1.2
 hipcc                                    22-14.1
 kernel-firmware-amdgpu                   20260926-1.1
@@ -43,12 +43,12 @@ Kernel Version: 7.3.1-1-default
 [PASS] hipcc compilation and GPU execution succeeded
 --> Testing Blender HIP Rendering...
 Using Blender binary: /usr/bin/blender-5.2
-00:00.557  translation      | WARNING 'locale' data path for translations not found
-00:02.704  blend            | Read blend: "/root/rocm/scene.blend"
-00:02.716  cycles           | WARNING CUEW initialization failed: Error opening the library
+00:00.704  translation      | WARNING 'locale' data path for translations not found
+00:03.230  blend            | Read blend: "/root/rocm/scene.blend"
+00:03.240  cycles           | WARNING CUEW initialization failed: Error opening the library
 Blender 5.2.3 LTS
 ERROR: No HIP GPU devices detected or enabled in Blender preferences!
-[PASS] Blender rendered frame on GPU in 5.36s
+[PASS] Blender rendered frame on GPU in 5.72s
 ------------------------------------------
 Running llama.cpp HIP Benchmark Check
 ------------------------------------------

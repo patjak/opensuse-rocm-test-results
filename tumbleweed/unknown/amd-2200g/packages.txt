@@ -1,7 +1,7 @@
 Package                                  Version
 ---------------------------------------- -----------------------------------
 blender                                  5.2.0-1.2
-blender-5.2                              5.2.3-1.1
+blender-5.2                              5.2.3-2.1
 blender-lts                              5.2.0-1.2
 hipcc                                    22-14.1
 kernel-firmware-amdgpu                   20260926-1.1
