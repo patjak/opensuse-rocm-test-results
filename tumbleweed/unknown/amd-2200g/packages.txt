@@ -4,7 +4,7 @@ blender                                  5.2.0-1.2
 blender-5.2                              5.2.3-2.1
 blender-lts                              5.2.0-1.2
 hipcc                                    22-14.1
-kernel-firmware-amdgpu                   20260926-1.1
+kernel-firmware-amdgpu                   20261031-1.1
 libdrm_amdgpu1                           2.4.134-2.2
 rocm-clang                               22-14.1
 rocm-clang-devel                         22-14.1
