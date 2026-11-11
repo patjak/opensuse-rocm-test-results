@@ -1,0 +1,71 @@
+==========================================
+Starting openSUSE ROCm Test Suite on 5800x (GPU 1)
+OS: rocm-devel (x86_64) | Sequence: #unknown
+Target GPU: [Index: 1] AMD Radeon RX 7900 XTX (gfx1100) PCI: 0000:2f:00.0
+Disabled Tests: none
+==========================================
+
+------------------------------------------
+Installed ROCm & Graphics Packages:
+------------------------------------------
+Package                                  Version
+---------------------------------------- -----------------------------------
+blender                                  5.2.0-1.2
+blender-5.2                              5.2.3-1.1
+blender-lts                              5.2.0-1.2
+hipcc                                    22-15.20
+kernel-firmware-amdgpu                   20260926-1.1
+libdrm_amdgpu1                           2.4.134-2.2
+rocm-clang                               22-15.20
+rocm-clang-devel                         22-15.20
+rocm-clang-libs                          22-15.20
+rocm-clang-runtime-devel                 22-15.20
+rocm-device-libs                         22-15.20
+rocm-filesystem                          7.2.0-8.1
+rocm-hip                                 7.2.2-6.2
+rocm-hip-devel                           7.2.2-6.2
+rocm-lld                                 22-15.20
+rocm-llvm                                22-15.20
+rocm-llvm-devel                          22-15.20
+rocm-llvm-filesystem                     22-15.20
+rocm-llvm-libs                           22-15.20
+rocm-llvm-static                         22-15.20
+rocm-runtime-devel                       7.2.1-9.3
+rocm-smi                                 7.2.1-6.1
+rocm-smi-libs                            7.2.1-6.1
+rocminfo                                 7.2.0-9.2
+------------------------------------------
+
+--> Checking Hardware, Kernel, and ROCm Drivers (GPU Index: 1)...
+Kernel Version: 7.3.0-1-default
+[PASS] Driver & GPU detection succeeded (AMD Radeon RX 7900 XTX (gfx1100))
+--> Testing hipcc Compiler...
+[PASS] hipcc compilation and GPU execution succeeded
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.2
+00:00.033  translation      | WARNING 'locale' data path for translations not found
+00:00.573  blend            | Read blend: "/root/rocm/scene.blend"
+00:00.578  cycles           | WARNING CUEW initialization failed: Error opening the library
+Blender 5.2.3 LTS
+ERROR: No HIP GPU devices detected or enabled in Blender preferences!
+[PASS] Blender rendered frame on GPU in 0.88s
+------------------------------------------
+Running llama.cpp HIP Benchmark Check
+------------------------------------------
+------------------------------------------
+Inspecting Installed GGML / HIP Backends
+------------------------------------------
+--> Package versions:
+package llamacpp is not installed
+package libggml-hip is not installed
+Unable to query RPM package version
+--> [WARNING] /usr/lib64/ggml/libggml-hip.so not found.
+--> [SKIP] llama-bench is not installed on this OS
+--> Testing PyTorch HIP Execution (Distro Package)...
+[SKIP] Distro package 'torch' not found for available Python interpreters (checked python3.14, python3.13, python3)
+--> Testing ROCm Validation Suite (rvs)...
+[SKIP] rvs binary not found in PATH
+==========================================
+Run #unknown [rocm-devel] complete for 5800x (GPU 1). Status: PASS
+Results written to: /mnt/storage/rocm/rocm-devel/unknown/5800x-gpu1/result.json
+==========================================
