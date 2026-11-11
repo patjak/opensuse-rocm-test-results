@@ -6,3 +6,4 @@
 | Run #unknown | tumbleweed (x86_64) | 7800xt | AMD Radeon RX 7800 XT (gfx1101) | 7.3.1-1-default | 7.2.53211-9999 | PASS | PASS | PASS (29.11s) | SKIP (N/A t/s) | SKIP (N/As) | SKIP | **PASS** |
 | Run #unknown | tumbleweed (x86_64) | 7800xt | AMD Radeon RX 7800 XT (gfx1101) | 7.3.1-1-default | 7.2.53211-9999 | PASS | PASS | PASS (29.23s) | SKIP (N/A t/s) | SKIP (N/As) | SKIP | **PASS** |
 | Run #unknown | tumbleweed (x86_64) | 7800xt | AMD Radeon RX 7800 XT (gfx1101) | 7.3.1-1-default | 7.2.53211-9999 | PASS | PASS | PASS (31.56s) | SKIP (N/A t/s) | SKIP (N/As) | SKIP | **PASS** |
+| Run #unknown | tumbleweed (x86_64) | 7800xt | AMD Radeon RX 7800 XT (gfx1101) | 7.3.3-1-default | 7.2.53211-9999 | PASS | PASS | PASS (30.50s) | SKIP (N/A t/s) | SKIP (N/As) | SKIP | **PASS** |

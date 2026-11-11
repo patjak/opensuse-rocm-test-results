@@ -1,6 +1,6 @@
 {
   "sequence_number": null,
-  "timestamp": "2026-11-10 00:03 UTC",
+  "timestamp": "2026-11-11 00:03 UTC",
   "os": "rocm-devel",
   "arch": "x86_64",
   "hostname": "amd-2200g",
@@ -16,8 +16,8 @@
   "hipcc_check": "PASS",
   "hipcc_reason": "hipcc compilation and GPU execution succeeded",
   "blender_check": "PASS",
-  "blender_reason": "Blender rendered frame on GPU in 69.44s",
-  "blender_time_sec": "69.44",
+  "blender_reason": "Blender rendered frame on GPU in 61.73s",
+  "blender_time_sec": "61.73",
   "llama_check": "SKIP",
   "llama_reason": "llama-bench is not installed on this OS",
   "llama_speed_ts": "N/A",

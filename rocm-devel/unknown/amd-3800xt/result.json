@@ -1,6 +1,6 @@
 {
   "sequence_number": null,
-  "timestamp": "2026-11-10 00:02 UTC",
+  "timestamp": "2026-11-11 00:02 UTC",
   "os": "rocm-devel",
   "arch": "x86_64",
   "hostname": "amd-3800xt",
@@ -16,8 +16,8 @@
   "hipcc_check": "PASS",
   "hipcc_reason": "hipcc compilation and GPU execution succeeded",
   "blender_check": "PASS",
-  "blender_reason": "Blender rendered frame on GPU in 6.33s",
-  "blender_time_sec": "6.33",
+  "blender_reason": "Blender rendered frame on GPU in 5.87s",
+  "blender_time_sec": "5.87",
   "llama_check": "SKIP",
   "llama_reason": "llama-bench is not installed on this OS",
   "llama_speed_ts": "N/A",
