@@ -1,1 +1,0 @@
-| Run #unknown | tumbleweed (x86_64) | 5800x (GPU 1) | AMD Radeon RX 7900 XTX (gfx1100) | 7.3.3-1-default | 7.2.53211-9999 | PASS | PASS | PASS (0.87s) | SKIP (N/A t/s) | SKIP (N/As) | SKIP | **PASS** |
