@@ -113,6 +113,15 @@
         .status.off  { background: var(--off-bg);  color: var(--off-fg);  border-color: rgba(110, 119, 129, 0.2); }
         .status.not  { background: var(--not-bg);  color: var(--not-fg);  border-color: rgba(154, 103, 0, 0.2); }
         .status.bold { font-weight: 700; }
+        .status.clickable {
+            cursor: pointer;
+            transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+        }
+        .status.clickable:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+            filter: brightness(0.96);
+        }
         .badge.os {
             background: #f6f8fa;
             color: #24292f;
@@ -170,13 +179,129 @@
         .clear-btn:hover {
             background-color: #f3f4f6;
         }
+        /* Modal Overlay Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            padding: 1.5rem;
+            box-sizing: border-box;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-box {
+            background: #0d1117;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 950px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            transform: scale(0.98);
+            transition: transform 0.2s ease;
+        }
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+        .modal-header {
+            padding: 0.85rem 1.25rem;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #161b22;
+        }
+        .modal-title-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .modal-meta {
+            color: #8b949e;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+        .modal-close-btn {
+            background: transparent;
+            border: none;
+            color: #8b949e;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0 0.25rem;
+        }
+        .modal-close-btn:hover {
+            color: #f0f6fc;
+        }
+        .modal-reason {
+            padding: 0.6rem 1.25rem;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            font-size: 0.825rem;
+            color: #8b949e;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace;
+        }
+        .modal-body {
+            padding: 1.25rem;
+            overflow-y: auto;
+            flex: 1;
+            background: #0d1117;
+            margin: 0;
+        }
+        .modal-code {
+            margin: 0;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace;
+            font-size: 0.8rem;
+            line-height: 1.45;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: #e6edf3;
+        }
+        .modal-footer {
+            padding: 0.65rem 1.25rem;
+            border-top: 1px solid #30363d;
+            background: #161b22;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-btn {
+            padding: 0.35rem 0.8rem;
+            font-size: 0.8rem;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+            background: #21262d;
+            color: #c9d1d9;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .modal-btn:hover {
+            background: #30363d;
+            color: #f0f6fc;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <a href="history/index.html" class="log-link" style="float: right;">📜 View Test History</a>
-            <h1>openSUSE ROCm Test Dashboard <span class="seq-badge">Batch 6</span></h1>
+            <h1>openSUSE ROCm Test Dashboard <span class="seq-badge">Batch 7</span></h1>
             <p>Automated status across hardware and distribution releases.</p>
             <div class="legend">
                 <span class="legend-item"><span class="status pass">PASS</span> Test passed successfully</span>
@@ -214,27 +339,27 @@
             <td><span class="badge os">rocm-devel</span></td>
             <td><code title="PCI: 0000:12:00.0">gfx1010</code></td>
             <td><code>7.2.53211</code></td>
-            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))">PASS</span></td>
-            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
-            <td><span class="status pass" title="Blender rendered frame on GPU in 62.84s">PASS (62.84s)</span></td>
-            <td><span class="status pass" title="llama-bench executed successfully via HIP/ROCm (229.89 t/s)">PASS (229.89 t/s)</span></td>
-            <td><span class="status fail" title="PyTorch GPU execution failed">FAIL</span></td>
-            <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
+            <td><span class="status pass clickable" title="Driver &amp; GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))" data-test="driver" data-test-name="Driver & Hardware Detection" data-gpu="gfx1010" data-os="rocm-devel" data-reason="Driver &amp; GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))" data-log="rocm-devel/7/amd-2200g/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="hipcc compilation and GPU execution succeeded" data-test="hipcc" data-test-name="hipcc Compiler" data-gpu="gfx1010" data-os="rocm-devel" data-reason="hipcc compilation and GPU execution succeeded" data-log="rocm-devel/7/amd-2200g/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="Blender rendered frame on GPU in 49.92s" data-test="blender" data-test-name="Blender HIP Rendering" data-gpu="gfx1010" data-os="rocm-devel" data-reason="Blender rendered frame on GPU in 49.92s" data-log="rocm-devel/7/amd-2200g/test_run.log" onclick="openLogModal(this)">PASS (49.92s)</span></td>
+            <td><span class="status pass clickable" title="llama-bench executed successfully via HIP/ROCm (237.52 t/s)" data-test="llama" data-test-name="LLaMA HIP Benchmark" data-gpu="gfx1010" data-os="rocm-devel" data-reason="llama-bench executed successfully via HIP/ROCm (237.52 t/s)" data-log="rocm-devel/7/amd-2200g/test_run.log" onclick="openLogModal(this)">PASS (237.52 t/s)</span></td>
+            <td><span class="status fail clickable" title="PyTorch crashed with Segmentation Fault (Signal 11)" data-test="pytorch" data-test-name="PyTorch HIP Execution" data-gpu="gfx1010" data-os="rocm-devel" data-reason="PyTorch crashed with Segmentation Fault (Signal 11)" data-log="rocm-devel/7/amd-2200g/test_run.log" onclick="openLogModal(this)">FAIL</span></td>
+            <td><span class="status pass clickable" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-test="rvs" data-test-name="ROCm Validation Suite (rvs)" data-gpu="gfx1010" data-os="rocm-devel" data-reason="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-log="rocm-devel/7/amd-2200g/test_run.log" onclick="openLogModal(this)">PASS</span></td>
             <td><span class="status fail bold">FAIL</span></td>
-            <td class="time" title="Run #6">2026-11-12 10:18 UTC</td>
-            <td><a href="rocm-devel/6/amd-2200g/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="rocm-devel/6/amd-2200g/packages.txt" target="_blank" class="log-link">Packages</a></td>
+            <td class="time" title="Run #7">2026-11-12 11:24 UTC</td>
+            <td><a href="rocm-devel/7/amd-2200g/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="rocm-devel/7/amd-2200g/packages.txt" target="_blank" class="log-link">Packages</a></td>
         </tr>
         
         <tr>
             <td><span class="badge os">rocm-devel</span></td>
             <td><code title="PCI: 0000:2f:00.0">gfx1100</code></td>
             <td><code>7.2.53211</code></td>
-            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon RX 7900 XTX (gfx1100))">PASS</span></td>
-            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
-            <td><span class="status pass" title="Blender rendered frame on GPU in 10.40s">PASS (10.40s)</span></td>
-            <td><span class="status not" title="GPU architecture &#x27;gfx1100&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so">NOT</span></td>
-            <td><span class="status fail" title="PyTorch GPU execution failed">FAIL</span></td>
-            <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
+            <td><span class="status pass clickable" title="Driver &amp; GPU detection succeeded (AMD Radeon RX 7900 XTX (gfx1100))" data-test="driver" data-test-name="Driver & Hardware Detection" data-gpu="gfx1100" data-os="rocm-devel" data-reason="Driver &amp; GPU detection succeeded (AMD Radeon RX 7900 XTX (gfx1100))" data-log="rocm-devel/5/5800x-gpu1/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="hipcc compilation and GPU execution succeeded" data-test="hipcc" data-test-name="hipcc Compiler" data-gpu="gfx1100" data-os="rocm-devel" data-reason="hipcc compilation and GPU execution succeeded" data-log="rocm-devel/5/5800x-gpu1/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="Blender rendered frame on GPU in 10.40s" data-test="blender" data-test-name="Blender HIP Rendering" data-gpu="gfx1100" data-os="rocm-devel" data-reason="Blender rendered frame on GPU in 10.40s" data-log="rocm-devel/5/5800x-gpu1/test_run.log" onclick="openLogModal(this)">PASS (10.40s)</span></td>
+            <td><span class="status not clickable" title="GPU architecture &#x27;gfx1100&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so" data-test="llama" data-test-name="LLaMA HIP Benchmark" data-gpu="gfx1100" data-os="rocm-devel" data-reason="GPU architecture &#x27;gfx1100&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so" data-log="rocm-devel/5/5800x-gpu1/test_run.log" onclick="openLogModal(this)">NOT</span></td>
+            <td><span class="status fail clickable" title="PyTorch GPU execution failed" data-test="pytorch" data-test-name="PyTorch HIP Execution" data-gpu="gfx1100" data-os="rocm-devel" data-reason="PyTorch GPU execution failed" data-log="rocm-devel/5/5800x-gpu1/test_run.log" onclick="openLogModal(this)">FAIL</span></td>
+            <td><span class="status pass clickable" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-test="rvs" data-test-name="ROCm Validation Suite (rvs)" data-gpu="gfx1100" data-os="rocm-devel" data-reason="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-log="rocm-devel/5/5800x-gpu1/test_run.log" onclick="openLogModal(this)">PASS</span></td>
             <td><span class="status fail bold">FAIL</span></td>
             <td class="time" title="Run #5">2026-11-12 08:06 UTC</td>
             <td><a href="rocm-devel/5/5800x-gpu1/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="rocm-devel/5/5800x-gpu1/packages.txt" target="_blank" class="log-link">Packages</a></td>
@@ -244,27 +369,27 @@
             <td><span class="badge os">rocm-devel</span></td>
             <td><code title="PCI: 0000:03:00.0">gfx1101</code></td>
             <td><code>7.2.53211</code></td>
-            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon RX 7800 XT (gfx1101))">PASS</span></td>
-            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
-            <td><span class="status pass" title="Blender rendered frame on GPU in 37.12s">PASS (37.12s)</span></td>
-            <td><span class="status pass" title="llama-bench executed successfully via HIP/ROCm (278.53 t/s)">PASS (278.53 t/s)</span></td>
-            <td><span class="status pass" title="PyTorch executed matrix multiplication on GPU in 0.0152s">PASS (0.0152s)</span></td>
-            <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
+            <td><span class="status pass clickable" title="Driver &amp; GPU detection succeeded (AMD Radeon RX 7800 XT (gfx1101))" data-test="driver" data-test-name="Driver & Hardware Detection" data-gpu="gfx1101" data-os="rocm-devel" data-reason="Driver &amp; GPU detection succeeded (AMD Radeon RX 7800 XT (gfx1101))" data-log="rocm-devel/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="hipcc compilation and GPU execution succeeded" data-test="hipcc" data-test-name="hipcc Compiler" data-gpu="gfx1101" data-os="rocm-devel" data-reason="hipcc compilation and GPU execution succeeded" data-log="rocm-devel/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="Blender rendered frame on GPU in 30.06s" data-test="blender" data-test-name="Blender HIP Rendering" data-gpu="gfx1101" data-os="rocm-devel" data-reason="Blender rendered frame on GPU in 30.06s" data-log="rocm-devel/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS (30.06s)</span></td>
+            <td><span class="status pass clickable" title="llama-bench executed successfully via HIP/ROCm (278.18 t/s)" data-test="llama" data-test-name="LLaMA HIP Benchmark" data-gpu="gfx1101" data-os="rocm-devel" data-reason="llama-bench executed successfully via HIP/ROCm (278.18 t/s)" data-log="rocm-devel/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS (278.18 t/s)</span></td>
+            <td><span class="status pass clickable" title="PyTorch executed matrix multiplication on GPU in 0.0152s" data-test="pytorch" data-test-name="PyTorch HIP Execution" data-gpu="gfx1101" data-os="rocm-devel" data-reason="PyTorch executed matrix multiplication on GPU in 0.0152s" data-log="rocm-devel/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS (0.0152s)</span></td>
+            <td><span class="status pass clickable" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-test="rvs" data-test-name="ROCm Validation Suite (rvs)" data-gpu="gfx1101" data-os="rocm-devel" data-reason="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-log="rocm-devel/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS</span></td>
             <td><span class="status pass bold">PASS</span></td>
-            <td class="time" title="Run #6">2026-11-12 10:18 UTC</td>
-            <td><a href="rocm-devel/6/7800xt/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="rocm-devel/6/7800xt/packages.txt" target="_blank" class="log-link">Packages</a></td>
+            <td class="time" title="Run #7">2026-11-12 11:24 UTC</td>
+            <td><a href="rocm-devel/7/7800xt/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="rocm-devel/7/7800xt/packages.txt" target="_blank" class="log-link">Packages</a></td>
         </tr>
         
         <tr>
             <td><span class="badge os">rocm-devel</span></td>
             <td><code title="PCI: 0000:25:00.0">gfx1201</code></td>
             <td><code>7.2.53211</code></td>
-            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon Graphics (gfx1201))">PASS</span></td>
-            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
-            <td><span class="status pass" title="Blender rendered frame on GPU in 15.74s">PASS (15.74s)</span></td>
-            <td><span class="status not" title="GPU architecture &#x27;gfx1201&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so">NOT</span></td>
-            <td><span class="status pass" title="PyTorch executed matrix multiplication on GPU in 0.0142s">PASS (0.0142s)</span></td>
-            <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
+            <td><span class="status pass clickable" title="Driver &amp; GPU detection succeeded (AMD Radeon Graphics (gfx1201))" data-test="driver" data-test-name="Driver & Hardware Detection" data-gpu="gfx1201" data-os="rocm-devel" data-reason="Driver &amp; GPU detection succeeded (AMD Radeon Graphics (gfx1201))" data-log="rocm-devel/5/5800x-gpu0/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="hipcc compilation and GPU execution succeeded" data-test="hipcc" data-test-name="hipcc Compiler" data-gpu="gfx1201" data-os="rocm-devel" data-reason="hipcc compilation and GPU execution succeeded" data-log="rocm-devel/5/5800x-gpu0/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="Blender rendered frame on GPU in 15.74s" data-test="blender" data-test-name="Blender HIP Rendering" data-gpu="gfx1201" data-os="rocm-devel" data-reason="Blender rendered frame on GPU in 15.74s" data-log="rocm-devel/5/5800x-gpu0/test_run.log" onclick="openLogModal(this)">PASS (15.74s)</span></td>
+            <td><span class="status not clickable" title="GPU architecture &#x27;gfx1201&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so" data-test="llama" data-test-name="LLaMA HIP Benchmark" data-gpu="gfx1201" data-os="rocm-devel" data-reason="GPU architecture &#x27;gfx1201&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so" data-log="rocm-devel/5/5800x-gpu0/test_run.log" onclick="openLogModal(this)">NOT</span></td>
+            <td><span class="status pass clickable" title="PyTorch executed matrix multiplication on GPU in 0.0142s" data-test="pytorch" data-test-name="PyTorch HIP Execution" data-gpu="gfx1201" data-os="rocm-devel" data-reason="PyTorch executed matrix multiplication on GPU in 0.0142s" data-log="rocm-devel/5/5800x-gpu0/test_run.log" onclick="openLogModal(this)">PASS (0.0142s)</span></td>
+            <td><span class="status pass clickable" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-test="rvs" data-test-name="ROCm Validation Suite (rvs)" data-gpu="gfx1201" data-os="rocm-devel" data-reason="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-log="rocm-devel/5/5800x-gpu0/test_run.log" onclick="openLogModal(this)">PASS</span></td>
             <td><span class="status pass bold">PASS / NOT</span></td>
             <td class="time" title="Run #5">2026-11-12 08:05 UTC</td>
             <td><a href="rocm-devel/5/5800x-gpu0/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="rocm-devel/5/5800x-gpu0/packages.txt" target="_blank" class="log-link">Packages</a></td>
@@ -274,27 +399,27 @@
             <td><span class="badge os">tumbleweed</span></td>
             <td><code title="PCI: 0000:12:00.0">gfx1010</code></td>
             <td><code>7.2.53211</code></td>
-            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))">PASS</span></td>
-            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
-            <td><span class="status pass" title="Blender rendered frame on GPU in 49.40s">PASS (49.40s)</span></td>
-            <td><span class="status pass" title="llama-bench executed successfully via HIP/ROCm (230.74 t/s)">PASS (230.74 t/s)</span></td>
-            <td><span class="status skip" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)">SKIP</span></td>
-            <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
+            <td><span class="status pass clickable" title="Driver &amp; GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))" data-test="driver" data-test-name="Driver & Hardware Detection" data-gpu="gfx1010" data-os="tumbleweed" data-reason="Driver &amp; GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))" data-log="tumbleweed/7/amd-2200g/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="hipcc compilation and GPU execution succeeded" data-test="hipcc" data-test-name="hipcc Compiler" data-gpu="gfx1010" data-os="tumbleweed" data-reason="hipcc compilation and GPU execution succeeded" data-log="tumbleweed/7/amd-2200g/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="Blender rendered frame on GPU in 50.44s" data-test="blender" data-test-name="Blender HIP Rendering" data-gpu="gfx1010" data-os="tumbleweed" data-reason="Blender rendered frame on GPU in 50.44s" data-log="tumbleweed/7/amd-2200g/test_run.log" onclick="openLogModal(this)">PASS (50.44s)</span></td>
+            <td><span class="status pass clickable" title="llama-bench executed successfully via HIP/ROCm (230.89 t/s)" data-test="llama" data-test-name="LLaMA HIP Benchmark" data-gpu="gfx1010" data-os="tumbleweed" data-reason="llama-bench executed successfully via HIP/ROCm (230.89 t/s)" data-log="tumbleweed/7/amd-2200g/test_run.log" onclick="openLogModal(this)">PASS (230.89 t/s)</span></td>
+            <td><span class="status skip clickable" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)" data-test="pytorch" data-test-name="PyTorch HIP Execution" data-gpu="gfx1010" data-os="tumbleweed" data-reason="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)" data-log="tumbleweed/7/amd-2200g/test_run.log" onclick="openLogModal(this)">SKIP</span></td>
+            <td><span class="status pass clickable" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-test="rvs" data-test-name="ROCm Validation Suite (rvs)" data-gpu="gfx1010" data-os="tumbleweed" data-reason="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-log="tumbleweed/7/amd-2200g/test_run.log" onclick="openLogModal(this)">PASS</span></td>
             <td><span class="status pass bold">PASS</span></td>
-            <td class="time" title="Run #6">2026-11-12 10:27 UTC</td>
-            <td><a href="tumbleweed/6/amd-2200g/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="tumbleweed/6/amd-2200g/packages.txt" target="_blank" class="log-link">Packages</a></td>
+            <td class="time" title="Run #7">2026-11-12 11:30 UTC</td>
+            <td><a href="tumbleweed/7/amd-2200g/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="tumbleweed/7/amd-2200g/packages.txt" target="_blank" class="log-link">Packages</a></td>
         </tr>
         
         <tr>
             <td><span class="badge os">tumbleweed</span></td>
             <td><code title="PCI: 0000:2f:00.0">gfx1100</code></td>
             <td><code>7.2.53211</code></td>
-            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon RX 7900 XTX (gfx1100))">PASS</span></td>
-            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
-            <td><span class="status pass" title="Blender rendered frame on GPU in 10.47s">PASS (10.47s)</span></td>
-            <td><span class="status not" title="GPU architecture &#x27;gfx1100&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so">NOT</span></td>
-            <td><span class="status skip" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)">SKIP</span></td>
-            <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
+            <td><span class="status pass clickable" title="Driver &amp; GPU detection succeeded (AMD Radeon RX 7900 XTX (gfx1100))" data-test="driver" data-test-name="Driver & Hardware Detection" data-gpu="gfx1100" data-os="tumbleweed" data-reason="Driver &amp; GPU detection succeeded (AMD Radeon RX 7900 XTX (gfx1100))" data-log="tumbleweed/4/5800x-gpu1/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="hipcc compilation and GPU execution succeeded" data-test="hipcc" data-test-name="hipcc Compiler" data-gpu="gfx1100" data-os="tumbleweed" data-reason="hipcc compilation and GPU execution succeeded" data-log="tumbleweed/4/5800x-gpu1/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="Blender rendered frame on GPU in 10.47s" data-test="blender" data-test-name="Blender HIP Rendering" data-gpu="gfx1100" data-os="tumbleweed" data-reason="Blender rendered frame on GPU in 10.47s" data-log="tumbleweed/4/5800x-gpu1/test_run.log" onclick="openLogModal(this)">PASS (10.47s)</span></td>
+            <td><span class="status not clickable" title="GPU architecture &#x27;gfx1100&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so" data-test="llama" data-test-name="LLaMA HIP Benchmark" data-gpu="gfx1100" data-os="tumbleweed" data-reason="GPU architecture &#x27;gfx1100&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so" data-log="tumbleweed/4/5800x-gpu1/test_run.log" onclick="openLogModal(this)">NOT</span></td>
+            <td><span class="status skip clickable" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)" data-test="pytorch" data-test-name="PyTorch HIP Execution" data-gpu="gfx1100" data-os="tumbleweed" data-reason="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)" data-log="tumbleweed/4/5800x-gpu1/test_run.log" onclick="openLogModal(this)">SKIP</span></td>
+            <td><span class="status pass clickable" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-test="rvs" data-test-name="ROCm Validation Suite (rvs)" data-gpu="gfx1100" data-os="tumbleweed" data-reason="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-log="tumbleweed/4/5800x-gpu1/test_run.log" onclick="openLogModal(this)">PASS</span></td>
             <td><span class="status pass bold">PASS / NOT</span></td>
             <td class="time" title="Run #4">2026-11-12 07:22 UTC</td>
             <td><a href="tumbleweed/4/5800x-gpu1/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="tumbleweed/4/5800x-gpu1/packages.txt" target="_blank" class="log-link">Packages</a></td>
@@ -304,27 +429,27 @@
             <td><span class="badge os">tumbleweed</span></td>
             <td><code title="PCI: 0000:03:00.0">gfx1101</code></td>
             <td><code>7.2.53211</code></td>
-            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon RX 7800 XT (gfx1101))">PASS</span></td>
-            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
-            <td><span class="status pass" title="Blender rendered frame on GPU in 29.52s">PASS (29.52s)</span></td>
-            <td><span class="status pass" title="llama-bench executed successfully via HIP/ROCm (277.28 t/s)">PASS (277.28 t/s)</span></td>
-            <td><span class="status skip" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)">SKIP</span></td>
-            <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
+            <td><span class="status pass clickable" title="Driver &amp; GPU detection succeeded (AMD Radeon RX 7800 XT (gfx1101))" data-test="driver" data-test-name="Driver & Hardware Detection" data-gpu="gfx1101" data-os="tumbleweed" data-reason="Driver &amp; GPU detection succeeded (AMD Radeon RX 7800 XT (gfx1101))" data-log="tumbleweed/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="hipcc compilation and GPU execution succeeded" data-test="hipcc" data-test-name="hipcc Compiler" data-gpu="gfx1101" data-os="tumbleweed" data-reason="hipcc compilation and GPU execution succeeded" data-log="tumbleweed/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="Blender rendered frame on GPU in 29.78s" data-test="blender" data-test-name="Blender HIP Rendering" data-gpu="gfx1101" data-os="tumbleweed" data-reason="Blender rendered frame on GPU in 29.78s" data-log="tumbleweed/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS (29.78s)</span></td>
+            <td><span class="status pass clickable" title="llama-bench executed successfully via HIP/ROCm (277.51 t/s)" data-test="llama" data-test-name="LLaMA HIP Benchmark" data-gpu="gfx1101" data-os="tumbleweed" data-reason="llama-bench executed successfully via HIP/ROCm (277.51 t/s)" data-log="tumbleweed/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS (277.51 t/s)</span></td>
+            <td><span class="status skip clickable" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)" data-test="pytorch" data-test-name="PyTorch HIP Execution" data-gpu="gfx1101" data-os="tumbleweed" data-reason="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)" data-log="tumbleweed/7/7800xt/test_run.log" onclick="openLogModal(this)">SKIP</span></td>
+            <td><span class="status pass clickable" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-test="rvs" data-test-name="ROCm Validation Suite (rvs)" data-gpu="gfx1101" data-os="tumbleweed" data-reason="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-log="tumbleweed/7/7800xt/test_run.log" onclick="openLogModal(this)">PASS</span></td>
             <td><span class="status pass bold">PASS</span></td>
-            <td class="time" title="Run #6">2026-11-12 10:27 UTC</td>
-            <td><a href="tumbleweed/6/7800xt/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="tumbleweed/6/7800xt/packages.txt" target="_blank" class="log-link">Packages</a></td>
+            <td class="time" title="Run #7">2026-11-12 11:30 UTC</td>
+            <td><a href="tumbleweed/7/7800xt/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="tumbleweed/7/7800xt/packages.txt" target="_blank" class="log-link">Packages</a></td>
         </tr>
         
         <tr>
             <td><span class="badge os">tumbleweed</span></td>
             <td><code title="PCI: 0000:25:00.0">gfx1201</code></td>
             <td><code>7.2.53211</code></td>
-            <td><span class="status pass" title="Driver &amp; GPU detection succeeded (AMD Radeon Graphics (gfx1201))">PASS</span></td>
-            <td><span class="status pass" title="hipcc compilation and GPU execution succeeded">PASS</span></td>
-            <td><span class="status pass" title="Blender rendered frame on GPU in 15.77s">PASS (15.77s)</span></td>
-            <td><span class="status not" title="GPU architecture &#x27;gfx1201&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so">NOT</span></td>
-            <td><span class="status skip" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)">SKIP</span></td>
-            <td><span class="status pass" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)">PASS</span></td>
+            <td><span class="status pass clickable" title="Driver &amp; GPU detection succeeded (AMD Radeon Graphics (gfx1201))" data-test="driver" data-test-name="Driver & Hardware Detection" data-gpu="gfx1201" data-os="tumbleweed" data-reason="Driver &amp; GPU detection succeeded (AMD Radeon Graphics (gfx1201))" data-log="tumbleweed/4/5800x-gpu0/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="hipcc compilation and GPU execution succeeded" data-test="hipcc" data-test-name="hipcc Compiler" data-gpu="gfx1201" data-os="tumbleweed" data-reason="hipcc compilation and GPU execution succeeded" data-log="tumbleweed/4/5800x-gpu0/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status pass clickable" title="Blender rendered frame on GPU in 15.77s" data-test="blender" data-test-name="Blender HIP Rendering" data-gpu="gfx1201" data-os="tumbleweed" data-reason="Blender rendered frame on GPU in 15.77s" data-log="tumbleweed/4/5800x-gpu0/test_run.log" onclick="openLogModal(this)">PASS (15.77s)</span></td>
+            <td><span class="status not clickable" title="GPU architecture &#x27;gfx1201&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so" data-test="llama" data-test-name="LLaMA HIP Benchmark" data-gpu="gfx1201" data-os="tumbleweed" data-reason="GPU architecture &#x27;gfx1201&#x27; is not compiled into /usr/lib64/ggml/libggml-hip.so" data-log="tumbleweed/4/5800x-gpu0/test_run.log" onclick="openLogModal(this)">NOT</span></td>
+            <td><span class="status skip clickable" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)" data-test="pytorch" data-test-name="PyTorch HIP Execution" data-gpu="gfx1201" data-os="tumbleweed" data-reason="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)" data-log="tumbleweed/4/5800x-gpu0/test_run.log" onclick="openLogModal(this)">SKIP</span></td>
+            <td><span class="status pass clickable" title="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-test="rvs" data-test-name="ROCm Validation Suite (rvs)" data-gpu="gfx1201" data-os="tumbleweed" data-reason="RVS qualification &amp; short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)" data-log="tumbleweed/4/5800x-gpu0/test_run.log" onclick="openLogModal(this)">PASS</span></td>
             <td><span class="status pass bold">PASS / NOT</span></td>
             <td class="time" title="Run #4">2026-11-12 07:22 UTC</td>
             <td><a href="tumbleweed/4/5800x-gpu0/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="tumbleweed/4/5800x-gpu0/packages.txt" target="_blank" class="log-link">Packages</a></td>
@@ -334,6 +459,32 @@
             </table>
         </div>
     </div>
+
+    <!-- Interactive Test Log Modal -->
+    <div id="logModal" class="modal-overlay" onclick="if(event.target === this) closeLogModal()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span id="modalStatus" class="status"></span>
+                    <span id="modalTitle"></span>
+                    <span id="modalMeta" class="modal-meta"></span>
+                </div>
+                <button class="modal-close-btn" onclick="closeLogModal()" title="Close">&times;</button>
+            </div>
+            <div id="modalReason" class="modal-reason"></div>
+            <div class="modal-body">
+                <pre id="modalCode" class="modal-code"></pre>
+            </div>
+            <div class="modal-footer">
+                <a id="modalRawLink" href="#" target="_blank" class="log-link" style="font-size: 0.85rem;">📄 View Full Log</a>
+                <div>
+                    <button id="copyBtn" class="modal-btn" onclick="copyModalLog()">📋 Copy</button>
+                    <button class="modal-btn" onclick="closeLogModal()" style="margin-left: 0.5rem;">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         function filterTable() {
             const query = document.getElementById('tableFilter').value.toLowerCase();
@@ -347,6 +498,111 @@
             document.getElementById('tableFilter').value = '';
             filterTable();
         }
+
+        const logCache = {};
+
+        function openLogModal(el) {
+            const testId = el.getAttribute('data-test');
+            const testName = el.getAttribute('data-test-name') || testId;
+            const statusCls = el.className.replace('clickable', '').replace('status', '').trim();
+            const gpu = el.getAttribute('data-gpu') || '';
+            const os = el.getAttribute('data-os') || '';
+            const reason = el.getAttribute('data-reason') || '';
+            const logUrl = el.getAttribute('data-log') || '';
+
+            document.getElementById('modalTitle').innerText = testName;
+            document.getElementById('modalMeta').innerText = `${gpu} • ${os}`;
+            document.getElementById('modalStatus').className = `status ${statusCls}`;
+            document.getElementById('modalStatus').innerText = el.innerText;
+            
+            const reasonEl = document.getElementById('modalReason');
+            if (reason) {
+                reasonEl.style.display = 'block';
+                reasonEl.innerText = `Summary: ${reason}`;
+            } else {
+                reasonEl.style.display = 'none';
+            }
+
+            const rawLink = document.getElementById('modalRawLink');
+            if (logUrl) {
+                rawLink.href = logUrl;
+                rawLink.style.display = 'inline-block';
+            } else {
+                rawLink.style.display = 'none';
+            }
+
+            const codeEl = document.getElementById('modalCode');
+            codeEl.innerText = 'Loading log...';
+            document.getElementById('logModal').classList.add('active');
+
+            if (!logUrl) {
+                codeEl.innerText = reason ? reason : 'No log file associated with this result.';
+                return;
+            }
+
+            if (logCache[logUrl]) {
+                codeEl.innerText = extractTestSection(logCache[logUrl], testId);
+            } else {
+                fetch(logUrl)
+                    .then(r => {
+                        if (!r.ok) throw new Error(`HTTP ${r.status} ${r.statusText}`);
+                        return r.text();
+                    })
+                    .then(text => {
+                        logCache[logUrl] = text;
+                        codeEl.innerText = extractTestSection(text, testId);
+                    })
+                    .catch(err => {
+                        codeEl.innerText = `Unable to fetch log from ${logUrl}:
+${err.message}
+
+${reason ? 'Summary: ' + reason : ''}`;
+                    });
+            }
+        }
+
+        function extractTestSection(logText, testId) {
+            const patterns = {
+                driver: [/--> Checking Hardware, Kernel/i, /--> (Testing|Running)/i],
+                hipcc: [/--> Testing hipcc/i, /--> (Testing|Running)/i],
+                blender: [/--> Testing Blender/i, /(?:--> (?:Testing|Running)|Running llama)/i],
+                llama: [/(?:--> Testing llama|Running llama\.cpp)/i, /--> (Testing|Running)/i],
+                pytorch: [/--> Testing PyTorch/i, /--> (Testing|Running)/i],
+                rvs: [/--> Testing ROCm Validation Suite/i, /=(10,)\s*\nRun #/i]
+            };
+            const pair = patterns[testId];
+            if (!pair) return logText;
+            const startIdx = logText.search(pair[0]);
+            if (startIdx === -1) return logText;
+            const sub = logText.substring(startIdx);
+            const firstNewline = sub.indexOf('\n');
+            if (firstNewline !== -1) {
+                const afterFirst = sub.substring(firstNewline + 1);
+                const endMatch = afterFirst.search(pair[1]);
+                if (endMatch !== -1) {
+                    return sub.substring(0, firstNewline + 1 + endMatch).trim();
+                }
+            }
+            return sub.trim();
+        }
+
+        function closeLogModal() {
+            document.getElementById('logModal').classList.remove('active');
+        }
+
+        function copyModalLog() {
+            const text = document.getElementById('modalCode').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const orig = btn.innerText;
+                btn.innerText = '✓ Copied';
+                setTimeout(() => { btn.innerText = orig; }, 1500);
+            });
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLogModal();
+        });
     </script>
 </body>
 </html>
