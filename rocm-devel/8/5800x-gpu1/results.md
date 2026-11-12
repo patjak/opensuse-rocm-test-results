@@ -1,0 +1,1 @@
+| Run #8 | rocm-devel (x86_64) | 5800x (GPU 1) | AMD Radeon RX 7900 XTX (gfx1100) | 7.3.3-1-default | 7.2.53211-9999 | PASS | PASS | PASS (10.59s) | PASS (408.54 t/s) | FAIL (N/As) | PASS | **FAIL** |
