@@ -1,0 +1,75 @@
+==========================================
+Starting openSUSE ROCm Test Suite on 7800xt
+OS: rocm-preview (x86_64) | Sequence: #12
+Target GPU: [Index: 0] AMD Radeon RX 7800 XT (gfx1101) PCI: 0000:03:00.0
+Disabled Tests: none
+==========================================
+
+------------------------------------------
+Installed ROCm & Graphics Packages:
+------------------------------------------
+Package                                  Version
+---------------------------------------- -----------------------------------
+blender                                  5.3.0-1.1
+blender-5.3                              5.3.0-1.1
+blender-lts                              5.3.0-1.1
+hipcc                                    23-2.2
+hipfft-libs                              7.2.0-5.2
+hipsolver-libs                           7.2.0-6.2
+kernel-firmware-amdgpu                   20261031-1.1
+libdrm_amdgpu1                           2.4.134-2.2
+libtorch-rocm                            2.14.0-72.1
+python313-torch-rocm                     2.14.0-72.1
+rocm-clang                               23-2.2
+rocm-clang-devel                         23-2.2
+rocm-clang-libs                          23-2.2
+rocm-clang-runtime-devel                 23-2.2
+rocm-device-libs                         23-2.2
+rocm-filesystem                          7.2.0-8.1
+rocm-hip                                 7.14.1-1.1
+rocm-hip-devel                           7.14.1-1.1
+rocm-lld                                 23-2.2
+rocm-llvm                                23-2.2
+rocm-llvm-devel                          23-2.2
+rocm-llvm-filesystem                     23-2.2
+rocm-llvm-libs                           23-2.2
+rocm-llvm-static                         23-2.2
+rocm-omp-devel                           23-2.2
+rocm-runtime-devel                       7.14.1-1.1
+rocm-smi                                 7.2.1-4.1
+rocm-smi-libs                            7.2.1-4.1
+rocm-validation-suite                    7.2.1-3.1
+rocminfo                                 7.14.1-1.1
+rocrand-devel                            7.14.1-1.1
+roctracer-libs                           7.14.1-1.1
+------------------------------------------
+
+--> Checking Hardware, Kernel, and ROCm Drivers (GPU Index: 0)...
+Kernel Version: 7.3.3-1-default
+[PASS] Driver & GPU detection succeeded (AMD Radeon RX 7800 XT (gfx1101))
+--> Testing hipcc Compiler...
+HIP error: hipErrorNoDevice: no ROCm-capable device is detected
+HIP_TEST_FAILED
+[FAIL] hipcc binary compiled but failed runtime execution
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.3
+00:05.552  translation      | WARNING 'locale' data path for translations not found
+00:26.536  blend            | Read blend: "/root/rocm/scene.blend"
+00:26.573  cycles           | WARNING CUEW initialization failed: Error opening the library
+[NOT] GPU architecture is not supported by Blender Cycles HIP backend
+--> Testing llama.cpp HIP Benchmark...
+--> Package versions: package llamacpp is not installed,package libggml-hip is not installed,
+--> [WARNING] /usr/lib64/ggml/libggml-hip.so not found.
+--> [SKIP] llama-bench is not installed on this OS
+--> Testing PyTorch HIP Execution (Distro Package)...
+[SKIP] Distro package 'torch' not found for available Python interpreters (checked python3.14, python3.13, python3)
+--> Testing ROCm Validation Suite (rvs)...
+--> Listing GPUs supported by RVS...
+rvs: symbol lookup error: /lib64/libhipblaslt.so.1: undefined symbol: _ZN7origami27select_best_macro_tile_sizeEmmmmbbRKNS_10hardware_tERKSt6vectorISt5tupleIJmmmmmmiimmEESaIS5_EEmmmNS_11data_type_tEmdbim
+--> Running RVS Qualification & Short Stress Suite (~10s)...
+rvs: symbol lookup error: /lib64/libhipblaslt.so.1: undefined symbol: _ZN7origami27select_best_macro_tile_sizeEmmmmbbRKNS_10hardware_tERKSt6vectorISt5tupleIJmmmmmmiimmEESaIS5_EEmmmNS_11data_type_tEmdbim
+[FAIL] RVS test action failed during qualification or stress run
+==========================================
+Run #12 [rocm-preview] complete for 7800xt. Status: FAIL
+Results written to: /mnt/storage/rocm/rocm-preview/12/7800xt/result.json
+==========================================
