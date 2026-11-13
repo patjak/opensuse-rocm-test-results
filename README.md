@@ -16,6 +16,12 @@ Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 | 10 | AMD Radeon 890M | `gfx1150` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-13 08:03 UTC |
 | 9 | AMD Radeon Graphics | `gfx1201` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-13 00:20 UTC |
 
+#### OS: `rocm-preview`
+
+| # | GPU | GFX | ROCm | Status | Last Tested |
+| :---: | :--- | :---: | :---: | :---: | :--- |
+| 11 | AMD Radeon 890M | `gfx1150` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-13 08:40 UTC |
+
 #### OS: `tumbleweed`
 
 | # | GPU | GFX | ROCm | Status | Last Tested |

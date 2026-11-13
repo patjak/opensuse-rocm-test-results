@@ -304,7 +304,7 @@
     <div class="container">
         <header>
             <a href="history/index.html" class="log-link" style="float: right;">📜 View Test History</a>
-            <h1>openSUSE ROCm Test Dashboard <span class="seq-badge">Batch 10</span></h1>
+            <h1>openSUSE ROCm Test Dashboard <span class="seq-badge">Batch 11</span></h1>
             <p>Automated status across hardware and distribution releases.</p>
             <div class="legend">
                 <span class="legend-item"><span class="status pass">PASS</span> Test passed successfully</span>
@@ -411,6 +411,21 @@
             <td><span class="status pass bold">PASS</span></td>
             <td class="time" title="Run #9">2026-11-13 00:20 UTC</td>
             <td><a href="rocm-devel/9/5800x-gpu0/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="rocm-devel/9/5800x-gpu0/packages.txt" target="_blank" class="log-link">Packages</a></td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge os">rocm-preview</span></td>
+            <td><code title="PCI: 0000:c4:00.0">gfx1150</code></td>
+            <td><code>7.14.60850</code></td>
+            <td><span class="status pass clickable" title="Driver &amp; GPU detection succeeded (AMD Radeon 890M (gfx1150))" data-test="driver" data-test-name="Driver & Hardware Detection" data-gpu="gfx1150" data-os="rocm-preview" data-reason="Driver &amp; GPU detection succeeded (AMD Radeon 890M (gfx1150))" data-log="rocm-preview/11/thinkpad/test_run.log" onclick="openLogModal(this)">PASS</span></td>
+            <td><span class="status fail clickable" title="hipcc binary compiled but failed runtime execution" data-test="hipcc" data-test-name="hipcc Compiler" data-gpu="gfx1150" data-os="rocm-preview" data-reason="hipcc binary compiled but failed runtime execution" data-log="rocm-preview/11/thinkpad/test_run.log" onclick="openLogModal(this)">FAIL</span></td>
+            <td><span class="status not clickable" title="GPU architecture is not supported by Blender Cycles HIP backend" data-test="blender" data-test-name="Blender HIP Rendering" data-gpu="gfx1150" data-os="rocm-preview" data-reason="GPU architecture is not supported by Blender Cycles HIP backend" data-log="rocm-preview/11/thinkpad/test_run.log" onclick="openLogModal(this)">NOT</span></td>
+            <td><span class="status skip clickable" title="llama-bench is not installed on this OS" data-test="llama" data-test-name="LLaMA HIP Benchmark" data-gpu="gfx1150" data-os="rocm-preview" data-reason="llama-bench is not installed on this OS" data-log="rocm-preview/11/thinkpad/test_run.log" onclick="openLogModal(this)">SKIP</span></td>
+            <td><span class="status skip clickable" title="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)" data-test="pytorch" data-test-name="PyTorch HIP Execution" data-gpu="gfx1150" data-os="rocm-preview" data-reason="Distro package &#x27;torch&#x27; not found for available Python interpreters (checked python3.14, python3.13, python3)" data-log="rocm-preview/11/thinkpad/test_run.log" onclick="openLogModal(this)">SKIP</span></td>
+            <td><span class="status fail clickable" title="RVS test action failed during qualification or stress run" data-test="rvs" data-test-name="ROCm Validation Suite (rvs)" data-gpu="gfx1150" data-os="rocm-preview" data-reason="RVS test action failed during qualification or stress run" data-log="rocm-preview/11/thinkpad/test_run.log" onclick="openLogModal(this)">FAIL</span></td>
+            <td><span class="status fail bold">FAIL</span></td>
+            <td class="time" title="Run #11">2026-11-13 08:40 UTC</td>
+            <td><a href="rocm-preview/11/thinkpad/test_run.log" target="_blank" class="log-link">View Log</a> | <a href="rocm-preview/11/thinkpad/packages.txt" target="_blank" class="log-link">Packages</a></td>
         </tr>
         
         <tr>
