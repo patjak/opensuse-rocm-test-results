@@ -1,0 +1,111 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-2200g
+OS: tumbleweed (x86_64) | Sequence: #13
+Target GPU: [Index: 0] AMD Radeon Pro W5700 (gfx1010) PCI: 0000:12:00.0
+Disabled Tests: none
+==========================================
+
+------------------------------------------
+Installed ROCm & Graphics Packages:
+------------------------------------------
+Package                                  Version
+---------------------------------------- -----------------------------------
+blender                                  5.3.0-1.1
+blender-5.3                              5.3.0-1.1
+blender-lts                              5.3.0-1.1
+hipcc                                    22-14.1
+kernel-firmware-amdgpu                   20261031-1.1
+libdrm_amdgpu1                           2.4.134-2.2
+libggml-base0                            0.9.0-1.1
+libggml-cpu                              0.9.0-1.1
+libggml-hip                              0.9.0-1.1
+libggml-opencl                           0.9.0-1.1
+libggml-vulkan                           0.9.0-1.1
+libggml0                                 0.9.0-1.1
+llamacpp                                 0.9.0-1.1
+rocm-clang                               22-14.1
+rocm-clang-devel                         22-14.1
+rocm-clang-libs                          22-14.1
+rocm-clang-runtime-devel                 22-14.1
+rocm-device-libs                         22-14.1
+rocm-filesystem                          7.2.0-8.1
+rocm-hip                                 7.2.2-4.1
+rocm-hip-devel                           7.2.2-4.1
+rocm-lld                                 22-14.1
+rocm-llvm                                22-14.1
+rocm-llvm-devel                          22-14.1
+rocm-llvm-filesystem                     22-14.1
+rocm-llvm-libs                           22-14.1
+rocm-llvm-static                         22-14.1
+rocm-runtime-devel                       7.2.1-4.1
+rocm-smi                                 7.2.1-4.1
+rocm-smi-libs                            7.2.1-4.1
+rocm-validation-suite                    7.2.1-3.1
+rocminfo                                 7.2.0-5.1
+------------------------------------------
+
+--> Checking Hardware, Kernel, and ROCm Drivers (GPU Index: 0)...
+Kernel Version: 7.3.3-1-default
+[PASS] Driver & GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))
+--> Testing hipcc Compiler...
+[PASS] hipcc compilation and GPU execution succeeded
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.3
+Enabled HIP Device: AMD Radeon Pro W5700
+00:45.585  render           | Saved: '/tmp/rocm_test_13_gpu0/render_1.png'
+00:45.585  render           | Time: 00:42.32 (Saving: 00:00.49)
+[PASS] Blender rendered frame on GPU in 48.31s
+--> Testing llama.cpp HIP Benchmark...
+--> Package versions: llamacpp-0.9.0-1.1.x86_64,libggml-hip-0.9.0-1.1.x86_64,
+--> Compiled GPU architectures: gfx1010 gfx1012 gfx1030 gfx1031 gfx1035 gfx1036 gfx1100 gfx1101 gfx1102 gfx1103 gfx1150 gfx1151 gfx1152 gfx1153 gfx1200 gfx1201 gfx900 gfx906 gfx908 gfx90a gfx942 gfx950
+Using benchmark model: /root/rocm/qwen2.5-0.5b-instruct-q4_k_m.gguf
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 8176 MiB):
+  Device 0: AMD Radeon Pro W5700, gfx1010:xnack- (0x1010), VMM: no, Wave Size: 32, VRAM: 8176 MiB
+Available devices:
+  ROCm0: AMD Radeon Pro W5700 (8176 MiB, 8146 MiB free)
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 8176 MiB):
+  Device 0: AMD Radeon Pro W5700, gfx1010:xnack- (0x1010), VMM: no, Wave Size: 32, VRAM: 8176 MiB
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm,OpenCL |  99 |           pp128 |     2165.21 ± 156.52 |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm,OpenCL |  99 |            tg32 |        231.38 ± 1.44 |
+
+build: unknown (12110)
+--> [PASS] llama-bench executed successfully via HIP/ROCm (231.38 t/s)
+--> Testing PyTorch HIP Execution (Distro Package)...
+[SKIP] Distro package 'torch' not found for available Python interpreters (checked python3.14, python3.13, python3)
+--> Testing ROCm Validation Suite (rvs)...
+--> Listing GPUs supported by RVS...
+
+ROCm Validation Suite (version 1.3.0)
+
+Supported GPUs available:
+0000:12:00.0 - GPU[ 1 - 24544] AMD Radeon Pro W5700 (Device 29458)
+--> Configured RVS to target GPU ID: 24544
+--> Running RVS Qualification & Short Stress Suite (~10s)...
++=====================================================================+
+|                 ROCm Validation Suite (RVS) Summary                 |
++=====================================================================+
+|                           System Overview                           |
++---------------------------------------------------------------------+
+| Operating System                 | openSUSE Tumbleweed              |
+| RVS version                      | 1.3.0                            |
+| ROCm version                     | N/A                              |
+| amdgpu version                   | N/A                              |
+| GPUs                             | 1                                |
++---------------------------------------------------------------------+
+| GPU Name - GPU ID                | AMD Radeon Pro W5700 - 24544     |
+| ID - Node ID - BDF               | 0 - 1 - 0000:12:00.0             |
++=====================================================================+
+| Action Name                      | Module         | Result          |
++=====================================================================+
+| qual_gpup                        | GPUP           | [32mPASS          [0m  |
+| qual_peqt                        | PEQT           | [32mPASS          [0m  |
+| stress_gst                       | GST            | [32mPASS          [0m  |
+| stress_pebb                      | PEBB           | [32mPASS          [0m  |
++---------------------------------------------------------------------+
+[PASS] RVS qualification & short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)
+==========================================
+Run #13 [tumbleweed] complete for amd-2200g. Status: PASS
+Results written to: /mnt/storage/rocm/tumbleweed/13/amd-2200g/result.json
+==========================================
