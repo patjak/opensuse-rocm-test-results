@@ -10,9 +10,9 @@ Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
 | # | GPU | GFX | ROCm | Status | Last Tested |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 13 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-14 00:24 UTC |
+| 14 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-15 00:13 UTC |
 | 13 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-14 00:24 UTC |
-| 13 | AMD Radeon RX 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-14 00:24 UTC |
+| 14 | AMD Radeon RX 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-15 00:13 UTC |
 | 12 | AMD Radeon 890M | `gfx1150` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-13 09:05 UTC |
 | 13 | AMD Radeon Graphics | `gfx1201` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-14 00:24 UTC |
 
@@ -20,9 +20,9 @@ Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
 | # | GPU | GFX | ROCm | Status | Last Tested |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 13 | AMD Radeon Pro W5700 | `gfx1010` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-14 00:36 UTC |
+| 14 | AMD Radeon Pro W5700 | `gfx1010` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-15 00:24 UTC |
 | 13 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-14 00:35 UTC |
-| 13 | AMD Radeon RX 7800 XT | `gfx1101` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-14 00:36 UTC |
+| 14 | AMD Radeon RX 7800 XT | `gfx1101` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-15 00:25 UTC |
 | 12 | AMD Radeon 890M | `gfx1150` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-13 09:17 UTC |
 | 13 | AMD Radeon Graphics | `gfx1201` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-14 00:35 UTC |
 
@@ -30,9 +30,9 @@ Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
 | # | GPU | GFX | ROCm | Status | Last Tested |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 13 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-14 00:50 UTC |
+| 14 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-15 00:39 UTC |
 | 13 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-14 00:50 UTC |
-| 13 | AMD Radeon RX 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-14 00:50 UTC |
+| 14 | AMD Radeon RX 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-15 00:39 UTC |
 | 12 | AMD Radeon 890M | `gfx1150` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-13 09:31 UTC |
 | 13 | AMD Radeon Graphics | `gfx1201` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-14 00:49 UTC |
 
