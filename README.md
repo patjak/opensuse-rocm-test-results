@@ -10,7 +10,7 @@ Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
 | # | GPU | GFX | ROCm | Status | Last Tested |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 16 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-17 00:15 UTC |
+| 17 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-18 00:17 UTC |
 | 13 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-14 00:24 UTC |
 | 15 | AMD Radeon RX 7800 XT (#0) | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-16 00:19 UTC |
 | 16 | AMD Radeon RX 7800 XT (#0) | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-17 00:15 UTC |
@@ -21,7 +21,7 @@ Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
 | # | GPU | GFX | ROCm | Status | Last Tested |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 16 | AMD Radeon Pro W5700 | `gfx1010` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-17 00:26 UTC |
+| 17 | AMD Radeon Pro W5700 | `gfx1010` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-18 00:30 UTC |
 | 13 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-14 00:35 UTC |
 | 15 | AMD Radeon RX 7800 XT (#0) | `gfx1101` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-16 00:31 UTC |
 | 16 | AMD Radeon RX 7800 XT (#0) | `gfx1101` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-17 00:28 UTC |
@@ -32,7 +32,7 @@ Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
 | # | GPU | GFX | ROCm | Status | Last Tested |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 16 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-17 00:51 UTC |
+| 17 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-18 00:43 UTC |
 | 13 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-14 00:50 UTC |
 | 15 | AMD Radeon RX 7800 XT (#0) | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-16 00:44 UTC |
 | 16 | AMD Radeon RX 7800 XT (#0) | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-17 00:50 UTC |
