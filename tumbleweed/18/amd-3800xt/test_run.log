@@ -1,0 +1,139 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-3800xt
+OS: tumbleweed (x86_64) | Sequence: #18
+Target GPU: [Index: 0] AMD Radeon RX 7800 XT (gfx1101) PCI: 0000:0a:00.0
+Disabled Tests: none
+==========================================
+$ python3 /root/bin/dump_rocm_packages.py --txt /mnt/storage/rocm/tumbleweed/18/amd-3800xt/packages.txt --json /tmp/rocm_test_18_gpu0/packages.json
+
+------------------------------------------
+Installed ROCm & Graphics Packages:
+------------------------------------------
+Package                                  Version
+---------------------------------------- -----------------------------------
+blender                                  5.3.0-1.1
+blender-5.3                              5.3.0-2.1
+blender-lts                              5.3.0-1.1
+hipcc                                    22-14.1
+kernel-firmware-amdgpu                   20261031-1.1
+libamd_comgr3                            22-14.1
+libamd_comgr3-devel                      22-14.1
+libamd_smi26                             7.2.1-1.1
+libdrm_amdgpu1                           2.4.134-2.2
+libggml-base1                            1.0.0-1.1
+libggml-cpu                              1.0.0-1.1
+libggml-hip                              1.0.0-1.1
+libggml-opencl                           1.0.0-1.1
+libggml-vulkan                           1.0.0-1.1
+libggml1                                 1.0.0-1.1
+libhipblas3                              7.2.0-9.1
+libhipblaslt1                            7.2.0-8.1
+libhiprand1                              7.2.0-6.1
+libhsa-runtime64-1                       7.2.1-4.1
+liborigami1                              7.2.0-7.1
+librocblas5                              7.2.0-10.1
+librocrand1                              7.2.0-4.1
+librocsolver0                            7.2.0-8.1
+llamacpp                                 1.0.0-1.1
+rocm-clang                               22-14.1
+rocm-clang-devel                         22-14.1
+rocm-clang-libs                          22-14.1
+rocm-clang-runtime-devel                 22-14.1
+rocm-device-libs                         22-14.1
+rocm-filesystem                          7.2.0-8.1
+rocm-hip                                 7.2.2-4.1
+rocm-hip-devel                           7.2.2-4.1
+rocm-lld                                 22-14.1
+rocm-llvm                                22-14.1
+rocm-llvm-devel                          22-14.1
+rocm-llvm-filesystem                     22-14.1
+rocm-llvm-libs                           22-14.1
+rocm-llvm-static                         22-14.1
+rocm-runtime-devel                       7.2.1-4.1
+rocm-smi                                 7.2.1-4.1
+rocm-smi-libs                            7.2.1-4.1
+rocm-validation-suite                    7.2.1-3.1
+rocminfo                                 7.2.0-5.1
+------------------------------------------
+
+--> Checking Hardware, Kernel, and ROCm Drivers (GPU Index: 0)...
+Kernel Version: 7.3.4-1-default
+$ hipconfig --version
+$ rocminfo
+[PASS] Driver & GPU detection succeeded (AMD Radeon RX 7800 XT (gfx1101))
+--> Testing hipcc Compiler...
+$ hipcc -O3 -Wno-unused-value /root/rocm/vector_add.cpp -lamdhip64 -o /tmp/rocm_test_18_gpu0/hip_test
+$ timeout --kill-after=10s 60s /tmp/rocm_test_18_gpu0/hip_test
+[PASS] hipcc compilation and GPU execution succeeded
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.3
+$ timeout --kill-after=10s 120s /usr/bin/blender-5.3 -b /root/rocm/scene.blend -P /tmp/rocm_test_18_gpu0/enable_hip.py -E CYCLES -o /tmp/rocm_test_18_gpu0/render_# -f 1
+Enabled HIP Device: AMD Radeon RX 7800 XT
+00:14.753  render           | Saved: '/tmp/rocm_test_18_gpu0/render_1.png'
+00:14.753  render           | Time: 00:12.38 (Saving: 00:00.22)
+[PASS] Blender rendered frame on GPU in 17.29s
+--> Testing llama.cpp HIP Benchmark...
+$ rpm -q llamacpp libggml-hip
+--> Package versions: llamacpp-1.0.0-1.1.x86_64,libggml-hip-1.0.0-1.1.x86_64,
+$ /usr/lib64/rocm/llvm/bin/clang-offload-bundler --type=o --input=/usr/lib64/ggml/libggml-hip.so --list
+$ python3 -c $'\nimport sys, re, subprocess\npath = sys.argv[1]\nwith open(path, "rb") as f:\n    data = f.read()\npos = data.find(b"\\x28\\xb5\\x2f\\xfd")\ntargets = set()\nif pos != -1:\n    try:\n        proc = subprocess.run(["zstd", "-d"], input=data[pos:pos+3000000], capture_output=True)\n        if proc.stdout:\n            matches = re.findall(rb"amdgcn[a-zA-Z0-9_\\-]*--(gfx[0-9a-zA-Z]+)", proc.stdout)\n            targets.update(m.decode("ascii", "ignore") for m in matches)\n    except Exception:\n        pass\nif not targets:\n    matches = re.findall(rb"amdgcn[a-zA-Z0-9_\\-]*--(gfx[0-9a-zA-Z]+)", data)\n    targets.update(m.decode("ascii", "ignore") for m in matches)\nfor t in sorted(targets):\n    print(t)\n' /usr/lib64/ggml/libggml-hip.so
+--> Compiled GPU architectures: gfx1010 gfx1012 gfx1030 gfx1031 gfx1035 gfx1036 gfx1100 gfx1101 gfx1102 gfx1103 gfx1150 gfx1151 gfx1152 gfx1153 gfx1200 gfx1201 gfx900 gfx906 gfx908 gfx90a gfx942 gfx950
+$ llama-bench --list-devices
+Using benchmark model: /root/rocm/qwen2.5-0.5b-instruct-q4_k_m.gguf
+$ llama-bench --list-devices
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 16368 MiB):
+  Device 0: AMD Radeon RX 7800 XT, gfx1101 (0x1101), VMM: no, Wave Size: 32, VRAM: 16368 MiB
+Available devices:
+  ROCm0: AMD Radeon RX 7800 XT (16368 MiB, 16176 MiB free)
+$ timeout --kill-after=10s 120s llama-bench -m /root/rocm/qwen2.5-0.5b-instruct-q4_k_m.gguf -ngl 99 -p 128 -n 32
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 16368 MiB):
+  Device 0: AMD Radeon RX 7800 XT, gfx1101 (0x1101), VMM: no, Wave Size: 32, VRAM: 16368 MiB
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm,OpenCL |  99 |           pp128 |   10810.16 ± 2958.22 |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm,OpenCL |  99 |            tg32 |        270.57 ± 2.18 |
+
+build: unknown (12359)
+--> [PASS] llama-bench executed successfully via HIP/ROCm (270.57 t/s)
+--> Testing PyTorch HIP Execution (Distro Package)...
+$ python3.13 -c import\ torch
+$ python3 -c import\ torch
+[SKIP] Distro package 'torch' not found for available Python interpreters (checked python3.14, python3.13, python3)
+--> Testing ROCm Validation Suite (rvs)...
+--> Listing GPUs supported by RVS...
+$ rvs -g
+
+ROCm Validation Suite (version 1.3.0)
+
+Supported GPUs available:
+0000:0a:00.0 - GPU[ 1 - 13557] AMD Radeon RX 7800 XT (Device 29822)
+$ sed -i s/device:\ all/device:\ 13557/g /tmp/rocm_test_18_gpu0/rvs_short_stress.conf
+--> Configured RVS to target GPU ID: 13557
+--> Running RVS Qualification & Short Stress Suite (~10s)...
+$ timeout --kill-after=10s 60s rvs -c /tmp/rocm_test_18_gpu0/rvs_short_stress.conf -d 3
++=====================================================================+
+|                 ROCm Validation Suite (RVS) Summary                 |
++=====================================================================+
+|                           System Overview                           |
++---------------------------------------------------------------------+
+| Operating System                 | openSUSE Tumbleweed              |
+| RVS version                      | 1.3.0                            |
+| ROCm version                     | N/A                              |
+| amdgpu version                   | N/A                              |
+| GPUs                             | 1                                |
++---------------------------------------------------------------------+
+| GPU Name - GPU ID                | AMD Radeon RX 7800 XT - 13557    |
+| ID - Node ID - BDF               | 0 - 1 - 0000:0a:00.0             |
++=====================================================================+
+| Action Name                      | Module         | Result          |
++=====================================================================+
+| qual_gpup                        | GPUP           | [32mPASS          [0m  |
+| qual_peqt                        | PEQT           | [32mPASS          [0m  |
+| stress_gst                       | GST            | [32mPASS          [0m  |
+| stress_pebb                      | PEBB           | [32mPASS          [0m  |
++---------------------------------------------------------------------+
+[PASS] RVS qualification & short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)
+==========================================
+Run #18 [tumbleweed] complete for amd-3800xt. Status: PASS
+Results written to: /mnt/storage/rocm/tumbleweed/18/amd-3800xt/result.json
+==========================================

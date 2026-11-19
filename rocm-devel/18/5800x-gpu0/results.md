@@ -1,0 +1,1 @@
+| Run #18 | rocm-devel (x86_64) | 5800x (GPU 0) | AMD Radeon Graphics (gfx1201) | 7.3.4-1-default | 7.2.53211-9999 | PASS | PASS | PASS (16.27s) | PASS (337.38 t/s) | PASS (0.0138s) | PASS | **PASS** |

@@ -1,0 +1,153 @@
+==========================================
+Starting openSUSE ROCm Test Suite on amd-2200g
+OS: rocm-devel (x86_64) | Sequence: #18
+Target GPU: [Index: 0] AMD Radeon Pro W5700 (gfx1010) PCI: 0000:12:00.0
+Disabled Tests: none
+==========================================
+$ python3 /root/bin/dump_rocm_packages.py --txt /mnt/storage/rocm/rocm-devel/18/amd-2200g/packages.txt --json /tmp/rocm_test_18_gpu0/packages.json
+
+------------------------------------------
+Installed ROCm & Graphics Packages:
+------------------------------------------
+Package                                  Version
+---------------------------------------- -----------------------------------
+blender                                  5.3.0-1.1
+blender-5.3                              5.3.0-2.1
+blender-lts                              5.3.0-1.1
+hipcc                                    22-17.4
+hipfft-libs                              7.2.0-6.1
+hipsolver-libs                           7.2.0-8.1
+kernel-firmware-amdgpu                   20261031-1.1
+libMIOpen1                               7.2.1-6.1
+libamd_comgr3                            22-17.4
+libamd_comgr3-devel                      22-17.4
+libamd_smi26                             7.2.1-14.2
+libdrm_amdgpu1                           2.4.134-2.2
+libggml-base1                            1.0.0-1.1
+libggml-cpu                              1.0.0-1.1
+libggml-hip                              1.0.0-1.1
+libggml-opencl                           1.0.0-1.1
+libggml-vulkan                           1.0.0-1.1
+libggml1                                 1.0.0-1.1
+libhipblas3                              7.2.0-10.1
+libhipblaslt1                            7.2.0-16.17
+libhiprand1                              7.2.0-10.1
+libhipsparse4                            7.2.0-10.1
+libhsa-runtime64-1                       7.2.1-9.4
+liborigami1                              7.2.0-7.1
+librocblas5                              7.2.0-12.2
+librocfft0                               7.2.0-11.18
+librocrand1                              7.2.0-8.1
+librocsolver0                            7.2.0-15.3
+librocsparse1                            7.2.0-11.3
+libtorch-rocm                            2.14.0-72.1
+llamacpp                                 1.0.0-1.1
+python313-torch-rocm                     2.14.0-72.1
+rocm-clang                               22-17.4
+rocm-clang-devel                         22-17.4
+rocm-clang-libs                          22-17.4
+rocm-clang-runtime-devel                 22-17.4
+rocm-device-libs                         22-17.4
+rocm-filesystem                          7.14.0-1.1
+rocm-hip                                 7.2.2-8.2
+rocm-hip-devel                           7.2.2-8.2
+rocm-lld                                 22-17.4
+rocm-llvm                                22-17.4
+rocm-llvm-devel                          22-17.4
+rocm-llvm-filesystem                     22-17.4
+rocm-llvm-libs                           22-17.4
+rocm-llvm-static                         22-17.4
+rocm-omp-devel                           7.2.0-6.1
+rocm-runtime-devel                       7.2.1-9.4
+rocm-smi                                 7.2.1-6.1
+rocm-smi-libs                            7.2.1-6.1
+rocm-validation-suite                    7.2.1-4.2
+rocminfo                                 7.2.0-9.2
+rocrand-devel                            7.2.0-8.1
+roctracer-libs                           7.2.2-4.1
+------------------------------------------
+
+--> Checking Hardware, Kernel, and ROCm Drivers (GPU Index: 0)...
+Kernel Version: 7.3.4-1-default
+$ hipconfig --version
+$ rocminfo
+[PASS] Driver & GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))
+--> Testing hipcc Compiler...
+$ hipcc -O3 -Wno-unused-value /root/rocm/vector_add.cpp -lamdhip64 -o /tmp/rocm_test_18_gpu0/hip_test
+$ timeout --kill-after=10s 60s /tmp/rocm_test_18_gpu0/hip_test
+[PASS] hipcc compilation and GPU execution succeeded
+--> Testing Blender HIP Rendering...
+Using Blender binary: /usr/bin/blender-5.3
+$ timeout --kill-after=10s 120s /usr/bin/blender-5.3 -b /root/rocm/scene.blend -P /tmp/rocm_test_18_gpu0/enable_hip.py -E CYCLES -o /tmp/rocm_test_18_gpu0/render_# -f 1
+Enabled HIP Device: AMD Radeon Pro W5700
+00:50.450  render           | Saved: '/tmp/rocm_test_18_gpu0/render_1.png'
+00:50.450  render           | Time: 00:46.08 (Saving: 00:03.34)
+[PASS] Blender rendered frame on GPU in 67.67s
+--> Testing llama.cpp HIP Benchmark...
+$ rpm -q llamacpp libggml-hip
+--> Package versions: llamacpp-1.0.0-1.1.x86_64,libggml-hip-1.0.0-1.1.x86_64,
+$ /usr/lib64/rocm/llvm/bin/clang-offload-bundler --type=o --input=/usr/lib64/ggml/libggml-hip.so --list
+$ python3 -c $'\nimport sys, re, subprocess\npath = sys.argv[1]\nwith open(path, "rb") as f:\n    data = f.read()\npos = data.find(b"\\x28\\xb5\\x2f\\xfd")\ntargets = set()\nif pos != -1:\n    try:\n        proc = subprocess.run(["zstd", "-d"], input=data[pos:pos+3000000], capture_output=True)\n        if proc.stdout:\n            matches = re.findall(rb"amdgcn[a-zA-Z0-9_\\-]*--(gfx[0-9a-zA-Z]+)", proc.stdout)\n            targets.update(m.decode("ascii", "ignore") for m in matches)\n    except Exception:\n        pass\nif not targets:\n    matches = re.findall(rb"amdgcn[a-zA-Z0-9_\\-]*--(gfx[0-9a-zA-Z]+)", data)\n    targets.update(m.decode("ascii", "ignore") for m in matches)\nfor t in sorted(targets):\n    print(t)\n' /usr/lib64/ggml/libggml-hip.so
+--> Compiled GPU architectures: gfx1010 gfx1012 gfx1030 gfx1031 gfx1035 gfx1036 gfx1100 gfx1101 gfx1102 gfx1103 gfx1150 gfx1151 gfx1152 gfx1153 gfx1200 gfx1201 gfx900 gfx906 gfx908 gfx90a gfx942 gfx950
+$ llama-bench --list-devices
+Using benchmark model: /root/rocm/qwen2.5-0.5b-instruct-q4_k_m.gguf
+$ llama-bench --list-devices
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 8176 MiB):
+  Device 0: AMD Radeon Pro W5700, gfx1010:xnack- (0x1010), VMM: no, Wave Size: 32, VRAM: 8176 MiB
+Available devices:
+  ROCm0: AMD Radeon Pro W5700 (8176 MiB, 8146 MiB free)
+$ timeout --kill-after=10s 120s llama-bench -m /root/rocm/qwen2.5-0.5b-instruct-q4_k_m.gguf -ngl 99 -p 128 -n 32
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 8176 MiB):
+  Device 0: AMD Radeon Pro W5700, gfx1010:xnack- (0x1010), VMM: no, Wave Size: 32, VRAM: 8176 MiB
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm,OpenCL |  99 |           pp128 |     1955.95 ± 643.33 |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm,OpenCL |  99 |            tg32 |        238.74 ± 4.28 |
+
+build: unknown (12359)
+--> [PASS] llama-bench executed successfully via HIP/ROCm (238.74 t/s)
+--> Testing PyTorch HIP Execution (Distro Package)...
+$ python3.13 -c import\ torch
+--> Found PyTorch using Python interpreter: /usr/bin/python3.13
+$ timeout --kill-after=10s 120s /usr/bin/python3.13 /tmp/rocm_test_18_gpu0/test_pytorch_gpu.py
+timeout: the monitored command dumped core
+/root/bin/run.sh: line 31:  1303 Segmentation fault         "$@"
+[FAIL] PyTorch crashed with Segmentation Fault (Signal 11)
+--> Testing ROCm Validation Suite (rvs)...
+--> Listing GPUs supported by RVS...
+$ rvs -g
+
+ROCm Validation Suite (version 1.3.0)
+
+Supported GPUs available:
+0000:12:00.0 - GPU[ 1 - 24544] AMD Radeon Pro W5700 (Device 29458)
+$ sed -i s/device:\ all/device:\ 24544/g /tmp/rocm_test_18_gpu0/rvs_short_stress.conf
+--> Configured RVS to target GPU ID: 24544
+--> Running RVS Qualification & Short Stress Suite (~10s)...
+$ timeout --kill-after=10s 60s rvs -c /tmp/rocm_test_18_gpu0/rvs_short_stress.conf -d 3
++=====================================================================+
+|                 ROCm Validation Suite (RVS) Summary                 |
++=====================================================================+
+|                           System Overview                           |
++---------------------------------------------------------------------+
+| Operating System                 | openSUSE Tumbleweed              |
+| RVS version                      | 1.3.0                            |
+| ROCm version                     | N/A                              |
+| amdgpu version                   | N/A                              |
+| GPUs                             | 1                                |
++---------------------------------------------------------------------+
+| GPU Name - GPU ID                | AMD Radeon Pro W5700 - 24544     |
+| ID - Node ID - BDF               | 0 - 1 - 0000:12:00.0             |
++=====================================================================+
+| Action Name                      | Module         | Result          |
++=====================================================================+
+| qual_gpup                        | GPUP           | [32mPASS          [0m  |
+| qual_peqt                        | PEQT           | [32mPASS          [0m  |
+| stress_gst                       | GST            | [32mPASS          [0m  |
+| stress_pebb                      | PEBB           | [32mPASS          [0m  |
++---------------------------------------------------------------------+
+[PASS] RVS qualification & short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)
+==========================================
+Run #18 [rocm-devel] complete for amd-2200g. Status: FAIL
+Results written to: /mnt/storage/rocm/rocm-devel/18/amd-2200g/result.json
+==========================================
