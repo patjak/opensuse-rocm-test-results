@@ -10,31 +10,31 @@ Automated validation suite for AMD ROCm across openSUSE distributions and GPUs.
 
 | # | GPU | GFX | ROCm | Status | Last Tested |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 19 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 13:40 UTC |
-| 18 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 00:20 UTC |
+| 20 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 16:02 UTC |
+| 20 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 16:02 UTC |
 | 18 | AMD Radeon RX 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-19 00:21 UTC |
 | 12 | AMD Radeon 890M | `gfx1150` | `7.2.53211` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-13 09:05 UTC |
-| 18 | Radeon RX 9070 / 9070 XT (Navi 48) | `gfx1201` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-19 00:19 UTC |
+| 20 | Radeon RX 9070 / 9070 XT (Navi 48) | `gfx1201` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-19 16:01 UTC |
 
 #### OS: `rocm-preview`
 
 | # | GPU | GFX | ROCm | Status | Last Tested |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 19 | AMD Radeon Pro W5700 | `gfx1010` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 13:50 UTC |
-| 19 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 13:50 UTC |
+| 20 | AMD Radeon Pro W5700 | `gfx1010` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 16:09 UTC |
+| 20 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 16:10 UTC |
 | 18 | AMD Radeon RX 7800 XT | `gfx1101` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 00:33 UTC |
 | 12 | AMD Radeon 890M | `gfx1150` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-13 09:17 UTC |
-| 19 | Radeon RX 9070 / 9070 XT (Navi 48) | `gfx1201` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 13:50 UTC |
+| 20 | Radeon RX 9070 / 9070 XT (Navi 48) | `gfx1201` | `7.14.60850` | <span style="cursor: default;" title="FAIL">❌</span> | 2026-11-19 16:10 UTC |
 
 #### OS: `tumbleweed`
 
 | # | GPU | GFX | ROCm | Status | Last Tested |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 18 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-19 00:50 UTC |
-| 18 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-19 00:49 UTC |
+| 20 | AMD Radeon Pro W5700 | `gfx1010` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-19 17:13 UTC |
+| 20 | AMD Radeon RX 7900 XTX | `gfx1100` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-19 17:13 UTC |
 | 18 | AMD Radeon RX 7800 XT | `gfx1101` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-19 00:49 UTC |
 | 12 | AMD Radeon 890M | `gfx1150` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-13 09:31 UTC |
-| 18 | Radeon RX 9070 / 9070 XT (Navi 48) | `gfx1201` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-19 00:49 UTC |
+| 20 | Radeon RX 9070 / 9070 XT (Navi 48) | `gfx1201` | `7.2.53211` | <span style="cursor: default;" title="PASS">✅</span> | 2026-11-19 17:12 UTC |
 
 ---
 *Updated automatically by `mama` test runner.*

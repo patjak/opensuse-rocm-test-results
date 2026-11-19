@@ -1,0 +1,193 @@
+======================================================================
+ openSUSE ROCm Test Suite on 5800x (GPU 1)
+ OS: tumbleweed (x86_64) | Run: #20 | Disabled tests: none
+ Target GPU: [1] AMD Radeon RX 7900 XTX (gfx1100) PCI: 0000:2f:00.0
+======================================================================
+
+Machine:
+  Hostname:          5800x
+  Date:              2026-11-19 17:12:45 UTC
+  OS:                openSUSE Tumbleweed (20261118)
+  Kernel:            7.3.4-1-default
+  Kernel cmdline:    vmlinuz-7.3.4-1-default root=nfs:192.168.2.1:/machines/5800x/x86_64/rocm-tumbleweed,rw,vers=4,nconnect=16 rd.neednet=1 systemd.hostname=5800x ip=dhcp ifname=lan0:2c:f0:5d:a2:76:b2 initrd=initrd-7.3.4-1-default
+  CPU:               AMD Ryzen 7 5800X 8-Core Processor (16 threads)
+  Memory:            31.3 GiB
+  System:            Micro-Star International Co., Ltd. MS-7C37
+  Board:             Micro-Star International Co., Ltd. X570-A PRO (MS-7C37)
+  BIOS:              H.R4 08/13/2026
+
+GPUs:
+     [0] Radeon RX 9070 / 9070 XT (Navi 48) (gfx1201) 0000:25:00.0
+  => [1] AMD Radeon RX 7900 XTX (gfx1100) 0000:2f:00.0
+
+Tested GPU (0000:2f:00.0):
+  PCI ID:            1002:744c rev c8
+  Driver:            amdgpu
+  VBIOS:             113-D7020100-102
+  VRAM:              24560 MiB
+  PCIe link:         16.0 GT/s PCIe x16 (max 16.0 GT/s PCIe x16)
+$ python3 /root/bin/dump_rocm_packages.py --txt /mnt/storage/rocm/tumbleweed/20/5800x-gpu1/packages.txt --json /tmp/rocm_test_20_gpu1/packages.json
+
+======================================================================
+ Installed ROCm & Graphics Packages
+======================================================================
+Package                                  Version
+---------------------------------------- -----------------------------------
+blender                                  5.3.0-1.1
+blender-5.3                              5.3.0-2.1
+blender-lts                              5.3.0-1.1
+hipcc                                    22-14.1
+kernel-firmware-amdgpu                   20261031-1.1
+libamd_comgr3                            22-14.1
+libamd_comgr3-devel                      22-14.1
+libamd_smi26                             7.2.1-1.1
+libdrm_amdgpu1                           2.4.134-2.2
+libggml-base1                            1.0.0-2.1
+libggml-cpu                              1.0.0-2.1
+libggml-hip                              1.0.0-2.1
+libggml1                                 1.0.0-2.1
+libhipblas3                              7.2.0-9.1
+libhipblaslt1                            7.2.0-8.1
+libhiprand1                              7.2.0-6.1
+libhsa-runtime64-1                       7.2.1-4.1
+liborigami1                              7.2.0-7.1
+librocblas5                              7.2.0-10.1
+librocrand1                              7.2.0-4.1
+librocsolver0                            7.2.0-8.1
+llamacpp                                 1.0.0-2.1
+rocm-clang                               22-14.1
+rocm-clang-devel                         22-14.1
+rocm-clang-libs                          22-14.1
+rocm-clang-runtime-devel                 22-14.1
+rocm-device-libs                         22-14.1
+rocm-filesystem                          7.2.0-8.1
+rocm-hip                                 7.2.2-4.1
+rocm-hip-devel                           7.2.2-4.1
+rocm-lld                                 22-14.1
+rocm-llvm                                22-14.1
+rocm-llvm-devel                          22-14.1
+rocm-llvm-filesystem                     22-14.1
+rocm-llvm-libs                           22-14.1
+rocm-llvm-static                         22-14.1
+rocm-runtime-devel                       7.2.1-4.1
+rocm-smi                                 7.2.1-4.1
+rocm-smi-libs                            7.2.1-4.1
+rocm-validation-suite                    7.2.1-3.1
+rocminfo                                 7.2.0-5.1
+
+======================================================================
+ [1/6] Driver & Hardware Detection (driver)
+======================================================================
+Kernel Version: 7.3.4-1-default
+$ hipconfig --version
+$ rocminfo
+[PASS] Driver & GPU detection succeeded (AMD Radeon RX 7900 XTX (gfx1100))
+>>> Result: PASS (took 0.1s)
+
+======================================================================
+ [2/6] hipcc Compiler (hipcc)
+======================================================================
+$ hipcc -O3 -Wno-unused-value /root/rocm/vector_add.cpp -lamdhip64 -o /tmp/rocm_test_20_gpu1/hip_test
+$ timeout --kill-after=10s 60s /tmp/rocm_test_20_gpu1/hip_test
+[PASS] hipcc compilation and GPU execution succeeded
+>>> Result: PASS (took 2.2s)
+
+======================================================================
+ [3/6] Blender HIP Rendering (blender)
+======================================================================
+Using Blender binary: /usr/bin/blender-5.3
+$ timeout --kill-after=10s 120s /usr/bin/blender-5.3 -b /root/rocm/scene.blend -P /tmp/rocm_test_20_gpu1/enable_hip.py -E CYCLES -o /tmp/rocm_test_20_gpu1/render_# -f 1
+Enabled HIP Device: AMD Radeon RX 7900 XTX
+00:10.030  render           | Saved: '/tmp/rocm_test_20_gpu1/render_1.png'
+00:10.031  render           | Time: 00:09.53 (Saving: 00:00.15)
+[PASS] Blender rendered frame on GPU in 10.30s
+>>> Result: PASS (took 10.3s)
+
+======================================================================
+ [4/6] LLaMA HIP Benchmark (llama)
+======================================================================
+$ rpm -q llamacpp libggml-hip
+--> Package versions: llamacpp-1.0.0-2.1.x86_64, libggml-hip-1.0.0-2.1.x86_64
+$ /usr/lib64/rocm/llvm/bin/clang-offload-bundler --type=o --input=/usr/lib64/ggml/libggml-hip.so --list
+$ python3 /root/bin/list_offload_archs.py /usr/lib64/ggml/libggml-hip.so
+--> Compiled GPU architectures: gfx1010 gfx1012 gfx1030 gfx1031 gfx1035 gfx1036 gfx1100 gfx1101 gfx1102 gfx1103 gfx1150 gfx1151 gfx1152 gfx1153 gfx1200 gfx1201 gfx900 gfx906 gfx908 gfx90a gfx942 gfx950
+$ llama-bench --list-devices
+Using benchmark model: /root/rocm/qwen2.5-0.5b-instruct-q4_k_m.gguf
+$ llama-bench --list-devices
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 24560 MiB):
+  Device 0: AMD Radeon RX 7900 XTX, gfx1100 (0x1100), VMM: no, Wave Size: 32, VRAM: 24560 MiB
+Available devices:
+  ROCm0: AMD Radeon RX 7900 XTX (24560 MiB, 24504 MiB free)
+$ timeout --kill-after=10s 120s llama-bench -m /root/rocm/qwen2.5-0.5b-instruct-q4_k_m.gguf -ngl 99 -p 128 -n 32
+ggml_cuda_init: found 1 ROCm devices (Total VRAM: 24560 MiB):
+  Device 0: AMD Radeon RX 7900 XTX, gfx1100 (0x1100), VMM: no, Wave Size: 32, VRAM: 24560 MiB
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm       |  99 |           pp128 |   13324.79 ± 4565.45 |
+| qwen2 1B Q4_K - Medium         | 462.96 MiB |   630.17 M | ROCm       |  99 |            tg32 |        420.47 ± 4.67 |
+
+build: unknown (12359)
+--> [PASS] llama-bench executed successfully via HIP/ROCm (420.47 t/s)
+>>> Result: PASS (took 1.8s)
+
+======================================================================
+ [5/6] PyTorch HIP Execution (pytorch)
+======================================================================
+$ python3.13 -c import\ torch
+$ python3 -c import\ torch
+[SKIP] Distro package 'torch' not found for available Python interpreters (checked python3.14, python3.13, python3, python3.12)
+>>> Result: SKIP (took 0.1s)
+
+======================================================================
+ [6/6] ROCm Validation Suite (rvs)
+======================================================================
+--> Listing GPUs supported by RVS...
+$ rvs -g
+
+ROCm Validation Suite (version 1.3.0)
+
+Supported GPUs available:
+0000:2f:00.0 - GPU[ 2 - 50108] AMD Radeon RX 7900 XTX (Device 29772)
+$ sed -i s/device:\ all/device:\ 50108/g /tmp/rocm_test_20_gpu1/rvs_short_stress.conf
+--> Configured RVS to target GPU ID: 50108
+--> Running RVS Qualification & Short Stress Suite (~10s)...
+$ timeout --kill-after=10s 60s rvs -c /tmp/rocm_test_20_gpu1/rvs_short_stress.conf -d 3
++=====================================================================+
+|                 ROCm Validation Suite (RVS) Summary                 |
++=====================================================================+
+|                           System Overview                           |
++---------------------------------------------------------------------+
+| Operating System                 | openSUSE Tumbleweed              |
+| RVS version                      | 1.3.0                            |
+| ROCm version                     | N/A                              |
+| amdgpu version                   | N/A                              |
+| GPUs                             | 1                                |
++---------------------------------------------------------------------+
+| GPU Name - GPU ID                | AMD Radeon RX 7900 XTX - 50108   |
+| ID - Node ID - BDF               | 0 - 2 - 0000:2f:00.0             |
++=====================================================================+
+| Action Name                      | Module         | Result          |
++=====================================================================+
+| qual_gpup                        | GPUP           | PASS            |
+| qual_peqt                        | PEQT           | PASS            |
+| stress_gst                       | GST            | PASS            |
+| stress_pebb                      | PEBB           | PASS            |
++---------------------------------------------------------------------+
+[PASS] RVS qualification & short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)
+>>> Result: PASS (took 12.9s)
+
+======================================================================
+ Summary: 5800x (GPU 1) | tumbleweed (x86_64) | Run #20
+======================================================================
+ Test                         Result    Time  Details
+ ----                         ------    ----  -------
+ Driver & Hardware Detection  PASS      0.1s  Driver & GPU detection succeeded (AMD Radeon RX 7900 XTX (gfx1100))
+ hipcc Compiler               PASS      2.2s  hipcc compilation and GPU execution succeeded
+ Blender HIP Rendering        PASS     10.3s  10.30s render
+ LLaMA HIP Benchmark          PASS      1.8s  420.47 t/s
+ PyTorch HIP Execution        SKIP      0.1s  Distro package 'torch' not found for available Python interpreters (checked python3.14, python3.13, python3, python3.12)
+ ROCm Validation Suite        PASS     12.9s  RVS qualification & short stress tests passed (GPUP, PEQT, GST, PEBB in ~10s)
+
+ Overall: PASS
+ Results: /mnt/storage/rocm/tumbleweed/20/5800x-gpu1/result.json
+======================================================================
