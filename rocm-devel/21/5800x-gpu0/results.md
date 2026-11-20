@@ -1,0 +1,1 @@
+| Run #21 | rocm-devel (x86_64) | 5800x (GPU 0) | Radeon RX 9070 / 9070 XT (Navi 48) (gfx1201) | 7.3.4-1-default | 7.2.53211-9999 | PASS | PASS | PASS (15.48s) | PASS (336.99 t/s) | PASS (0.0137s) | PASS | **PASS** |
