@@ -1,0 +1,1 @@
+| Run #22 | tumbleweed (x86_64) | 5800x (GPU 0) | Radeon RX 9070 / 9070 XT (Navi 48) (gfx1201) | 7.3.4-1-default | 7.2.53211-9999 | PASS | PASS | PASS (15.55s) | PASS (337.60 t/s) | SKIP (N/As) | PASS | **PASS** |
