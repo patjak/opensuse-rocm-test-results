@@ -1,0 +1,1 @@
+| Run #24 | rocm-devel (x86_64) | amd-3800xt | AMD Radeon RX 7800 XT (gfx1101) | 7.3.5-1-default | 7.2.53211-9999 | PASS | PASS | PASS (17.37s) | PASS (272.41 t/s) | PASS (0.0160s) | PASS | **PASS** |
