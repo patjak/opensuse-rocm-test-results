@@ -1,0 +1,195 @@
+======================================================================
+ openSUSE ROCm Test Suite on amd-2200g
+ OS: rocm-preview (x86_64) | Run: #25 | Disabled tests: none
+ Target GPU: [0] AMD Radeon Pro W5700 (gfx1010) PCI: 0000:12:00.0
+======================================================================
+
+Machine:
+  Hostname:          amd-2200g
+  Date:              2026-11-24 00:16:10 UTC
+  OS:                openSUSE Tumbleweed (20261121)
+  Kernel:            7.3.5-1-default
+  Kernel cmdline:    vmlinuz-7.3.5-1-default root=nfs:192.168.2.1:/machines/amd-2200g/x86_64/rocm-rocm-preview,rw,vers=4,nconnect=16 rd.neednet=1 systemd.hostname=amd-2200g ip=dhcp ifname=lan0:2c:f0:5d:94:c0:29 initrd=initrd-7.3.5-1-default
+  CPU:               AMD Ryzen 3 2200G with Radeon Vega Graphics (4 threads)
+  Memory:            7.7 GiB
+  System:            Micro-Star International Co., Ltd. MS-7C56
+  Board:             Micro-Star International Co., Ltd. B550-A PRO (MS-7C56)
+  BIOS:              A.30 08/31/2020
+
+GPUs:
+  => [0] AMD Radeon Pro W5700 (gfx1010) 0000:12:00.0
+
+Tested GPU (0000:12:00.0):
+  PCI ID:            1002:7312 rev 00
+  Driver:            amdgpu
+  VBIOS:             113-D1880201-102
+  VRAM:              8176 MiB
+  PCIe link:         16.0 GT/s PCIe x16 (max 16.0 GT/s PCIe x16)
+$ python3 /root/bin/dump_rocm_packages.py --txt /mnt/storage/rocm/rocm-preview/25/amd-2200g/packages.txt --json /tmp/rocm_test_25_gpu0/packages.json
+
+======================================================================
+ Installed ROCm & Graphics Packages
+======================================================================
+Package                                  Version
+---------------------------------------- -----------------------------------
+blender                                  5.3.0-1.1
+blender-5.3                              5.3.0-2.1
+blender-lts                              5.3.0-1.1
+hipcc                                    23-2.7
+hipfft-libs                              7.14.1-1.2
+hipsolver-libs                           7.14.1-1.2
+kernel-firmware-amdgpu                   20261031-1.1
+libMIOpen1                               7.2.1-3.1
+libamd_comgr3                            23-2.7
+libamd_comgr3-devel                      23-2.7
+libamd_smi26                             7.14.1-2.2
+libamdsminic26                           7.14.1-2.2
+libdrm_amdgpu1                           2.4.134-2.2
+libggml-base1                            1.0.0-2.1
+libggml-cpu                              1.0.0-2.1
+libggml-hip                              1.0.0-2.1
+libggml1                                 1.0.0-2.1
+libhipblas3                              7.14.1-1.2
+libhipblaslt1                            7.14.1-1.6
+libhiprand1                              7.14.1-1.2
+libhipsparse4                            7.14.1-2.2
+libhsa-runtime64-1                       7.14.1-1.2
+librocblas5                              7.14.1-1.2
+librocfft0                               7.14.1-1.2
+librocrand1                              7.14.1-1.2
+librocsolver0                            7.14.1-1.2
+librocsparse1                            7.14.1-1.2
+libtorch-rocm                            2.14.0-72.1
+llamacpp                                 1.0.0-2.1
+python313-torch-rocm                     2.14.0-72.1
+rocm-clang                               23-2.7
+rocm-clang-devel                         23-2.7
+rocm-clang-libs                          23-2.7
+rocm-clang-runtime-devel                 23-2.7
+rocm-device-libs                         23-2.7
+rocm-filesystem                          7.2.0-8.1
+rocm-hip                                 7.14.1-1.2
+rocm-hip-devel                           7.14.1-1.2
+rocm-lld                                 23-2.7
+rocm-llvm                                23-2.7
+rocm-llvm-devel                          23-2.7
+rocm-llvm-filesystem                     23-2.7
+rocm-llvm-libs                           23-2.7
+rocm-llvm-static                         23-2.7
+rocm-omp-devel                           23-2.7
+rocm-runtime-devel                       7.14.1-1.2
+rocm-smi                                 7.2.1-4.1
+rocm-smi-libs                            7.2.1-4.1
+rocm-validation-suite                    7.2.1-2.1
+rocminfo                                 7.14.1-1.1
+rocrand-devel                            7.14.1-1.2
+roctracer-libs                           7.14.1-1.1
+
+======================================================================
+ [1/6] Driver & Hardware Detection (driver)
+======================================================================
+Kernel Version: 7.3.5-1-default
+$ hipconfig --version
+$ rocminfo
+[PASS] Driver & GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))
+>>> Result: PASS (took 0.9s)
+
+======================================================================
+ [2/6] hipcc Compiler (hipcc)
+======================================================================
+$ hipcc -O3 -Wno-unused-value /root/rocm/vector_add.cpp -lamdhip64 -o /tmp/rocm_test_25_gpu0/hip_test
+$ timeout --kill-after=10s 60s /tmp/rocm_test_25_gpu0/hip_test
+HIP error: hipErrorNoDevice: no ROCm-capable device is detected
+HIP_TEST_FAILED
+[FAIL] hipcc binary compiled but failed runtime execution
+>>> Result: FAIL (took 3.7s)
+
+======================================================================
+ [3/6] Blender HIP Rendering (blender)
+======================================================================
+Using Blender binary: /usr/bin/blender-5.3
+$ timeout --kill-after=10s 120s /usr/bin/blender-5.3 -b /root/rocm/scene.blend -P /tmp/rocm_test_25_gpu0/enable_hip.py -E CYCLES -o /tmp/rocm_test_25_gpu0/render_# -f 1
+00:00.677  translation      | WARNING 'locale' data path for translations not found
+00:03.007  blend            | Read blend: "/root/rocm/scene.blend"
+00:03.023  cycles           | WARNING CUEW initialization failed: Error opening the library
+[NOT] GPU architecture is not supported by Blender Cycles HIP backend
+>>> Result: NOT (took 5.6s)
+
+======================================================================
+ [4/6] LLaMA HIP Benchmark (llama)
+======================================================================
+$ rpm -q llamacpp libggml-hip
+--> Package versions: llamacpp-1.0.0-2.1.x86_64, libggml-hip-1.0.0-2.1.x86_64
+$ /usr/lib64/rocm/llvm/bin/clang-offload-bundler --type=o --input=/usr/lib64/ggml/libggml-hip.so --list
+$ python3 /root/bin/list_offload_archs.py /usr/lib64/ggml/libggml-hip.so
+--> Compiled GPU architectures: gfx1010 gfx1012 gfx1030 gfx1031 gfx1035 gfx1036 gfx1100 gfx1101 gfx1102 gfx1103 gfx1150 gfx1151 gfx1152 gfx1153 gfx1200 gfx1201 gfx900 gfx906 gfx908 gfx90a gfx942 gfx950
+$ llama-bench --list-devices
+Using benchmark model: /root/rocm/qwen2.5-0.5b-instruct-q4_k_m.gguf
+$ llama-bench --list-devices
+ggml_cuda_init: failed to initialize ROCm: no ROCm-capable device is detected
+Available devices:
+  (none)
+--> [NOT] llama-bench failed to detect or initialize ROCm/HIP device
+>>> Result: NOT (took 3.7s)
+
+======================================================================
+ [5/6] PyTorch HIP Execution (pytorch)
+======================================================================
+$ python3.13 -c import\ torch
+$ python3 -c import\ torch
+[SKIP] Distro package 'torch' not found for available Python interpreters (checked python3.14, python3.13, python3, python3.12)
+>>> Result: SKIP (took 1.3s)
+
+======================================================================
+ [6/6] ROCm Validation Suite (rvs)
+======================================================================
+--> Listing GPUs supported by RVS...
+$ rvs -g
+
+ROCm Validation Suite (version 1.3.0)
+
+Supported GPUs available:
+0000:12:00.0 - GPU[ 1 - 24544] AMD Radeon Pro W5700 (Device 29458)
+$ sed -i s/device:\ all/device:\ 24544/g /tmp/rocm_test_25_gpu0/rvs_short_stress.conf
+--> Configured RVS to target GPU ID: 24544
+--> Running RVS Qualification & Short Stress Suite (~10s)...
+$ timeout --kill-after=10s 60s rvs -c /tmp/rocm_test_25_gpu0/rvs_short_stress.conf -d 3
++=====================================================================+
+|                 ROCm Validation Suite (RVS) Summary                 |
++=====================================================================+
+|                           System Overview                           |
++---------------------------------------------------------------------+
+| Operating System                 | openSUSE Tumbleweed              |
+| RVS version                      | 1.3.0                            |
+| ROCm version                     | N/A                              |
+| amdgpu version                   | N/A                              |
+| GPUs                             | 1                                |
++---------------------------------------------------------------------+
+| GPU Name - GPU ID                | AMD Radeon Pro W5700 - 24544     |
+| ID - Node ID - BDF               | 0 - 1 - 0000:12:00.0             |
++=====================================================================+
+| Action Name                      | Module         | Result          |
++=====================================================================+
+| qual_gpup                        | GPUP           | PASS            |
+| qual_peqt                        | PEQT           | PASS            |
+| stress_gst                       | GST            | FAIL            |
+| stress_pebb                      | PEBB           | PASS            |
++---------------------------------------------------------------------+
+[FAIL] RVS test action failed during qualification or stress run
+>>> Result: FAIL (took 4.9s)
+
+======================================================================
+ Summary: amd-2200g | rocm-preview (x86_64) | Run #25
+======================================================================
+ Test                         Result    Time  Details
+ ----                         ------    ----  -------
+ Driver & Hardware Detection  PASS      0.9s  Driver & GPU detection succeeded (AMD Radeon Pro W5700 (gfx1010))
+ hipcc Compiler               FAIL      3.7s  hipcc binary compiled but failed runtime execution
+ Blender HIP Rendering        NOT       5.6s  GPU architecture is not supported by Blender Cycles HIP backend
+ LLaMA HIP Benchmark          NOT       3.7s  llama-bench lacks active ROCm/HIP GPU device
+ PyTorch HIP Execution        SKIP      1.3s  Distro package 'torch' not found for available Python interpreters (checked python3.14, python3.13, python3, python3.12)
+ ROCm Validation Suite        FAIL      4.9s  RVS test action failed during qualification or stress run
+
+ Overall: FAIL
+ Results: /mnt/storage/rocm/rocm-preview/25/amd-2200g/result.json
+======================================================================
