@@ -1,0 +1,1 @@
+| Run #27 | rocm-preview (x86_64) | 5800x (GPU 0) | Radeon RX 9070 / 9070 XT (Navi 48) (gfx1201) | 7.3.5-1-default | 7.14.60850-0000000 | PASS | FAIL | NOT (N/As) | NOT (N/A t/s) | SKIP (N/As) | FAIL | **FAIL** |
