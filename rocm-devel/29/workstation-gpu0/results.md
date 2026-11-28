@@ -1,0 +1,1 @@
+| Run #29 | rocm-devel (x86_64) | workstation (GPU 0) | Radeon RX 9070 / 9070 XT (Navi 48) (gfx1201) | 7.3.5-1-default | 7.2.53211-9999 | PASS | PASS | PASS (16.06s) | PASS (337.35 t/s) | PASS (0.0139s) | PASS | **PASS** |
